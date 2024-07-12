@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('visibility');
             $table->string('slug');
             $table->unique(['restaurant_id','name']);
-
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

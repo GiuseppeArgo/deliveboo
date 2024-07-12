@@ -24,6 +24,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('p_iva');
             $table->string('slug');
+            $table->timestamps();
         });
 
         Schema::enableForeignKeyConstraints();

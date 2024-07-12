@@ -21,6 +21,7 @@ return new class extends Migration
             $table->dateTime('data');
             $table->decimal('total_price',5,2);
             $table->boolean('status');
+            $table->timestamps();
         });
     }
 
