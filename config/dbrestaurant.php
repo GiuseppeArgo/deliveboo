@@ -1,5 +1,3 @@
-dbrestaurant
-
 <?php
 return [
     [

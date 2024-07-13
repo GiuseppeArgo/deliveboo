@@ -8,6 +8,7 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Type;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
@@ -36,6 +37,8 @@ class RestaurantController extends Controller
     {   
         $data = $request->validated();
         $newRestaurant = new Restaurant();
+
+        $data['image'] = Storage::put('img', $data['image']);
         $newRestaurant->fill($data);
         $newRestaurant->user_id = Auth::id();
         $newRestaurant->city = 'Milano';
@@ -65,7 +68,7 @@ class RestaurantController extends Controller
         //     'p_iva' => "La partita iva è necessaria e deve essere lunga 11 caratteri",
         // ]);
 
-        return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->id]);
+        return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
         
     }
 

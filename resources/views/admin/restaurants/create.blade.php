@@ -6,7 +6,7 @@
 
         @include('partials.errors')
 
-        <form action="{{ route('admin.restaurants.store') }}" method="POST">
+        <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
 
             @csrf
 
@@ -25,7 +25,7 @@
             <div class="mb-3">
                 <label for="image" class="form-label">Poster</label>
                 <input value="image" type="file" name="image" class="form-control" id="image"
-                    aria-describedby="cover_image">
+                    aria-describedby="image">
             </div>
 
             <div class="mb-3">
