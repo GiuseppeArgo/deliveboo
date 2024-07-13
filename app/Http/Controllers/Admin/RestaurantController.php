@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Restaurant;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -19,8 +20,8 @@ class RestaurantController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
+    { 
+        return view("admin.restaurants.create");
     }
 
     /**
