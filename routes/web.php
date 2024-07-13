@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,11 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')
-    ->prefix('admin') // Prefisso nell'url delle rotte di questo gruppo
-    ->name('admin.') // inizio di ogni nome delle rotte del gruppo
+    ->prefix('admin')
+    ->name('admin.')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
     });
 
 require __DIR__ . '/auth.php';
