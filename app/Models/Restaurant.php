@@ -10,7 +10,7 @@ class Restaurant extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','name','city','address','image','description','p_iva','slug'];
+    protected $fillable = ['address','image','description','p_iva'];
 
     //relations
     public function user() {
@@ -26,9 +26,9 @@ class Restaurant extends Model
     }
 
         //Mutators
-        public function setNameRestaurantAttribute($name)
+        public function setNameAttribute($name)
         {
-            $this->attributes['slug'] = Str::slug($name. '-' . $this->user_id);
             $this->attributes['name'] = $name;
+            $this->attributes['slug'] = Str::slug($name. '-' . $this->user_id);
         }
 }

@@ -25,7 +25,8 @@ class RestaurantController extends Controller
      */
     public function create()
     { 
-        return view("admin.restaurants.create");
+        $listTypes = Type::all();
+        return view("admin.restaurants.create", compact("listTypes"));
     }
 
     /**
@@ -35,8 +36,11 @@ class RestaurantController extends Controller
     {   
         $data = $request->validated();
         $newRestaurant = new Restaurant();
-
         $newRestaurant->fill($data);
+        $newRestaurant->user_id = Auth::id();
+        $newRestaurant->city = 'Milano';
+        $newRestaurant->name = $data['name'];
+        $newRestaurant->save();
 
         // $newRestaurant->name_restaurant = $data['name_restaurant'];
         // $newRestaurant->city = 'Milano';
@@ -45,8 +49,7 @@ class RestaurantController extends Controller
         // $newRestaurant->description = $data['description'];
         // $newRestaurant->p_iva = $data['p_iva'];
         // $newRestaurant->user_id = $data['user_id'];
-        // $newRestaurant->slug = Str::slug($newRestaurant->name_restaurant . '-' . $newRestaurant->id);
-        $newRestaurant->save();
+        // $newRestaurant->slug = Str::slug($newRestaurant->name . '-' . $newRestaurant->id);
         // $request->validate([
         //     'name_restaurant' => ['required', 'min:3'],
         //     'address' => ['required', 'min:5'],
