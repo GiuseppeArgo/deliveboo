@@ -25,7 +25,7 @@ class RestaurantController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    { 
+    {
         $listTypes = Type::all();
         return view("admin.restaurants.create", compact("listTypes"));
     }
@@ -34,15 +34,15 @@ class RestaurantController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreRestaurantRequest $request)
-    {   
+    {
         $data = $request->validated();
         $newRestaurant = new Restaurant();
 
-        $data['image'] = Storage::put('img', $data['image']);
         $newRestaurant->fill($data);
         $newRestaurant->user_id = Auth::id();
         $newRestaurant->city = 'Milano';
         $newRestaurant->name = $data['name'];
+        $newRestaurant->image = Storage::put('img', $data['image']);
         $newRestaurant->save();
 
         // $newRestaurant->name_restaurant = $data['name_restaurant'];
@@ -69,7 +69,7 @@ class RestaurantController extends Controller
         // ]);
 
         return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
-        
+
     }
 
     /**
