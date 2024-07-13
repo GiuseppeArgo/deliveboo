@@ -24,7 +24,7 @@ class RestaurantController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    { 
         return view("admin.restaurants.create");
     }
 
@@ -32,18 +32,20 @@ class RestaurantController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreRestaurantRequest $request)
-    {
+    {   
         $data = $request->validated();
         $newRestaurant = new Restaurant();
 
-        $newRestaurant->name_restaurant = $data['name_restaurant'];
-        $newRestaurant->city = 'Milano';
-        $newRestaurant->address = $data['address'];
-        $newRestaurant->cover_image = $data['cover_image'];
-        $newRestaurant->description = $data['description'];
-        $newRestaurant->p_iva = $data['p_iva'];
-        $newRestaurant->user_id = $data['user_id'];
-        $newRestaurant->slug = Str::slug($newRestaurant->name_restaurant . '-' . $newRestaurant->id);
+        $newRestaurant->fill($data);
+
+        // $newRestaurant->name_restaurant = $data['name_restaurant'];
+        // $newRestaurant->city = 'Milano';
+        // $newRestaurant->address = $data['address'];
+        // $newRestaurant->cover_image = $data['cover_image'];
+        // $newRestaurant->description = $data['description'];
+        // $newRestaurant->p_iva = $data['p_iva'];
+        // $newRestaurant->user_id = $data['user_id'];
+        // $newRestaurant->slug = Str::slug($newRestaurant->name_restaurant . '-' . $newRestaurant->id);
         $newRestaurant->save();
         // $request->validate([
         //     'name_restaurant' => ['required', 'min:3'],
@@ -61,7 +63,7 @@ class RestaurantController extends Controller
         // ]);
 
         return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->id]);
-
+        
     }
 
     /**
@@ -75,15 +77,9 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Restaurant $restaurant)
+    public function edit(string $id)
     {
-        //  controllo utente puoi vedere e modificare solo i tuoi ristoranti
-
-        // if($restaurant->user_id !== Auth::id()){
-        //     abort(403);
-        //  }
-        $listTypes = Type::all();
-        return view('admin.restaurants.edit', compact('restaurant','listTypes'));
+        //
     }
 
     /**
