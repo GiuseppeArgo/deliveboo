@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Restaurant;
+use App\Models\RestaurantType;
 use Illuminate\Support\Str;
 
 class RestaurantsTableSeeder extends Seeder
@@ -15,7 +16,7 @@ class RestaurantsTableSeeder extends Seeder
     public function run(): void
     {
         $restaurants = config("dbrestaurant");
-        foreach($restaurants as $restaurant) {
+        foreach($restaurants as $key => $restaurant) {
             $newRestaurant = new Restaurant();
             $newRestaurant->user_id = $restaurant['user_id'];
             $newRestaurant->name_restaurant = $restaurant['name_restaurant'];
@@ -26,6 +27,12 @@ class RestaurantsTableSeeder extends Seeder
             $newRestaurant->p_iva = $restaurant['p_iva'];
             $newRestaurant->slug = Str::slug($restaurant['name_restaurant'].'-'.$newRestaurant->id);
             $newRestaurant->save();
+
+            $newRestaurantType = new RestaurantType();
+            $newRestaurantType->restaurant_id = $newRestaurant->id;
+            $newRestaurantType->type_id = $key+1;
+            $newRestaurantType->save();
         }
+
     }
 }
