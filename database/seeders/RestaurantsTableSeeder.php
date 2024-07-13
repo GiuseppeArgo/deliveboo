@@ -19,13 +19,13 @@ class RestaurantsTableSeeder extends Seeder
         foreach($restaurants as $key => $restaurant) {
             $newRestaurant = new Restaurant();
             $newRestaurant->user_id = $restaurant['user_id'];
-            $newRestaurant->name_restaurant = $restaurant['name_restaurant'];
+            $newRestaurant->name = $restaurant['name'];
             $newRestaurant->city = $restaurant['city'];
             $newRestaurant->address = $restaurant['address'];
-            $newRestaurant->cover_image = $restaurant['cover_image'];
+            $newRestaurant->image = $restaurant['image'];
             $newRestaurant->description = $restaurant['description'];
             $newRestaurant->p_iva = $restaurant['p_iva'];
-            $newRestaurant->slug = Str::slug($restaurant['name_restaurant'] . '-' . strval($newRestaurant->user_id));
+            $newRestaurant->slug = Str::slug($restaurant['name'] . '-' . strval($newRestaurant->user_id));
             $newRestaurant->save();
 
             $newRestaurantType = new RestaurantType();
