@@ -23,7 +23,7 @@ class DishesTableSeeder extends Seeder
             $newDish->image = $dish['image'];
             $newDish->price = $dish['price'];
             $newDish->visibility = $dish['visibility'];
-            $newDish->slug = Str::slug($dish['name'] . '-' . strval($newDish->id));
+            $newDish->slug = Str::slug($dish['name'] . '-' . strval($newDish->restaurant_id));
             $newDish->save();
         }
     }
