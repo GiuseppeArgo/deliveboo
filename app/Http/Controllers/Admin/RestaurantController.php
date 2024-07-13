@@ -6,6 +6,8 @@ use App\Http\Requests\Admin\StoreRestaurantRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Type;
 use Illuminate\Support\Str;
 
 class RestaurantController extends Controller
@@ -22,7 +24,7 @@ class RestaurantController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    { 
+    {
         return view("admin.restaurants.create");
     }
 
@@ -30,7 +32,7 @@ class RestaurantController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(StoreRestaurantRequest $request)
-    {   
+    {
         $data = $request->validated();
         $newRestaurant = new Restaurant();
 
@@ -59,7 +61,7 @@ class RestaurantController extends Controller
         // ]);
 
         return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->id]);
-        
+
     }
 
     /**
@@ -73,9 +75,15 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Restaurant $restaurant)
     {
-        //
+        //  controllo utente puoi vedere e modificare solo i tuoi ristoranti
+
+        // if($restaurant->user_id !== Auth::id()){
+        //     abort(403);
+        //  }
+        $listTypes = Type::all();
+        return view('admin.restaurants.edit', compact('restaurant','listTypes'));
     }
 
     /**

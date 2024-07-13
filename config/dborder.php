@@ -91,14 +91,14 @@ return [
         'total_price' => 85.00,
         'status' => true
     ],
-    [
-        'name' => 'Fabio',
-        'lastname' => 'Rosso',
-        'phone_number' => '+39 335 6789012',
-        'email' => 'fabio.rosso@email.com',
-        'address' => 'Via del Teatro 150, 00185 Roma',
-        'data' => '2024-07-10 18:00:00',
-        'total_price' => 95.00,
-        'status' => false
-    ]
+    // [
+    //     'name' => 'Fabio',
+    //     'lastname' => 'Rosso',
+    //     'phone_number' => '+39 335 6789012',
+    //     'email' => 'fabio.rosso@email.com',
+    //     'address' => 'Via del Teatro 150, 00185 Roma',
+    //     'data' => '2024-07-10 18:00:00',
+    //     'total_price' => 95.00,
+    //     'status' => false
+    // ]
 ];
