@@ -77,9 +77,15 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Restaurant $restaurant)
     {
-        //
+        //  controllo utente puoi vedere e modificare solo i tuoi ristoranti
+
+        // if($restaurant->user_id !== Auth::id()){
+        //     abort(403);
+        //  }
+        $listTypes = Type::all();
+        return view('admin.restaurants.edit', compact('restaurant','listTypes'));
     }
 
     /**
