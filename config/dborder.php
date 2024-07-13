@@ -2,7 +2,7 @@
 
 return [
     [
-        'name' => 'Mario Rossi',
+        'name' => 'Mario',
         'lastname' => 'Rossi',
         'phone_number' => '+39 333 1234567',
         'email' => 'mario.rossi@email.com',
@@ -12,7 +12,7 @@ return [
         'status' => true
     ],
     [
-        'name' => 'Luigi Bianchi',
+        'name' => 'Luigi',
         'lastname' => 'Bianchi',
         'phone_number' => '+39 335 7654321',
         'email' => 'luigi.bianchi@email.com',
@@ -22,7 +22,7 @@ return [
         'status' => false
     ],
     [
-        'name' => 'Anna Verdi',
+        'name' => 'Anna',
         'lastname' => 'Verdi',
         'phone_number' => '+39 338 9876543',
         'email' => 'anna.verdi@email.com',
@@ -32,7 +32,7 @@ return [
         'status' => true
     ],
     [
-        'name' => 'Paolo Gialli',
+        'name' => 'Paolo',
         'lastname' => 'Gialli',
         'phone_number' => '+39 339 5432107',
         'email' => 'paolo.gialli@email.com',
@@ -42,7 +42,7 @@ return [
         'status' => false
     ],
     [
-        'name' => 'Maria Blu',
+        'name' => 'Maria',
         'lastname' => 'Blu',
         'phone_number' => '+39 340 8765432',
         'email' => 'maria.blu@email.com',
@@ -52,7 +52,7 @@ return [
         'status' => true
     ],
     [
-        'name' => 'Alessandro Verde',
+        'name' => 'Alessandro',
         'lastname' => 'Verde',
         'phone_number' => '+39 331 2345678',
         'email' => 'alessandro.verde@email.com',
@@ -62,7 +62,7 @@ return [
         'status' => false
     ],
     [
-        'name' => 'Beatrice Arancione',
+        'name' => 'Beatrice',
         'lastname' => 'Arancione',
         'phone_number' => '+39 332 3456789',
         'email' => 'beatrice.arancione@email.com',
@@ -72,7 +72,7 @@ return [
         'status' => true
     ],
     [
-        'name' => 'Carlo Viola',
+        'name' => 'Carlo',
         'lastname' => 'Viola',
         'phone_number' => '+39 333 4567890',
         'email' => 'carlo.viola@email.com',
@@ -82,7 +82,7 @@ return [
         'status' => false
     ],
     [
-        'name' => 'Elisa Gialla',
+        'name' => 'Elisa',
         'lastname' => 'Gialla',
         'phone_number' => '+39 334 5678901',
         'email' => 'elisa.gialla@email.com',
@@ -92,7 +92,7 @@ return [
         'status' => true
     ],
     [
-        'name' => 'Fabio Rosso',
+        'name' => 'Fabio',
         'lastname' => 'Rosso',
         'phone_number' => '+39 335 6789012',
         'email' => 'fabio.rosso@email.com',
