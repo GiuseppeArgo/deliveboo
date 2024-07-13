@@ -25,7 +25,7 @@ class RestaurantsTableSeeder extends Seeder
             $newRestaurant->cover_image = $restaurant['cover_image'];
             $newRestaurant->description = $restaurant['description'];
             $newRestaurant->p_iva = $restaurant['p_iva'];
-            $newRestaurant->slug = Str::slug($restaurant['name_restaurant'].'-'.$newRestaurant->id);
+            $newRestaurant->slug = Str::slug($restaurant['name_restaurant'] . '-' . strval($newRestaurant->user_id));
             $newRestaurant->save();
 
             $newRestaurantType = new RestaurantType();
