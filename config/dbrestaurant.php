@@ -81,14 +81,5 @@ return [
         'description' => 'Cucina rustica in un ambiente storico e suggestivo.',
         'p_iva' => '12345678909'
     ],
-    [
-        'user_id' => 10,
-        'name_restaurant' => 'Ristorante Margherita',
-        'city' => 'Milano',
-        'address' => 'Via dei Prati 12',
-        'cover_image' => 'img/default.jpg',
-        'description' => 'Cucina vegana in ambiente naturale.',
-        'p_iva' => '12345678456'
-    ],
 ];
 ?>

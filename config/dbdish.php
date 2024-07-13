@@ -65,10 +65,10 @@ return [
     ['restaurant_id' => 9, 'name' => 'Baklava', 'description' => 'Dolce fatto di strati di pasta fillo ripiena di noci tritate e miele.', 'image' => 'img/default.jpg', 'price' => 6.00, 'visibility' => true],
 
     // Ristorante 10 - Cucina Americana
-    ['restaurant_id' => 10, 'name' => 'Hamburger', 'description' => 'Polpetta di manzo alla griglia con formaggio, lattuga, pomodoro e cipolla.', 'image' => 'img/default.jpg', 'price' => 9.00, 'visibility' => true],
-    ['restaurant_id' => 10, 'name' => 'Pollo Fritto', 'description' => 'Pollo fritto croccante servito con insalata di cavolo.', 'image' => 'img/default.jpg', 'price' => 8.50, 'visibility' => true],
-    ['restaurant_id' => 10, 'name' => 'Mac and Cheese', 'description' => 'Pasta di maccheroni cremosa con salsa al formaggio.', 'image' => 'img/default.jpg', 'price' => 7.50, 'visibility' => true],
-    ['restaurant_id' => 10, 'name' => 'Torta di Mele', 'description' => 'Classico dolce americano con una crosta friabile e ripieno di mele.', 'image' => 'img/default.jpg', 'price' => 5.50, 'visibility' => true],
-    ['restaurant_id' => 10, 'name' => 'Zuppa di Vongole', 'description' => 'Zuppa cremosa con vongole, patate e pancetta.', 'image' => 'img/default.jpg', 'price' => 7.00, 'visibility' => true],
+    // ['restaurant_id' => 10, 'name' => 'Hamburger', 'description' => 'Polpetta di manzo alla griglia con formaggio, lattuga, pomodoro e cipolla.', 'image' => 'img/default.jpg', 'price' => 9.00, 'visibility' => true],
+    // ['restaurant_id' => 10, 'name' => 'Pollo Fritto', 'description' => 'Pollo fritto croccante servito con insalata di cavolo.', 'image' => 'img/default.jpg', 'price' => 8.50, 'visibility' => true],
+    // ['restaurant_id' => 10, 'name' => 'Mac and Cheese', 'description' => 'Pasta di maccheroni cremosa con salsa al formaggio.', 'image' => 'img/default.jpg', 'price' => 7.50, 'visibility' => true],
+    // ['restaurant_id' => 10, 'name' => 'Torta di Mele', 'description' => 'Classico dolce americano con una crosta friabile e ripieno di mele.', 'image' => 'img/default.jpg', 'price' => 5.50, 'visibility' => true],
+    // ['restaurant_id' => 10, 'name' => 'Zuppa di Vongole', 'description' => 'Zuppa cremosa con vongole, patate e pancetta.', 'image' => 'img/default.jpg', 'price' => 7.00, 'visibility' => true],
 ];
 ?>

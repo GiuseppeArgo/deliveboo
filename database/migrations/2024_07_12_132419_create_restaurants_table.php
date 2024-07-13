@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('name_restaurant');
             $table->string('city');
             $table->string('address');
-            $table->string('cover_image');
+            $table->string('cover_image')->nullable;
             $table->text('description');
             $table->string('p_iva');
             $table->string('slug');
