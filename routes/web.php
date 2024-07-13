@@ -26,7 +26,6 @@ Route::middleware('auth')
     ->name('admin.')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
     });
 
 require __DIR__ . '/auth.php';
