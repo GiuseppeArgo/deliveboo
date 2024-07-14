@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateDishRequest;
+use App\Http\Requests\StoreDishRequest;
 use Illuminate\Http\Request;
 use App\Models\Dish;
 use Illuminate\Support\Facades\Auth;
@@ -28,15 +29,27 @@ class DishController extends Controller
      */
     public function create()
     {
-return view("admin.dishes.create");
+        return view("admin.dishes.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreDishRequest $request, Dish $dish)
     {
-        //
+
+        $data = $request->validated();
+        // valore inserito manualmente ma che dobbiamo gestire prelevandolo dallo show dei ristoranti e portantolo nel form della creazione.
+        $data['restaurant_id'] = $request->restaurant_id;
+        $data['visibility'] = 1;
+        $data['image'] = Storage::put('img', $data['image']);
+        $data['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
+        $newDish = new Dish();
+        $newDish->fill($data);
+        $newDish->save();
+
+        return redirect()->route("admin.dishes.show", ["dish" => $newDish->slug]);
+
     }
 
     /**
