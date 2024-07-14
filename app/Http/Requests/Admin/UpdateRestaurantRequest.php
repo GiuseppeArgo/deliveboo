@@ -45,7 +45,6 @@ class UpdateRestaurantRequest extends FormRequest
             'image.max'         => 'dimensione massima 2 mb',
             'p_iva.min'         => 'la partita iva deve avere 11 caratteri numerici',
             'p_iva.max'         => 'la partita iva deve avere 11 caratteri numerici',
-
         ];
     }
 }
