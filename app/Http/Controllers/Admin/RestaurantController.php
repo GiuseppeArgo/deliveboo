@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Restaurant;
+use App\Models\Dish;
 
 class RestaurantController extends Controller
 {
@@ -34,9 +36,9 @@ class RestaurantController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Restaurant $restaurant)
     {
-        //
+        return view("admin.restaurants.show", compact("restaurant"));
     }
 
     /**
