@@ -88,6 +88,11 @@
             <input class="form-control" type="file" name="image" id="image" {{-- dynamic class with red border --}}
                 @error('image') is-invalid @enderror>
             {{-- /dynamic class with red border --}}
+<<<<<<< HEAD
+=======
+            value="{{ old('address', $restaurant->address) }}">
+        {{-- /address --}}
+>>>>>>> 89aff11db4d912faa693d4ec88d50b2728f11280
 
             {{-- error message --}}
             @error('image')
