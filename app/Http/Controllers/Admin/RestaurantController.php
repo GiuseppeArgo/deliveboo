@@ -75,10 +75,10 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
+        dd($request);
         $data = $request->validated();
         $data['user_id'] = Auth::id();
         $data['slug'] = Str::slug($data['name']. '-' . $data['user_id']);
-        // dd($data);
         $newRestaurant = new Restaurant();
         if (isset($data['image'])) {
             if ($restaurant->image) {
@@ -96,12 +96,13 @@ class RestaurantController extends Controller
 
         $restaurant->update($data);
         $restaurant->types()->sync($request->tipologies);
-        return view('admin.restaurants.show', compact('restaurant'));
+        // return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
+        return view('admin.reaturands.show', compact('restaurants'));
+        // return view('admin.restaurants.show');
     }
 
 
 
-    //     return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
     // }
 
     /**
