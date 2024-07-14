@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ use App\Models\Type;
 use App\Models\Dish;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Requests\StoreRestaurantRequest;
+
 
 class RestaurantController extends Controller
 {
@@ -40,7 +42,7 @@ class RestaurantController extends Controller
         $data['user_id'] = Auth::id();
         $data['city'] = 'Milano';
         $data['image'] = Storage::put('img', $data['image']);
-        $data['slug'] = Str::slug($data['name']. '-' . $data['user_id']);
+        $data['slug'] = Str::slug($data['name'] . '-' . $data['user_id']);
         $newRestaurant = new Restaurant();
         $newRestaurant->Fill($data);
         $newRestaurant->save();
@@ -67,33 +69,27 @@ class RestaurantController extends Controller
         //     abort(403);
         //  }
         $listTypes = Type::all();
-        return view('admin.restaurants.edit', compact('restaurant','listTypes'));
+        return view('admin.restaurants.edit', compact('restaurant', 'listTypes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-public function update(Request $request, Restaurant $restaurant){
-    // non entra nel update restaurant request senza capire il motivo
-        // $data = $request->validated();
-        $data = $request->all();
-        $data['user_id'] = Auth::id();
-        $data['slug'] = Str::slug($data['name'] . '-' . $data['user_id']);
-
-        if (isset($data['image'])) {
-            if ($restaurant->image) {
-                Storage::delete($restaurant->image);
-            }
-            $data['image'] = Storage::put('img', $data['image']);
-        }
-
-        $restaurant->update($data);
-        $restaurant->types()->sync($request->tipologies);
-
-        // Reindirizza alla pagina show dopo un aggiornamento riuscito
-        return view('admin.restaurants.show', compact('restaurant'));
-
-        // // return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->slug]);
+    public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
+    {
+       
+            $data = $request->validated();    
+            $data['user_id'] = Auth::id();
+            $data['slug'] = Str::slug($data['name'] . '-' . $data['user_id']);
+            if (isset($data['image'])) {
+                if ($restaurant->image) {
+                    Storage::delete($restaurant->image);
+                }
+                $data['image'] = Storage::put('img', $data['image']);
+            }   
+            $restaurant->update($data);
+            $restaurant->types()->sync($request->tipologies);
+            return view('admin.restaurants.show', compact('restaurant'));   
     }
 
     /**

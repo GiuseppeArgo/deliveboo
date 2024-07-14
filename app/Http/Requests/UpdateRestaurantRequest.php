@@ -12,7 +12,7 @@ class UpdateRestaurantRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,8 +26,7 @@ class UpdateRestaurantRequest extends FormRequest
             'name'              => ['required', 'min:3','max:25', Rule::unique('restaurants')->ignore($this->restaurant)],
             'address'           => ['required', 'min:5','max: 50'],
             'image'             => ['nullable', 'image', 'mimes: jpeg,jpg,png', 'max:2048'],
-            'description'       => ['required', 'min:5', 'max:255'],
-            'p_iva'             => ['required', 'min:11', 'max:11',Rule::unique('restaurants')->ignore($this->restaurant)],
+            'description'       => ['required', 'min:5', 'max:255'],    
             'tipologies'        => ['required'],
             'slug'              => ['nullable'],
         ];
@@ -43,9 +42,7 @@ class UpdateRestaurantRequest extends FormRequest
             'unique'            => 'non si possono avere due :attribute uguali',
             'image.image'       => ' il campo :attribute deve essere una foto',
             'image.mimes'       => 'formato consentito jpg,jpeg o png',
-            'image.max'         => 'dimensione massima 2 mb',
-            'p_iva.min'         => 'la partita iva deve avere 11 caratteri numerici',
-            'p_iva.max'         => 'la partita iva deve avere 11 caratteri numerici',
+            'image.max'         => 'dimensione massima 2 mb',    
         ];
     }
 }

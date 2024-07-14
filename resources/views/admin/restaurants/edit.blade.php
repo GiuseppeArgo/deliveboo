@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- @include('partials.errors') --}}
+    @include('partials.errors')
 
     <div class="form-container">
 

@@ -74,10 +74,10 @@
 
                     @foreach ($listTypes as $curType)
                         <div class="col-4 btn-group flex flex-wrap mt-3">
-                            @if ('tipologies' !== null)
+                            {{-- @if ('tipologies' !== null) --}}
                                 <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
                                     value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', [])))>
-                            @endif
+                            {{-- @endif --}}
 
                             <label class="btn btn-outline-primary"
                                 for="tech-{{ $curType->id }}">{{ $curType->name }}</label>
@@ -86,7 +86,8 @@
                 </div>
             </div>
             {{-- /Tipologia --}}
-
+            
+            {{-- Partita_Iva --}}
             <div class="mb-3">
                 <label for="p_iva" class="form-label">Partita Iva:
                     {{-- error message --}}
@@ -95,10 +96,11 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <input value="{{ old('address') }}" type="number" name="p_iva"
+                <input value="{{ old('p_iva') }}" type="number" name="p_iva"
                     class="form-control  @error('p_iva') is-invalid @enderror" id="p_iva" aria-describedby="p_iva">
             </div>
-
+            {{-- /Partita_Iva --}}
+            
             <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>
     </div>
