@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RestaurantController;
-use App\Http\Controllers\DishController;
+use App\Http\Controllers\Admin\DishController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +28,8 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+        Route::resource('dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
+        Route::put('dishes/{dish}/toggle', [DishController::class, 'toggle'])->name('dishes.toggle');
     });
 
 require __DIR__ . '/auth.php';
