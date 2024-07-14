@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-center mt-5">index piatti</h1>
+    <h1 class="text-center mt-5">Piatti Del menu ( {{count($dishesList)}}  )</h1>
     <div class="w-50 m-auto">
         <table class="table table-striped text-center">
             <thead>
@@ -13,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($listDishes as $dish)
+                @foreach ($dishesList as $dish)
                     <tr>
                         <td>{{ $dish->name }}</td>
                         <td>{{ $dish->price }}</td>

@@ -20,8 +20,8 @@ class DishController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $listDishes = Dish::where('restaurant_id',$id)->get();
-        return view("admin.dishes.index", compact("listDishes"));
+        $dishesList = Dish::where('restaurant_id',$id)->get();
+        return view("admin.dishes.index", compact("dishesList"));
     }
 
     /**
