@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRestaurantRequest extends FormRequest
 {
@@ -22,26 +23,30 @@ class StoreRestaurantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:3'],
-            'address' => ['required', 'min:5'],
-            'image' => ['required'],
-            'description' => ['required', 'min:5', 'max:255'],
-            'p_iva' => ['required', 'min:11', 'max:11'],
-            'slug' => ['nullable'],
-        ]; 
-        
+            'name'              => ['required', 'min:3','max:25', Rule::unique('restaurants')->ignore($this->project)],
+            'address'           => ['required', 'min:5','max: 50'],
+            'image'             => ['required', 'image', 'mimes: jpeg,jpg,png', 'max:2048'],
+            'description'       => ['required', 'min:5', 'max:255'],
+            'p_iva'             => ['required', 'min:11', 'max:11',Rule::unique('restaurants')->ignore($this->project)],
+            'slug'              => ['nullable'],
+        ];
+
     }
 
     public function messages():array
     {
-        return   
+        return
         [
-            'name'  => 'Il nome del ristorante non può essere vuoto e deve contenere almeno 3 caratteri',
-            'address'          => "L'indirizzo non può essere vuoto e deve contenere almeno 5 caratteri",
-            'image'      => "E' necessaria un'immagine",
-            'description'      => "La descrizione è necessaria e deve contenere almeno 5 caratteri",
-            'p_iva'            => "La partita iva è necessaria e deve essere lunga 11 caratteri",
-        
+            'required'          => 'Il campo :attribute è vuoto',
+            'min'               => 'Il campo :attribute deve contenere almeno :min caratteri',
+            'max'               => 'il campo :attribute deve contenere massimo :max caratteri',
+            'unique'            => 'non si possono avere due :attribute uguali',
+            'image.image'       => ' il campo :attribute deve essere una foto',
+            'image.mimes'       => 'formato consentito jpg,jpeg o png',
+            'image.max'         => 'dimensione massima 2 mb',
+            'p_iva.min'         => 'la partita iva deve avere 11 caratteri numerici',
+            'p_iva.max'         => 'la partita iva deve avere 11 caratteri numerici',
+
         ];
     }
 }

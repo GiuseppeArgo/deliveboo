@@ -36,40 +36,16 @@ class RestaurantController extends Controller
     public function store(StoreRestaurantRequest $request)
     {
         $data = $request->validated();
+        $data['user_id'] = Auth::id();
+        $data['city'] = 'Milano';
+        $data['image'] = Storage::put('img', $data['image']);
+        $data['slug'] = Str::slug($data['name']. '-' . $data['user_id']);
         $newRestaurant = new Restaurant();
-
-        $newRestaurant->fill($data);
-        $newRestaurant->user_id = Auth::id();
-        $newRestaurant->city = 'Milano';
-        $newRestaurant->name = $data['name'];
-        $newRestaurant->image = Storage::put('img', $data['image']);
+        $newRestaurant->Fill($data);
+        // dd($newRestaurant);
         $newRestaurant->save();
 
-        // $newRestaurant->name_restaurant = $data['name_restaurant'];
-        // $newRestaurant->city = 'Milano';
-        // $newRestaurant->address = $data['address'];
-        // $newRestaurant->cover_image = $data['cover_image'];
-        // $newRestaurant->description = $data['description'];
-        // $newRestaurant->p_iva = $data['p_iva'];
-        // $newRestaurant->user_id = $data['user_id'];
-        // $newRestaurant->slug = Str::slug($newRestaurant->name . '-' . $newRestaurant->id);
-        // $request->validate([
-        //     'name_restaurant' => ['required', 'min:3'],
-        //     'address' => ['required', 'min:5'],
-        //     'cover_image' => ['required'],
-        //     'description' => ['required', 'min:5', 'max:255'],
-        //     'p_iva' => ['required', 'min:11', 'max:11'],
-        //     'user_id' => ['required'],
-        // ], [
-        //     'name_restaurant' => 'Il nome del ristorante non può essere vuoto e deve contenere almeno 3 caratteri',
-        //     'address' => "L'indirizzo non può essere vuoto e deve contenere almeno 5 caratteri",
-        //     'cover_image' => "E' necessaria un'immagine",
-        //     'description' => "La descrizione è necessaria e deve contenere almeno 5 caratteri",
-        //     'p_iva' => "La partita iva è necessaria e deve essere lunga 11 caratteri",
-        // ]);
-
         return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
-
     }
 
     /**
