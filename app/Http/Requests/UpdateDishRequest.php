@@ -26,7 +26,9 @@ class UpdateDishRequest extends FormRequest
         return [
             'name'              => ['required', 'min:3','max:25', Rule::unique('dishes')->ignore($this->dish)],
             'image'             => ['nullable', 'image', 'mimes: jpeg,jpg,png', 'max:2048'],
+            'price'             => ['required', 'numeric','min:3','max:30'],
             'description'       => ['required', 'min:5', 'max:255'],
+            'visibility'        => ['in:0,1'],
             'slug'              => ['nullable'],
         ];
     }
@@ -42,6 +44,9 @@ class UpdateDishRequest extends FormRequest
             'image.image'       => ' il campo :attribute deve essere una foto',
             'image.mimes'       => 'formato consentito jpg,jpeg o png',
             'image.max'         => 'dimensione massima 2 mb',
+            'price.min'         => 'prezzo minimo sindacale non inferiore a :min euro',
+            'price.max'         => 'prezzo massimo consentito non superiore a :max euro',
+            'visibility'        => 'Non ci provare!!!',
         ];
     }
 }

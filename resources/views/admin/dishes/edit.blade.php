@@ -13,6 +13,9 @@
                 {{-- name --}}
                 <label for="name">
                     <strong>Nome:</strong>
+                    @error('name')
+                    <span class="text-danger"> {{ $errors->first('name') }} </span>
+                    @enderror
                 </label>
                 <input type="text" id="name" name="name"
                 class="form-control" value="{{old('name',$dish->name)}}">
@@ -21,6 +24,9 @@
                 {{-- description  --}}
                 <label for="decription">
                     <strong>Descrizione:</strong>
+                    @error('description')
+                    <span class="text-danger"> {{ $errors->first('description') }} </span>
+                    @enderror
                 </label>
                 <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{old('description',$dish->description)}}</textarea>
                 {{-- /description  --}}
@@ -28,6 +34,9 @@
                 {{-- price --}}
                 <label for="price">
                     <strong>Prezzo:</strong>
+                    @error('price')
+                    <span class="text-danger"> {{ $errors->first('price') }} </span>
+                    @enderror
                 </label>
                 <input type="number" id="price" name="price"
                 class="form-control" value="{{old('price',$dish->price)}}">
@@ -36,6 +45,7 @@
                 {{-- visibility --}}
                 <label for="visibility">
                     <strong>Disponibilità:</strong>
+                    <span class="text-danger"> {{ $errors->first('visibility') }} </span>
                 </label>
                 <select name="visibility" id="visibility" class="form-control">
                     <option @selected($dish->visibility === 1) value="1">
