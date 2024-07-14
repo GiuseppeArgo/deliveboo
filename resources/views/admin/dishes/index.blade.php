@@ -17,14 +17,23 @@
                     <tr>
                         <td>{{ $dish->name }}</td>
                         <td>{{ $dish->price }}</td>
-                        <td>
-                        @if ($dish->visibility === 1)
-                            <span class="text-success">Attivo</span>
-                        @else
-                            <span class="text-danger">Non Attivo</span>
-                        @endif
-                        </td>
 
+                            <td>
+                                    <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <select name="visibility" id="status">
+
+                                            <option @selected($dish->visibility === 1) value="1">
+                                                Attivo
+                                            </option>
+                                            <option @selected($dish->visibility === 0) value="0">
+                                                Non Attivo
+                                            </option>
+                                        </select>
+                                        <button type="submit" class="btn btn-success"> ok</button>
+                                    </form>
+                            </td>
                         <td>
                             <a class="text-black btn btn-info"
                                 href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">

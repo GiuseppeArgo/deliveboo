@@ -29,7 +29,8 @@ Route::middleware('auth')
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
         Route::resource('dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
-        Route::put('dishes/{dish}/toggle', [DishController::class, 'toggle'])->name('dishes.toggle');
+
+        Route::put('/dishes/{id}/toggle', [DishController::class, 'toggle'])->name('dishes.toggle');
     });
 
 require __DIR__ . '/auth.php';

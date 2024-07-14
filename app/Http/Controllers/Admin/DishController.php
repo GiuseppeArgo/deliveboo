@@ -67,4 +67,13 @@ return view("admin.dishes.create");
     {
 
     }
+
+    public function toggle(Request $request, string $id)
+    {
+        // dd($id);
+        $dish = Dish::findOrFail($id);
+        $dish->visibility = $request->visibility;
+        $dish->save();
+        return redirect()->route('admin.dishes.index');
+    }
 }
