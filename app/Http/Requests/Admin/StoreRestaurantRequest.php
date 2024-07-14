@@ -28,6 +28,7 @@ class StoreRestaurantRequest extends FormRequest
             'image'             => ['required', 'image', 'mimes: jpeg,jpg,png', 'max:2048'],
             'description'       => ['required', 'min:5', 'max:255'],
             'p_iva'             => ['required', 'min:11', 'max:11',Rule::unique('restaurants')->ignore($this->project)],
+            'tipologies'        => ['required'],
             'slug'              => ['nullable'],
         ];
 

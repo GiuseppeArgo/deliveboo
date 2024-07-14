@@ -42,10 +42,11 @@
 
                     @foreach ($listTypes as $curType)
                         <div class="col-4 btn-group flex flex-wrap mt-3">
-
-                            <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
-                                value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies',[])))>
-
+                            @if (old('tipologies') !== null)
+                                <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
+                                    value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', [])))>
+                           
+                            @endif
 
                             <label class="btn btn-outline-primary"
                                 for="tech-{{ $curType->id }}">{{ $curType->name }}</label>
