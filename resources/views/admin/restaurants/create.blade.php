@@ -39,7 +39,7 @@
                 "
                     id="address" aria-describedby="address">
             </div>
-            
+
             {{-- Immaggine --}}
             <div class="mb-3">
                 <label for="image" class="form-label"> Immagine</label>
@@ -47,7 +47,7 @@
                     class="form-control" id="image" aria-describedby="image">
             </div>
             {{-- /Immagine --}}
-           
+
             {{-- Descrizione --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione :
@@ -63,7 +63,7 @@
             </textarea>
             </div>
             {{-- Descrizione --}}
-            
+
             {{-- Tipologia --}}
             <p>Tipologie:</p>
             @error('tipologies')
@@ -85,18 +85,18 @@
                     @endforeach
                 </div>
             </div>
-            {{-- Tipologia --}}
+            {{-- /Tipologia --}}
 
             <div class="mb-3">
-                <label for="p_iva" class="form-label">Partita Iva: 
+                <label for="p_iva" class="form-label">Partita Iva:
                     {{-- error message --}}
                     @error('p_iva')
                         <span class="text-danger"> {{ $errors->first('p_iva') }} </span>
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <input value="{{ old('address') }}" type="number" name="p_iva" class="form-control  @error('p_iva') is-invalid @enderror" id="p_iva"
-                    aria-describedby="p_iva">
+                <input value="{{ old('address') }}" type="number" name="p_iva"
+                    class="form-control  @error('p_iva') is-invalid @enderror" id="p_iva" aria-describedby="p_iva">
             </div>
 
             <button type="submit" class="btn btn-primary">Aggiungi</button>
