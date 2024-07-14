@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->string('name_restaurant');
+            $table->string('name');
             $table->string('city');
             $table->string('address');
-            $table->string('cover_image');
+            $table->string('image');
             $table->text('description');
-            $table->string('p_iva');
+            $table->string('p_iva')->unique();
             $table->string('slug');
             $table->timestamps();
         });

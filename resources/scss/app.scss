@@ -1,1 +1,34 @@
 @import "~bootstrap/scss/bootstrap";
+
+// general
+.hide{
+    display: none;
+}
+
+img{
+    max-width: 100%;
+}
+
+// edit view
+.container-preview{
+    width: 200px;
+}
+
+.card-img{
+    width: 100%;
+    aspect-ratio: 1;
+}
+
+.form-container{
+    width: 80%;
+    height: min-content;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    border:2px solid lightgrey;
+}
+
+form{
+    height: min-content;
+}
