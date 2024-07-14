@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Http\Requests\Admin\UpdateRestaurantRequest;
-use App\Http\Requests\Admin\StoreRestaurantRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\Restaurant;
+use App\Models\Type;
 use App\Models\Dish;
+use App\Http\Requests\UpdateRestaurantRequest;
+use App\Http\Requests\StoreRestaurantRequest;
 
 class RestaurantController extends Controller
 {
@@ -73,37 +73,28 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
-    {
-        dd($request);
-        $data = $request->validated();
+public function update(Request $request, Restaurant $restaurant){
+    // non entra nel update restaurant request senza capire il motivo
+        // $data = $request->validated();
+        $data = $request->all();
         $data['user_id'] = Auth::id();
-        $data['slug'] = Str::slug($data['name']. '-' . $data['user_id']);
-        $newRestaurant = new Restaurant();
+        $data['slug'] = Str::slug($data['name'] . '-' . $data['user_id']);
+
         if (isset($data['image'])) {
             if ($restaurant->image) {
                 Storage::delete($restaurant->image);
             }
             $data['image'] = Storage::put('img', $data['image']);
         }
-        // remove image without add other
-        // if($request['removeImage'] != NULL && $restaurant->image != NULL){
-        //     Storage::delete($restaurant->image);
-        //     $restaurant->image = NULL;
-        //     $data['image'] = Storage::put('img', 'default.jpg');
-        // }
-        // /remove image without add other
 
         $restaurant->update($data);
         $restaurant->types()->sync($request->tipologies);
-        // return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
-        return view('admin.reaturands.show', compact('restaurants'));
-        // return view('admin.restaurants.show');
+
+        // Reindirizza alla pagina show dopo un aggiornamento riuscito
+        return view('admin.restaurants.show', compact('restaurant'));
+
+        // // return redirect()->route('admin.restaurants.show', ['restaurant' => $restaurant->slug]);
     }
-
-
-
-    // }
 
     /**
      * Remove the specified resource from storage.

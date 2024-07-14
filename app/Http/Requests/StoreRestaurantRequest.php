@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -23,18 +23,18 @@ class StoreRestaurantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'              => ['required', 'min:3','max:25', Rule::unique('restaurants')->ignore($this->project)],
+            'name'              => ['required', 'min:3','max:25', Rule::unique('restaurants')->ignore($this->restaurant)],
             'address'           => ['required', 'min:5','max: 50'],
             'image'             => ['required', 'image', 'mimes: jpeg,jpg,png', 'max:2048'],
             'description'       => ['required', 'min:5', 'max:255'],
-            'p_iva'             => ['required', 'min:11', 'max:11',Rule::unique('restaurants')->ignore($this->project)],
+            'p_iva'             => ['required', 'min:11', 'max:11',Rule::unique('restaurants')->ignore($this->restaurant)],
             'tipologies'        => ['required'],
             'slug'              => ['nullable'],
         ];
 
     }
 
-    public function messages():array
+    public function messages()
     {
         return
         [
