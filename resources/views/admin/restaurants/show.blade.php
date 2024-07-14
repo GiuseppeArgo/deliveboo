@@ -1,19 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h3>Ristorante: {{ $restaurant->name }}</h3>
-    @if ($restaurant->dishes->isEmpty())
-        <p>Non ci sono piatti disponibili per questo ristorante.</p>
-    @else
-        <ul>
-            @foreach($restaurant->dishes as $dish)
-                <li>
-                    <strong>Descrizione:</strong> {{ $dish->description }}<br>
-                    <strong>Prezzo:</strong> {{ $dish->price }}
-                </li>
-            @endforeach
-        </ul>
-    @endif
+<h3 class="text-center mt-5">Ristorante: {{ $restaurant->name }}</h3>
+<div class="form-container p-5">
+<table class="table table-striped text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Prezzo</th>
+                    <th scope="col">Bottoni</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($restaurant->dishes as $dish)
+                    <tr>
+                        <td>{{ $dish->name }}</td>
+                        <td>{{ $dish->price }}</td>
+                        <td>
+                            <a class="text-black btn btn-info"
+                                href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
+                                <i class="fa-solid fa-eye">Dettagli</i>
+                            </a>
+                            <a class="text-black btn btn-warning"
+                            href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
+                            <i class="fa-solid fa-pen">Modifica</i>
+                        </a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 </div>
 @endsection

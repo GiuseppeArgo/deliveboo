@@ -42,9 +42,6 @@ const btnDeleteElem = document.getElementById('btnDelete');
 const inputElem = document.getElementById('image');
 
 //listen change
-function pippo(){
-    console.log("ciao");
-}
 if(inputElem){
     inputElem.addEventListener('change', function(e) {
         // Istanzia nuovo oggetto FileReader (è un API che ha dei metodi per leggere il contenuto dei file).
@@ -64,14 +61,15 @@ if(inputElem){
         reader.readAsDataURL(e.target.files[0]);
     });
 }
-
 // remove btn to reset input value and add class hide
 btnDeleteElem.addEventListener('click', function(e){
+    console.log("ciao");
     e.preventDefault();
     btnDeleteElem.classList.add('hide');
     imgElem.classList.add('hide');
     oldImgElem.classList.remove('hide');
-    inputElem.value = "";
+    inputElem.value="";
+
 });
 
 

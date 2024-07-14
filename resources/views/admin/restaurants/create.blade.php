@@ -40,18 +40,6 @@
                     id="address" aria-describedby="address">
             </div>
 
-            {{-- Immaggine --}}
-            <div class="mb-3">
-                <label for="image" class="form-label"> Immagine
-                    @error('image')
-                        <span class="text-danger">{{ $errors->first('image') }}</span>
-                    @enderror
-                </label>
-                <input value="{{ old('image') }}" type="file" name="image"
-                    class="form-control  @error('image') is-invalid @enderror" id="image" aria-describedby="image">
-            </div>
-            {{-- /Immagine --}}
-
             {{-- Descrizione --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione :
@@ -105,7 +93,36 @@
             </div>
             {{-- /Partita_Iva --}}
 
-            <button type="submit" class="btn btn-primary">Aggiungi</button>
+            {{-- Immagine --}}
+            <div class="mb-3">
+                <label for="image" class="form-label"> Immagine
+                    @error('image')
+                        <span class="text-danger">{{ $errors->first('image') }}</span>
+                    @enderror
+                </label>
+                <input value="{{ old('image') }}" type="file" name="image"
+                    class="form-control  @error('image') is-invalid @enderror" id="image" aria-describedby="image">
+            </div>
+            {{-- /Immagine --}}
+
+            {{-- img preview --}}
+            <div class="container-preview m-auto mt-3">
+                <div class="mt-2 card-img">
+                    <img id="imagePreview" class="hide" src="" alt="new-image">
+                </div>
+            </div>
+            {{-- /img preview --}}
+
+                {{-- button add and remove --}}
+                <div class="container mt-3 mb-3">
+                    <div class="row gap-2">
+                        <button type="submit" class="btn btn-primary col-5">Aggiungi</button>
+                        <a id="btnDelete" class="btn btn-danger col-5 hide">Rimuovi</a>
+                    </div>
+                </div>
+                {{-- /button add and remove --}}
+
+
         </form>
     </div>
 @endsection
