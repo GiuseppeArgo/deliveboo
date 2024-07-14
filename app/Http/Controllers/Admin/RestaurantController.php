@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Http\Requests\Admin\UpdateRestaurantRequest;
 use App\Http\Requests\Admin\StoreRestaurantRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;

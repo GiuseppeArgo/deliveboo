@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    @include('partials.errors')
+    {{-- @include('partials.errors') --}}
 
     <div class="form-container">
 
@@ -21,10 +21,11 @@
                 {{-- /error message --}}
             </label>
 
-            <input class="form-control" type="text" id="name" name="name"
+            <input class="form-control
             {{-- dynamic class with red border --}}
-                @error('name') is-invalid @enderror
+                @error('name') is-invalid @enderror"
             {{-- /dynamic class with red border --}}
+            type="text" id="name" name="name"
             value="{{ old('name', $restaurant->name) }}">
             {{-- /title --}}
 
@@ -37,9 +38,12 @@
                 {{-- /error message --}}
             </label>
 
-            <input class="form-control" type="text" id="address" name="address" {{-- dynamic class with red border --}}
-                @error('address') is-invalid @enderror {{-- /dynamic class with red border --}}
-                value="{{ old('address', $restaurant->address) }}">
+            <input class="form-control
+            {{-- dynamic class with red border --}}
+            @error('address') is-invalid @enderror"
+            {{-- /dynamic class with red border --}}
+            type="text" id="address" name="address"
+            value="{{ old('address', $restaurant->address) }}">
             {{-- /address --}}
 
 
@@ -52,13 +56,17 @@
                 {{-- /error message --}}
             </label>
 
-            <textarea class="form-control" type="text" id="description" name="description" {{-- dynamic class with red border --}}
-                @error('description') is-invalid @enderror>{{ old('description', $restaurant->description) }}</textarea>
+            <textarea class="form-control
+            @error('description') is-invalid @enderror"
+            type="text" id="description" name="description">{{ old('description', $restaurant->description) }}</textarea>
             {{-- /description --}}
 
 
             {{-- Tipologia --}}
             <p>Tipologie:</p>
+            @error('tipologies')
+                <span class="text-danger"> {{ $errors->first('tipologies') }} </span>
+            @enderror
             <div class="container mb-4">
                 <div class="row" role="group" aria-label="Basic checkbox toggle button group">
 
@@ -85,19 +93,21 @@
             {{-- file image --}}
 
             <label for="image"> Immagine</label>
-            <input class="form-control" type="file" name="image" id="image" {{-- dynamic class with red border --}}
-                @error('image') is-invalid @enderror>
+            <input class="form-control" type="file" name="image" id="image"
+            {{-- dynamic class with red border --}}
+                @error('image') is-invalid @enderror
             {{-- /dynamic class with red border --}}
-<<<<<<< HEAD
-=======
             value="{{ old('address', $restaurant->address) }}">
-        {{-- /address --}}
->>>>>>> 89aff11db4d912faa693d4ec88d50b2728f11280
+
+            {{-- /address --}}
+
 
             {{-- error message --}}
-            @error('image')
-                <span class="text-danger"> {{ $errors->first('image') }} </span>
-            @enderror
+            @if (!empty($restaautant->image))
+                @error('image')
+                    <span class="text-danger"> {{ $errors->first('image') }} </span>
+                @enderror
+            @endif
             {{-- /error message --}}
 
             {{-- /file image --}}
@@ -115,7 +125,7 @@
                 <div class="container mt-3 mb-3">
                     <div class="row gap-2 justify-content-center">
                         <button class="btn btn-success p-0 col-5" type="submit">Aggiorna</button>
-                        <a id="btnDelete" class="btn btn-danger col-5">Rimuovi</a>
+                        <a id="btnDelete" class="btn btn-danger col-5 hide">Rimuovi</a>
                     </div>
                 </div>
                 {{-- /button add and remove --}}
