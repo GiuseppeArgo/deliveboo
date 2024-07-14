@@ -39,7 +39,7 @@ if(deleteBtns.length>0){
 const oldImgElem = document.getElementById('oldImg')
 const imgElem = document.getElementById('imagePreview');
 const btnDeleteElem = document.getElementById('btnDelete');
-const inputElem = document.getElementById('cover_image');
+const inputElem = document.getElementById('image');
 
 //listen change
 function pippo(){

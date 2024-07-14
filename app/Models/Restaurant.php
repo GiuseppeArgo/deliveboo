@@ -26,9 +26,9 @@ class Restaurant extends Model
     }
 
         //Mutators
-        public function setNameAttribute($name)
-        {
-            $this->attributes['name'] = $name;
-            $this->attributes['slug'] = Str::slug($name. '-' . $this->user_id);
-        }
+        // public function setNameAttribute($name)
+        // {
+        //     $this->attributes['name'] = $name;
+        //     $this->attributes['slug'] = Str::slug($name. '-' . $this->user_id);
+        // }
 }

@@ -42,7 +42,6 @@ class RestaurantController extends Controller
         $data['slug'] = Str::slug($data['name']. '-' . $data['user_id']);
         $newRestaurant = new Restaurant();
         $newRestaurant->Fill($data);
-        // dd($newRestaurant);
         $newRestaurant->save();
 
         return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
@@ -73,10 +72,35 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        $data = $request->validated();
+        $data['user_id'] = Auth::id();
+        $data['slug'] = Str::slug($data['name']. '-' . $data['user_id']);
+        // dd($data);
+        $newRestaurant = new Restaurant();
+        if (isset($data['image'])) {
+            if ($restaurant->image) {
+                Storage::delete($restaurant->image);
+            }
+            $data['image'] = Storage::put('img', $data['image']);
+        }
+        // remove image without add other
+        if($request['removeImage'] != NULL && $restaurant->image != NULL){
+            Storage::delete($restaurant->image);
+            $restaurant->image = NULL;
+        }
+        // /remove image without add other
+
+        $restaurant->update($data);
+        $restaurant->types()->sync($request->tipologies);
+        return view('admin.restaurants.show', compact('restaurant'));
     }
+
+
+
+    //     return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
+    // }
 
     /**
      * Remove the specified resource from storage.
