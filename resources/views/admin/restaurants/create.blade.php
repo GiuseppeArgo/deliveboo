@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container">
-        <h1>Crea Il tuo Ristorante</h1>
+    <h1 class="text-center mt-5">Crea Il tuo Ristorante</h1>
+    <div class="form-container p-5">
 
 
 
@@ -42,9 +42,13 @@
 
             {{-- Immaggine --}}
             <div class="mb-3">
-                <label for="image" class="form-label"> Immagine</label>
-                <input @error('image') is-invalid @enderror value="{{ old('image') }}" type="file" name="image"
-                    class="form-control" id="image" aria-describedby="image">
+                <label for="image" class="form-label"> Immagine
+                    @error('image')
+                        <span class="text-danger">{{ $errors->first('image') }}</span>
+                    @enderror
+                </label>
+                <input value="{{ old('image') }}" type="file" name="image"
+                    class="form-control  @error('image') is-invalid @enderror" id="image" aria-describedby="image">
             </div>
             {{-- /Immagine --}}
 
@@ -75,8 +79,8 @@
                     @foreach ($listTypes as $curType)
                         <div class="col-4 btn-group flex flex-wrap mt-3">
                             {{-- @if ('tipologies' !== null) --}}
-                                <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
-                                    value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', [])))>
+                            <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
+                                value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', [])))>
                             {{-- @endif --}}
 
                             <label class="btn btn-outline-primary"
@@ -86,7 +90,7 @@
                 </div>
             </div>
             {{-- /Tipologia --}}
-            
+
             {{-- Partita_Iva --}}
             <div class="mb-3">
                 <label for="p_iva" class="form-label">Partita Iva:
@@ -100,7 +104,7 @@
                     class="form-control  @error('p_iva') is-invalid @enderror" id="p_iva" aria-describedby="p_iva">
             </div>
             {{-- /Partita_Iva --}}
-            
+
             <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>
     </div>
