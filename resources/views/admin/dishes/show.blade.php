@@ -13,7 +13,7 @@
                 Descrizione:
             </dt>
             <dd>
-                {{$dish->name}}
+                {{$dish->description}}
             </dd>
             <dt>
                 Prezzo:

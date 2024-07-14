@@ -99,11 +99,9 @@
             {{-- /dynamic class with red border --}}
             value="{{ old('address', $restaurant->address) }}">
 
-            {{-- /address --}}
-
 
             {{-- error message --}}
-            @if (!empty($restaautant->image))
+            @if (!empty($restaurant->image))
                 @error('image')
                     <span class="text-danger"> {{ $errors->first('image') }} </span>
                 @enderror

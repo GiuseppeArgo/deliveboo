@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateDishRequest;
 use Illuminate\Http\Request;
 use App\Models\Dish;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 
 class DishController extends Controller
@@ -47,17 +50,29 @@ return view("admin.dishes.create");
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Dish $dish)
     {
-        //
+        return view("admin.dishes.edit", compact("dish"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateDishRequest $request, Dish $dish)
     {
-        //
+        $data = $request->validated();
+        $data['restaurant_id'] = Auth::id();
+        $data['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
+
+        if (isset($data['image'])) {
+            if ($dish->image) {
+                Storage::delete($dish->image);
+            }
+            $data['image'] = Storage::put('img', $data['image']);
+        }
+
+        $dish->update($data);
+        return view('admin.dishes.show', compact('dish'));
     }
 
     /**

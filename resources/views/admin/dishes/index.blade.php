@@ -19,10 +19,10 @@
                         <td>{{ $dish->price }}</td>
 
                             <td>
-                                    <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST">
+                                    <form class="d-flex gap-1 justify-content-center" action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST">
                                         @csrf
                                         @method('PUT')
-                                        <select name="visibility" id="status">
+                                        <select name="visibility" id="visibility" class="form-control w-50">
 
                                             <option @selected($dish->visibility === 1) value="1">
                                                 Attivo
@@ -39,6 +39,10 @@
                                 href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
+                            <a class="text-black btn btn-warning"
+                            href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
                         </td>
                     </tr>
                 @endforeach
