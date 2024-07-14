@@ -1,5 +1,24 @@
 @import "~bootstrap/scss/bootstrap";
 
+// logo
+.navbar{
+    background-color: #0D6EFD !important;
+    a{
+        color:black !important;
+        font-weight: bold;
+    }
+}
+.left-nav{
+    color: red !important;
+}
+
+.logo{
+    width: 100px;
+}
+
+.logoext{
+    width: 300px;
+}
 // general
 .hide{
     display: none;
