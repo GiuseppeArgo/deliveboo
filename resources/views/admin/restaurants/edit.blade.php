@@ -35,7 +35,7 @@
             {{-- dynamic class with red border --}}
             @error('address') is-invalid @enderror
             {{-- /dynamic class with red border --}}
-            value="{{ old('address', $restaurant->address) }}"">
+            value="{{ old('address', $restaurant->address) }}">
         {{-- /address --}}
 
 
