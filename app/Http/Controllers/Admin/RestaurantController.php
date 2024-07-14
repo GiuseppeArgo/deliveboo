@@ -87,10 +87,11 @@ class RestaurantController extends Controller
             $data['image'] = Storage::put('img', $data['image']);
         }
         // remove image without add other
-        if($request['removeImage'] != NULL && $restaurant->image != NULL){
-            Storage::delete($restaurant->image);
-            $restaurant->image = NULL;
-        }
+        // if($request['removeImage'] != NULL && $restaurant->image != NULL){
+        //     Storage::delete($restaurant->image);
+        //     $restaurant->image = NULL;
+        //     $data['image'] = Storage::put('img', 'default.jpg');
+        // }
         // /remove image without add other
 
         $restaurant->update($data);
