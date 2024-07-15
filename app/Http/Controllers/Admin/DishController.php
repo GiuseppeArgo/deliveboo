@@ -37,15 +37,22 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request, Dish $dish)
     {
+        // Non abbiamo gestito unicita del piatto
 
         $data = $request->validated();
+        
+        $name=Dish::where('name',$data['name'])->firstOrFail();
         // valore inserito manualmente ma che dobbiamo gestire prelevandolo dallo show dei ristoranti e portantolo nel form della creazione.
         $data['restaurant_id'] = $request->restaurant_id;
         $data['visibility'] = 1;
         $data['image'] = Storage::put('img', $data['image']);
-        $data['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
         $newDish = new Dish();
-        $newDish->fill($data);
+        $newDish->fill($data); 
+        if ($data['name'] != $name->name) {
+            $newDish->name = $data['name'];  
+            $newDish['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
+        }
+      
         $newDish->save();
 
         return redirect()->route("admin.dishes.show", ["dish" => $newDish->slug]);

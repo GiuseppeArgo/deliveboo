@@ -23,7 +23,7 @@ return new class extends Migration
             $table->decimal('price',4,2);
             $table->boolean('visibility');
             $table->string('slug');
-            $table->unique(['restaurant_id','name']);
+            // $table->unique(['restaurant_id','name']);
             $table->timestamps();
         });
 

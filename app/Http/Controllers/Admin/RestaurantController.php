@@ -26,7 +26,7 @@ class RestaurantController extends Controller
 
         $user_id = Auth::id();
         // Recupera la lista dei ristoranti
-        if(Auth::user()->id != 12){
+        if(Auth::user()->id != 1){
             $restaurants = Restaurant::where('user_id',$user_id)->get();
         } else{
             $restaurants = Restaurant::all();
