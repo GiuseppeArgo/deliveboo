@@ -1,72 +1,74 @@
 @extends('layouts.admin')
 
 @section('content')
-        <h1 class="text-center mt-5">Modifica Piatto: </h1>
-        {{-- @include('partials.errors') --}}
-        <div class="w-50 m-auto p-5">
+    <h1 class="text-center mt-5">Modifica Piatto: </h1>
+    {{-- @include('partials.errors') --}}
+    <div class="w-50 m-auto p-5">
 
-            <form action="{{ route('admin.dishes.update', ['dish' => $dish->slug]) }}"
-                method="POST" class="d-flex flex-column gap-2" enctype="multipart/form-data">
-                @csrf
-                @method('PUT')
+        <form action="{{ route('admin.dishes.update', ['dish' => $dish->slug]) }}" method="POST"
+            class="d-flex flex-column gap-2" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
-                {{-- name --}}
-                <label for="name">
-                    <strong>Nome:</strong>
-                    @error('name')
+            {{-- name --}}
+            <label for="name">
+                <strong>Nome:</strong>
+                @error('name')
                     <span class="text-danger"> {{ $errors->first('name') }} </span>
-                    @enderror
-                </label>
-                <input type="text" id="name" name="name"
-                class="form-control" value="{{old('name',$dish->name)}}">
-                {{-- /name --}}
+                @enderror
 
-                {{-- description  --}}
-                <label for="decription">
-                    <strong>Descrizione:</strong>
-                    @error('description')
+                {{-- gestiamo errore nome del piatto gia esistente --}}
+                @if (session('error'))
+                    <span class="text-danger">{{ session('error') }}</span>
+                @endif
+                {{-- gestiamo errore nome del piatto gia esistente --}}
+            </label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $dish->name) }}">
+            {{-- /name --}}
+
+            {{-- description  --}}
+            <label for="decription">
+                <strong>Descrizione:</strong>
+                @error('description')
                     <span class="text-danger"> {{ $errors->first('description') }} </span>
-                    @enderror
-                </label>
-                <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{old('description',$dish->description)}}</textarea>
-                {{-- /description  --}}
+                @enderror
+            </label>
+            <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{ old('description', $dish->description) }}</textarea>
+            {{-- /description  --}}
 
-                {{-- price --}}
-                <label for="price">
-                    <strong>Prezzo:</strong>
-                    @error('price')
+            {{-- price --}}
+            <label for="price">
+                <strong>Prezzo:</strong>
+                @error('price')
                     <span class="text-danger"> {{ $errors->first('price') }} </span>
-                    @enderror
-                </label>
-                <input type="number" id="price" name="price"
-                class="form-control" value="{{old('price',$dish->price)}}">
-                {{-- /price --}}
+                @enderror
+            </label>
+            <input type="number" id="price" name="price" class="form-control"
+                value="{{ old('price', $dish->price) }}">
+            {{-- /price --}}
 
-                {{-- visibility --}}
-                <label for="visibility">
-                    <strong>Disponibilità:</strong>
-                    <span class="text-danger"> {{ $errors->first('visibility') }} </span>
-                </label>
-                <select name="visibility" id="visibility" class="form-control">
-                    <option @selected($dish->visibility === 1) value="1">
-                        Attivo
-                    </option>
-                    <option @selected($dish->visibility === 0) value="0">
-                        Non Attivo
-                    </option>
-                </select>
-                {{-- /visibility --}}
+            {{-- visibility --}}
+            <label for="visibility">
+                <strong>Disponibilità:</strong>
+                <span class="text-danger"> {{ $errors->first('visibility') }} </span>
+            </label>
+            <select name="visibility" id="visibility" class="form-control">
+                <option @selected($dish->visibility === 1) value="1">
+                    Attivo
+                </option>
+                <option @selected($dish->visibility === 0) value="0">
+                    Non Attivo
+                </option>
+            </select>
+            {{-- /visibility --}}
 
             {{-- file image --}}
 
             <label for="image">
                 <strong>Immagine:</strong>
             </label>
-            <input class="form-control" type="file" name="image" id="image"
-            {{-- dynamic class with red border --}}
-                @error('image') is-invalid @enderror
-            {{-- /dynamic class with red border --}}
-            value="{{ old('image', $dish->image) }}">
+            <input class="form-control" type="file" name="image" id="image" {{-- dynamic class with red border --}}
+                @error('image') is-invalid @enderror {{-- /dynamic class with red border --}} value="{{ old('image', $dish->image) }}">
 
             {{-- /file image --}}
 
@@ -96,9 +98,11 @@
 
             </div>
 
+            {{-- restaurant id che dovra passarci l'index adesso lo impostiamo noi a mano --}}
+            <input type="text" name="restaurant_id" class="hide" value="{{ $restaurant_id }}">
+            <input type="text" name="oldname" class="hide" value="{{ $dish->name }}">
 
+        </form>
 
-            </form>
-
-        </div>
+    </div>
 @endsection

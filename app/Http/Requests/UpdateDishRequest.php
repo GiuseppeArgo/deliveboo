@@ -24,10 +24,12 @@ class UpdateDishRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name'              => ['required', 'min:3','max:25', Rule::unique('dishes')->ignore($this->dish)],
+            'name'              => ['required', 'min:3','max:25'],
+            'oldname'           => ['nullable'],
             'image'             => ['nullable', 'image', 'mimes: jpeg,jpg,png', 'max:2048'],
             'price'             => ['required', 'numeric','min:3','max:30'],
             'description'       => ['required', 'min:5', 'max:255'],
+            'restaurant_id'     => ['nullable'],
             'visibility'        => ['in:0,1'],
             'slug'              => ['nullable'],
         ];

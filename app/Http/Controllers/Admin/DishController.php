@@ -69,6 +69,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
+
         return view("admin.dishes.show", compact("dish"));
     }
 
@@ -77,7 +78,17 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        return view("admin.dishes.edit", compact("dish"));
+        $id = Auth::id();
+        $query = Restaurant::where('user_id', $id)->firstOrFail();
+        $restaurant_id = $query->id;
+        // $queryDish = Dish::where('restaurant_id',$restaurant_id)->get();
+        // $arrayDish = [];
+        // foreach($queryDish as $dish) {
+        //     $arrayDish[]= $dish->name;
+        // }
+        // dd($arrayDish);
+        // dd($arrayId);
+        return view("admin.dishes.edit", compact("dish","restaurant_id"));
     }
 
     /**
@@ -86,18 +97,23 @@ class DishController extends Controller
     public function update(UpdateDishRequest $request, Dish $dish)
     {
         $data = $request->validated();
-        $data['restaurant_id'] = Auth::id();
-        $data['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
-
-        if (isset($data['image'])) {
-            if ($dish->image) {
-                Storage::delete($dish->image);
+        $id = $data['restaurant_id'];
+        $name = Dish::where('restaurant_id', $id)->where('name',$data['name'])->firstOrFail();
+        if($name['name'] == $data['oldname']) {
+            $data['restaurant_id'] = $request->restaurant_id;
+            $data['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
+            if (isset($data['image'])) {
+                if ($dish->image) {
+                    Storage::delete($dish->image);
+                }
+                $data['image'] = Storage::put('img', $data['image']);
             }
-            $data['image'] = Storage::put('img', $data['image']);
+            $dish->update($data);
+            return view('admin.dishes.show', compact('dish'));
+        } else{
+            return redirect()->route('admin.dishes.edit',compact('dish'))->with('error', 'Nel tuo menu hai già un piatto con quel nome.')->withInput();
         }
 
-        $dish->update($data);
-        return view('admin.dishes.show', compact('dish'));
     }
 
     /**

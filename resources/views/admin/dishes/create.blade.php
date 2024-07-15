@@ -26,7 +26,7 @@
                 </label>
                 <input value="{{ old('name') }}" type="text" name="name"
                     class="form-control
-                     {{-- dynamic class with red border --}}
+                    {{-- dynamic class with red border --}}
                     @error('name') is-invalid @enderror"
                     {{-- /dynamic class with red border --}} id="name" aria-describedby="name">
             </div>
