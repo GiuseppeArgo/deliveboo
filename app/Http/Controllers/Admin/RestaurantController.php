@@ -13,7 +13,7 @@ use App\Models\Dish;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Requests\StoreRestaurantRequest;
 
-use App\Models\Restaurant;
+
 
 
 class RestaurantController extends Controller
