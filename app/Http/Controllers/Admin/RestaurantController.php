@@ -13,6 +13,8 @@ use App\Models\Dish;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Requests\StoreRestaurantRequest;
 
+use App\Models\Restaurant;
+
 
 class RestaurantController extends Controller
 {
@@ -21,7 +23,14 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        return view("admin.restaurants.index");
+
+
+
+        // Recupera la lista dei ristoranti
+        $restaurants = Restaurant::all();
+
+        // Passa la lista alla vista index
+        return view('admin.restaurants.index', compact('restaurants'));
     }
 
     /**
