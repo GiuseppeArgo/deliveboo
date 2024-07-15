@@ -1,15 +1,20 @@
 @extends('layouts.admin')
 
 @section('content')
+<div class="d-flex align-items-center justify-content-center mt-5 gap-3">
+    <h1 class="text-center">Dettagli Piatto</h1>
+    <a class="text-black btn btn-success" href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
+        <i class="fa-solid fa-pen"></i>
+    </a>
+</div>
+    {{-- success message --}}
+    @if (session('message'))
+        <div class="alert alert-success">
+            <span class="info-info-success">{{ session('message') }}</span>
+        </div>
+    @endif
+    {{-- /success message --}}
 
-<h1 class="text-center mt-5">Dettagli Piatto</h1>
-{{-- success message --}}
-@if (session('message'))
-   <div class="alert alert-success">
-       <span class="info-info-success">{{ session('message') }}</span>
-   </div>
-@endif
-{{-- /success message --}}
     <div class="form-container p-5">
         <dt>
             Nome del Piatto:
@@ -36,9 +41,7 @@
             <img src="{{ asset('storage/' . $dish->image) }}" alt="">
         </dd>
 
-        <a class="text-black btn btn-warning" href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
-            <i class="fa-solid fa-pen"></i>
-        </a>
+
 
     </div>
 @endsection

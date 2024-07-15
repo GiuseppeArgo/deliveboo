@@ -74,7 +74,7 @@
                     <i class="fa-solid fa-plus"></i> Agg. Ristorante
                   </a>
                 </li>
-                <li>
+                {{-- <li>
                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                     href="{{ route('admin.dishes.index') }}">
                     <i class="fa-solid fa-utensils"></i> Piatto
@@ -85,8 +85,8 @@
                     href="{{ route('admin.dishes.create') }}">
                     <i class="fa-solid fa-plus"></i> Agg. Piatto
                   </a>
-                </li>
-                
+                </li> --}}
+
             </ul>
 
 

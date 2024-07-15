@@ -21,8 +21,12 @@
                                                 <td>{{ $restaurant->city }}</td>
                                                 <td>{{ $restaurant->address }}</td>
                                                 <td>
-                                                        <a href="{{ route('admin.restaurants.show', ['restaurant' => $restaurant->slug]) }}" class="btn btn-info">Show</a>
-                                                        <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}" class="btn btn-warning">Edit</a>
+                                                        <a href="{{ route('admin.restaurants.show', ['restaurant' => $restaurant->slug]) }}" class="btn btn-info">
+                                                            <i class="fa-solid fa-eye"></i>
+                                                        </a>
+                                                        <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}" class="btn btn-success">
+                                                            <i class="fa-solid fa-pen"></i>
+                                                        </a>
                                                 </td>
 
                                         </tr>

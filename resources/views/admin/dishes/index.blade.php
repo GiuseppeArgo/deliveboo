@@ -31,7 +31,9 @@
                                                 Non Attivo
                                             </option>
                                         </select>
-                                        <button type="submit" class="btn btn-success"> ok</button>
+                                        <button type="submit" class="btn btn-outline-danger">
+                                            <i class="fa-solid fa-rotate"></i>
+                                        </button>
                                     </form>
                             </td>
                         <td>
@@ -39,7 +41,7 @@
                                 href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
                                 <i class="fa-solid fa-eye"></i>
                             </a>
-                            <a class="text-black btn btn-warning"
+                            <a class="text-black btn btn-success"
                             href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
                             <i class="fa-solid fa-pen"></i>
                         </a>

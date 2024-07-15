@@ -98,7 +98,6 @@
 
             </div>
 
-            {{-- restaurant id che dovra passarci l'index adesso lo impostiamo noi a mano --}}
             <input type="text" name="restaurant_id" class="hide" value="{{ $restaurant_id }}">
             <input type="text" name="oldname" class="hide" value="{{ $dish->name }}">
 

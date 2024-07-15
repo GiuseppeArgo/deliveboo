@@ -19,10 +19,13 @@ class DishController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $id = Auth::id();
+        $data = $request->all();
+        $id = $data['restaurant_id'];
+
         $dishesList = Dish::where('restaurant_id',$id)->get();
+        // dd($dishesList);
         return view("admin.dishes.index", compact("dishesList"));
     }
 
@@ -33,6 +36,7 @@ class DishController extends Controller
     {
         $data = $request->all();
         $restaurant_id = $data['restaurant_id'];
+
         return view("admin.dishes.create",compact('restaurant_id'));
     }
 

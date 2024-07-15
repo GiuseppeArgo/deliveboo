@@ -71,7 +71,7 @@
                                 value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', [])))>
                             {{-- @endif --}}
 
-                            <label class="btn btn-outline-primary"
+                            <label class="btn btn-outline-secondary"
                                 for="tech-{{ $curType->id }}">{{ $curType->name }}</label>
                         </div>
                     @endforeach
@@ -105,23 +105,26 @@
             </div>
             {{-- /Immagine --}}
 
-            {{-- img preview --}}
             <div class="container-preview m-auto mt-3">
-                <div class="mt-2 card-img">
-                    <img id="imagePreview" class="hide" src="" alt="new-image">
+
+                {{-- img preview --}}
+                <div class="container-preview m-auto mt-3">
+                    <div class="mt-2 card-img">
+                        <img id="imagePreview" class="hide" src="" alt="new-image">
+                    </div>
                 </div>
-            </div>
-            {{-- /img preview --}}
+                {{-- /img preview --}}
 
                 {{-- button add and remove --}}
-                <div class="container mt-3 mb-3">
-                    <div class="row gap-2">
-                        <button type="submit" class="btn btn-primary col-5">Aggiungi</button>
-                        <a id="btnDelete" class="btn btn-danger col-5 hide">Rimuovi</a>
+                <div class="container">
+                    <div class="row gap-2 mt-3 align-items-center justify-content-center">
+                        <button class="btn btn-success col" type="submit">Conferma</button>
+                        <a id="btnDelete" class="btn btn-danger col hide">Rimuovi</a>
                     </div>
                 </div>
                 {{-- /button add and remove --}}
 
+            </div>
 
         </form>
     </div>
