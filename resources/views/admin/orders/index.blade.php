@@ -1,9 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container mt-5">
-        <h1>Lista Ordini</h1>
+    <div class="form-container w-100 p-5 mt-5">
+        <h1 class="text-center mb-4">Lista Ordini</h1>
+
+        {{-- table --}}
         <table class="table table-responsive order">
+
+            {{-- thead --}}
             <thead>
                 <tr>
                     <th scope="col">N.ordine</th>
@@ -17,10 +21,13 @@
                     <th scope="col">Stato</th>
                 </tr>
             </thead>
+            {{-- /thead --}}
+
+            {{-- tbody --}}
             <tbody>
                 @foreach ($orders as $order )
                 <tr>
-                    <td scope="row">{{ $order->id }}</td>
+                    <td>{{ $order->id }}</td>
                     <td>{{ $order->name }}</td>
                     <td>{{ $order->lastname}}</td>
                     <td>{{ $order->phone_number}}</td>
@@ -30,15 +37,26 @@
                     <td>{{ $order->total_price}}</td>
                     <td>
                         @if($order->status === 1)
-                            Avvenuto
+                            <span class="text-success">
+                                <strong>
+                                    OK
+                                </strong>
+                            </span>
                         @else
-                            Cancellato
+                            <span class="text-danger">
+                                <strong>
+                                    Cancellato
+                                </strong>
+                            </span>
                         @endif
                     </td>
 
                 </tr>
                 @endforeach
             </tbody>
+            {{-- /tbody --}}
+
         </table>
+        {{-- /table --}}
     </div>
 @endsection
