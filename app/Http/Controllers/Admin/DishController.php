@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateDishRequest;
 use App\Http\Requests\StoreDishRequest;
 use Illuminate\Http\Request;
 use App\Models\Dish;
+use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -29,7 +30,10 @@ class DishController extends Controller
      */
     public function create()
     {
-        return view("admin.dishes.create");
+        $id = Auth::id();
+        $query = Restaurant::where('user_id', $id)->firstOrFail();
+        $restaurant_id = $query->id;
+        return view("admin.dishes.create",compact('restaurant_id'));
     }
 
     /**
@@ -37,25 +41,26 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request, Dish $dish)
     {
-        // Non abbiamo gestito unicita del piatto
-
         $data = $request->validated();
-        
-        $name=Dish::where('name',$data['name'])->firstOrFail();
-        // valore inserito manualmente ma che dobbiamo gestire prelevandolo dallo show dei ristoranti e portantolo nel form della creazione.
+        $id = $data['restaurant_id'];
+        $name= Dish::where('name',$data['name'])->where('restaurant_id', $id)->get();
+
         $data['restaurant_id'] = $request->restaurant_id;
         $data['visibility'] = 1;
         $data['image'] = Storage::put('img', $data['image']);
         $newDish = new Dish();
-        $newDish->fill($data); 
-        if ($data['name'] != $name->name) {
-            $newDish->name = $data['name'];  
-            $newDish['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
+        $newDish->fill($data);
+        $newDish->name = $data['name'];
+        $newDish['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
+
+        // corrispondenza nome del piatto esistente lo riportiamo indietro
+        if (!$name->isEmpty()) {
+            return redirect()->route('admin.dishes.create')->with('error', 'Nel tuo menu hai già un piatto con quel nome.')->withInput();
         }
-      
+
         $newDish->save();
 
-        return redirect()->route("admin.dishes.show", ["dish" => $newDish->slug]);
+        return redirect()->route("admin.dishes.show", ["dish" => $newDish->slug])->with('message', 'Nel tuo menu hai già un piatto con quel nome.');
 
     }
 

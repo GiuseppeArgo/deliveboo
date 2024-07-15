@@ -4,17 +4,25 @@
     <div class="form-container p-5">
         <h1 class="text-center mt-5 mb-5">Aggiungi un piatto</h1>
         {{-- @include('partials.errors') --}}
+
         <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             {{-- Nome --}}
             <div class="mb-3">
                 <label for="name" class="form-label">Nome Piatto:
+
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger"> {{ $errors->first('name') }} </span>
                     @enderror
                     {{-- /error message --}}
+
+                    {{-- gestiamo errore nome del piatto gia esistente --}}
+                    @if (session('error'))
+                            <span class="text-danger">{{ session('error') }}</span>
+                    @endif
+                    {{-- gestiamo errore nome del piatto gia esistente --}}
                 </label>
                 <input value="{{ old('name') }}" type="text" name="name"
                     class="form-control
@@ -75,7 +83,9 @@
             {{-- Prezzo --}}
 
             {{-- restaurant id che dovra passarci l'index adesso lo impostiamo noi a mano --}}
-            <input type="text" name="restaurant_id" class="hide" value="11">
+            <input type="text" name="restaurant_id" class="hide" value="{{$restaurant_id}}">
+
+
 
             <button type="submit" class="btn btn-primary">Aggiungi</button>
         </form>

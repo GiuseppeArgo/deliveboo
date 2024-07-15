@@ -1,7 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-center mt-5">Dettagli Piatto</h1>
+
+<h1 class="text-center mt-5">Dettagli Piatto</h1>
+{{-- success message --}}
+@if (session('message'))
+   <div class="alert alert-success">
+       <span class="info-info-success">{{ session('message') }}</span>
+   </div>
+@endif
+{{-- /success message --}}
     <div class="form-container p-5">
         <dt>
             Nome del Piatto:
