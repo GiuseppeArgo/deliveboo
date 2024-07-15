@@ -61,11 +61,19 @@
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                   href="{{ route('admin.dashboard') }}">
                   <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
-                  <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                  href="{{ route('admin.restaurants.index') }}">
-                  <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Restaurants
-                </a>
-              </li>
+                </li>
+                <li>
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                    href="{{ route('admin.restaurants.index') }}">
+                    <i class="fa-solid fa-user"></i> Restaurants
+                  </a>
+                </li>
+                <li>
+                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                    href="{{ route('admin.restaurants.index') }}">
+                    <i class="fa-solid fa-plus"></i> Add Restaurant
+                  </a>
+                </li>
             </ul>
 
 

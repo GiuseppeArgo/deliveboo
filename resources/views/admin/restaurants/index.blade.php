@@ -1,31 +1,17 @@
 @extends('layouts.admin')
 
 @section('content')
-<!DOCTYPE html>
-<html>
 
+        <h1 class="text-center mt-5 mb-5">Lista dei Ristoranti</h1>
 
-
-
-<body>
-        <h1>Lista dei Ristoranti</h1>
-
-        <ul>
-
-                <!-- resources/views/restaurants/index.blade.php -->
-
-                
-
-
-                <div class="container">
-                        <h1>Ristoranti</h1>
+                <div class="form-container p-5">
                         <table class="table">
                                 <thead>
                                         <tr>
                                                 <th>Nome</th>
                                                 <th>Città</th>
                                                 <th>Indirizzo</th>
-                                             
+
                                         </tr>
                                 </thead>
                                 <tbody>
@@ -44,12 +30,5 @@
                                 </tbody>
                         </table>
                 </div>
-
-
-
-        </ul>
-</body>
-
-</html>
 
 @endsection
