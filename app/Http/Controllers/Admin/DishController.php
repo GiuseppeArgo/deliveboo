@@ -22,11 +22,11 @@ class DishController extends Controller
     public function index(Request $request)
     {
         $data = $request->all();
-        $id = $data['restaurant_id'];
+        $restaurant_id = $data['restaurant_id'];
 
-        $dishesList = Dish::where('restaurant_id',$id)->get();
-        // dd($dishesList);
-        return view("admin.dishes.index", compact("dishesList"));
+        // dd($restaurant_id);
+        $dishesList = Dish::where('restaurant_id',$restaurant_id)->get();
+        return view("admin.dishes.index", compact("dishesList",'restaurant_id'));
     }
 
     /**
@@ -85,13 +85,6 @@ class DishController extends Controller
         $id = Auth::id();
         $query = Restaurant::where('user_id', $id)->firstOrFail();
         $restaurant_id = $query->id;
-        // $queryDish = Dish::where('restaurant_id',$restaurant_id)->get();
-        // $arrayDish = [];
-        // foreach($queryDish as $dish) {
-        //     $arrayDish[]= $dish->name;
-        // }
-        // dd($arrayDish);
-        // dd($arrayId);
         return view("admin.dishes.edit", compact("dish","restaurant_id"));
     }
 
@@ -130,9 +123,11 @@ class DishController extends Controller
 
     public function toggle(Request $request, string $id)
     {
+        $data = $request->all();
+        $restaurant_id =$data['restaurant_id'];
         $dish = Dish::findOrFail($id);
-        $dish->visibility = $request->visibility;
+        $dish->visibility = $data['visibility'];
         $dish->save();
-        return redirect()->route('admin.dishes.index');
+        return redirect()->route('admin.dishes.index',compact('restaurant_id'));
     }
 }

@@ -32,7 +32,7 @@
             Prezzo:
         </dt>
         <dd>
-            {{ $dish->price }}
+            {{ $dish->price }} €
         </dd>
         <dt>
             Image:

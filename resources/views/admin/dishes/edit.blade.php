@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="text-center mt-5">Modifica Piatto: </h1>
     {{-- @include('partials.errors') --}}
-    <div class="w-50 m-auto p-5">
+    <div class="form-container p-5">
 
         <form action="{{ route('admin.dishes.update', ['dish' => $dish->slug]) }}" method="POST"
             class="d-flex flex-column gap-2" enctype="multipart/form-data">

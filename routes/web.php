@@ -31,6 +31,7 @@ Route::middleware('auth')
         Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
         Route::resource('dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
 
+        // Route::put('/dishes/{id}/toggle', 'DishController@toggle')->name('admin.dishes.toggle');
         Route::put('/dishes/{id}/toggle', [DishController::class, 'toggle'])->name('dishes.toggle');
 
         Route::resource('orders', OrderController::class);

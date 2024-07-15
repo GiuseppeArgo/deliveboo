@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="text-center mt-5">Piatti Del menu ( {{count($dishesList)}}  )</h1>
-    <div class="w-50 m-auto">
+    <div class="container m-auto">
         <table class="table table-striped table-responsive text-center">
             <thead>
                 <tr>
@@ -16,10 +16,11 @@
                 @foreach ($dishesList as $dish)
                     <tr>
                         <td>{{ $dish->name }}</td>
-                        <td>{{ $dish->price }}</td>
+                        <td>{{ $dish->price }} €</td>
 
                             <td>
-                                    <form class="d-flex gap-1 justify-content-center" action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST">
+                                    <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST"
+                                        class="d-flex gap-1 justify-content-center">
                                         @csrf
                                         @method('PUT')
                                         <select name="visibility" id="visibility" class="form-control w-50">
@@ -31,12 +32,13 @@
                                                 Non Attivo
                                             </option>
                                         </select>
+                                        <input type="text" class="hide" name="restaurant_id" value="1">
                                         <button type="submit" class="btn btn-outline-danger">
                                             <i class="fa-solid fa-rotate"></i>
                                         </button>
                                     </form>
                             </td>
-                        <td>
+                        <td class="d-flex gap-1">
                             <a class="text-black btn btn-info"
                                 href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
                                 <i class="fa-solid fa-eye"></i>
