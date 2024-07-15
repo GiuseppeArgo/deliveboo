@@ -1,0 +1,12 @@
+// header logo
+.logo_laravel_header{
+    font-size: 30px;
+    span:first-child{
+        color: blue;
+        font-weight: bold;
+    }
+    span:last-child{
+        color: red;
+        font-weight: bold;
+    }
+}

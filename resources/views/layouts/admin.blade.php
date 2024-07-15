@@ -26,7 +26,7 @@
 <body>
   <div id="app">
 
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
+    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap ps-4 pe-4 shadow">
       <div class="row justify-content-between">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Deliveboo</a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
@@ -54,7 +54,7 @@
         <!-- Definire solo parte del menu di navigazione inizialmente per poi
         aggiungere i link necessari giorno per giorno
         -->
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-primary navbar-dark sidebar collapse">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">

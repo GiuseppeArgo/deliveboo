@@ -1,31 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
+@import "header.scss";
+@import "general.scss";
+@import "colorpalette.scss";
 
-// logo
-.navbar{
-    background-color: #0D6EFD !important;
-    a{
-        color:black !important;
-        font-weight: bold;
-    }
-}
-.left-nav{
-    color: red !important;
-}
 
-.logo{
-    width: 100px;
-}
-
+//homepage logo
 .logoext{
     width: 300px;
-}
-// general
-.hide{
-    display: none;
-}
-
-img{
-    max-width: 100%;
 }
 
 // edit view
@@ -38,16 +19,4 @@ img{
     aspect-ratio: 1;
 }
 
-.form-container{
-    width: 80%;
-    height: min-content;
-    margin: 0 auto;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    border-radius: 20px;
-    border:2px solid lightgrey;
-}
 
-form{
-    height: min-content;
-}
