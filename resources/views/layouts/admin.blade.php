@@ -86,12 +86,7 @@
                     <i class="fa-solid fa-plus"></i> Agg. Piatto
                   </a>
                 </li>
-                <li>
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                    href="{{ route('admin.dishes.index') }}">
-                    <i class="fa-solid fa-pen"></i> Ordini(don't work)
-                  </a>
-                </li>
+                
             </ul>
 
 

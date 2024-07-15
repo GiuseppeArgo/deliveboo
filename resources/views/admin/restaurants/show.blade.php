@@ -6,6 +6,16 @@
         <a class="btn btn-warning" href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}">
             <i class="fa-solid fa-pen"></i>Modifica
         </a>
+        {{-- ORDINI --}}
+        <h1>{{ $restaurant->id }}</h1>
+        <form action="{{ route('admin.orders.index') }}" method="GET">
+            @csrf
+            <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
+            <button type="submit" class="btn btn-info">
+                <i class="fa-solid fa-pen"></i> Ordini
+            </button>
+        </form>
+        {{-- ORDINI --}}
     </div>
     <div class="container">
         <div class="row flex-column align-items-center justify-content-center">
