@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="text-center mt-5">Piatti Del menu ( {{count($dishesList)}}  )</h1>
     <div class="w-50 m-auto">
-        <table class="table table-striped text-center">
+        <table class="table table-striped table-responsive text-center">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>

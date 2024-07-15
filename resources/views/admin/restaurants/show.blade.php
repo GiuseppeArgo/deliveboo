@@ -1,9 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<h3 class="text-center mt-5">Ristorante: {{ $restaurant->name }}</h3>
-<div class="form-container p-5">
-<table class="table table-striped text-center">
+    <h3 class="text-center mt-5">Ristorante: {{ $restaurant->name }}</h3>
+    <div class="form-container p-5">
+
+        <p>{{ $restaurant->description }}</p>
+        <table class="table table-striped text-center">
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
@@ -22,13 +24,13 @@
                                 <i class="fa-solid fa-eye">Dettagli</i>
                             </a>
                             <a class="text-black btn btn-warning"
-                            href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
-                            <i class="fa-solid fa-pen">Modifica</i>
-                        </a>
+                                href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
+                                <i class="fa-solid fa-pen">Modifica</i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-</div>
+    </div>
 @endsection
