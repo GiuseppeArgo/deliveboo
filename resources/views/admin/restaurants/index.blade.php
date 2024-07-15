@@ -11,7 +11,7 @@
                                                 <th>Nome</th>
                                                 <th>Città</th>
                                                 <th>Indirizzo</th>
-
+                                                <th>Bottoni</th>
                                         </tr>
                                 </thead>
                                 <tbody>

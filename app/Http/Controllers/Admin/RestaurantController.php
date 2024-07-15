@@ -24,10 +24,13 @@ class RestaurantController extends Controller
     public function index()
     {
 
-
-
+        $user_id = Auth::id();
         // Recupera la lista dei ristoranti
-        $restaurants = Restaurant::all();
+        if(Auth::user()->id != 12){
+            $restaurants = Restaurant::where('user_id',$user_id)->get();
+        } else{
+            $restaurants = Restaurant::all();
+        }
 
         // Passa la lista alla vista index
         return view('admin.restaurants.index', compact('restaurants'));
@@ -74,9 +77,9 @@ class RestaurantController extends Controller
     {
         //  controllo utente puoi vedere e modificare solo i tuoi ristoranti
 
-        // if($restaurant->user_id !== Auth::id()){
-        //     abort(403);
-        //  }
+        if($restaurant->user_id !== Auth::id()){
+            abort(403);
+         }
         $listTypes = Type::all();
         return view('admin.restaurants.edit', compact('restaurant', 'listTypes'));
     }
@@ -86,8 +89,8 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-       
-            $data = $request->validated();    
+
+            $data = $request->validated();
             $data['user_id'] = Auth::id();
             $data['slug'] = Str::slug($data['name'] . '-' . $data['user_id']);
             if (isset($data['image'])) {
@@ -95,10 +98,10 @@ class RestaurantController extends Controller
                     Storage::delete($restaurant->image);
                 }
                 $data['image'] = Storage::put('img', $data['image']);
-            }   
+            }
             $restaurant->update($data);
             $restaurant->types()->sync($request->tipologies);
-            return view('admin.restaurants.show', compact('restaurant'));   
+            return view('admin.restaurants.show', compact('restaurant'));
     }
 
     /**

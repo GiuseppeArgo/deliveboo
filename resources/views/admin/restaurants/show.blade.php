@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="d-flex justify-content-center align-items-center mt-5 gap-2">

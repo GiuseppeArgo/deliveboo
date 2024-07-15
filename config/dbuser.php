@@ -1,10 +1,10 @@
 <?php
 return [
     [
-        'name' => 'John',
-        'lastname' => 'Doe',
-        'email' => 'john.doe@example.com',
-        'password' => 'password123'
+        'name' => 'Admin',
+        'lastname' => 'Admin',
+        'email' => 'admin@gmail.com',
+        'password' => '11111111'
     ],
     [
         'name' => 'Jane',
