@@ -7,7 +7,6 @@
             <i class="fa-solid fa-pen"></i>Modifica
         </a>
         {{-- ORDINI --}}
-        <h1>{{ $restaurant->id }}</h1>
         <form action="{{ route('admin.orders.index') }}" method="GET">
             @csrf
             <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
@@ -18,8 +17,8 @@
         {{-- ORDINI --}}
     </div>
     <div class="container">
-        <div class="row flex-column align-items-center justify-content-center">
-            <div class="col-6 text-center">
+        <div class="row flex-column align-items-center justify-content-center  text-center">
+            <div class="col-6">
                 <dt>Descrizione:</dt>
                 <dd>{{ $restaurant->description }}</dd>
             </div>
@@ -29,9 +28,17 @@
         </div>
     </div>
     <div class="form-container p-5 ">
-        <a class="btn btn-success mb-4" href="{{ route('admin.dishes.create') }}">
-            <i class="fa-solid fa-pen"></i>Aggiungi Piatto
-        </a>
+        {{-- Aggiungi piatto --}}
+        <form action="{{ route('admin.dishes.create') }}" method="GET">
+            @csrf
+            <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
+            <button type="submit" class="btn btn-success mb-4">
+                <i class="fa-solid fa-pen"></i>Aggiungi Piatto
+            </button>
+        </form>
+
+        {{-- Aggiungi piatto --}}
+
         @if (count($restaurant->dishes) > 0)
             <ul>
                 @foreach ($restaurant->dishes as $dish)

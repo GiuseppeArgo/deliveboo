@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Dish;
 use App\Models\Restaurant;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -28,11 +29,10 @@ class DishController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        $id = Auth::id();
-        $query = Restaurant::where('user_id', $id)->firstOrFail();
-        $restaurant_id = $query->id;
+        $data = $request->all();
+        $restaurant_id = $data['restaurant_id'];
         return view("admin.dishes.create",compact('restaurant_id'));
     }
 
@@ -60,7 +60,7 @@ class DishController extends Controller
 
         $newDish->save();
 
-        return redirect()->route("admin.dishes.show", ["dish" => $newDish->slug])->with('message', 'Nel tuo menu hai già un piatto con quel nome.');
+        return redirect()->route("admin.dishes.show", ["dish" => $newDish->slug])->with('message', 'Piatto inserito correttamente');
 
     }
 
