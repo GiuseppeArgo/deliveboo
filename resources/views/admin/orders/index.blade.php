@@ -35,7 +35,7 @@
                     <td>{{ $order->email}}</td>
                     <td>{{ $order->address}}</td>
                     <td>{{ $order->data}}</td>
-                    <td>{{ $order->total_price}}</td>
+                    <td>{{ $order->total_price}}€</td>
                     <td>
                         @if($order->status === 1)
                             <span class="text-success">
