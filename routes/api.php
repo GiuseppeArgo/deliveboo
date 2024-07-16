@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Api\RestaurantController;
+use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
+Route::get('/types', [TypeController::class, 'index']);
+
