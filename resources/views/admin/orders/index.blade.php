@@ -19,7 +19,7 @@
                     <th scope="col">Data</th>
                     <th scope="col">Totale</th>
                     <th scope="col">Stato</th>
-                    <th scope="col">Bottone</th>
+                    <th scope="col">Mostra Ordine</th>
                 </tr>
             </thead>
             {{-- /thead --}}
