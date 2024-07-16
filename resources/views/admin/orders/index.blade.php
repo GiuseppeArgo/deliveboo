@@ -12,14 +12,14 @@
                 <tr>
                     <th scope="col">N.ordine</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Cognome</th>
+                    {{-- <th scope="col">Cognome</th> --}}
                     <th scope="col">Telefono</th>
                     <th scope="col">Mail</th>
                     <th scope="col">Indirizzo</th>
                     <th scope="col">Data</th>
                     <th scope="col">Totale</th>
                     <th scope="col">Stato</th>
-                    <th scope="col">Mostra Ordine</th>
+                    <th scope="col" class="text-center">Mostra Ordine</th>
                 </tr>
             </thead>
             {{-- /thead --}}
@@ -28,15 +28,15 @@
             <tbody>
                 @foreach ($orders as $order )
                 <tr>
-                    <td>{{ $order->id }}</td>
-                    <td>{{ $order->name }}</td>
-                    <td>{{ $order->lastname}}</td>
-                    <td>{{ $order->phone_number}}</td>
-                    <td>{{ $order->email}}</td>
-                    <td>{{ $order->address}}</td>
-                    <td>{{ $order->data}}</td>
-                    <td>{{ $order->total_price}}€</td>
-                    <td>
+                    <td class="align-middle">{{ $order->id }}</td>
+                    <td>{{ $order->name }} <br> {{ $order->lastname}}</td>
+                    {{-- <td>{{ $order->lastname}}</td> --}}
+                    <td class="align-middle">{{ $order->phone_number}}</td>
+                    <td class="align-middle">{{ $order->email}}</td>
+                    <td class="align-middle">{{ $order->address}}</td>
+                    <td class="align-middle">{{ $order->data}}</td>
+                    <td class="align-middle">{{ $order->total_price}}€</td>
+                    <td class="align-middle">
                         @if($order->status === 1)
                             <span class="text-success">
                                 <strong>
@@ -51,7 +51,7 @@
                             </span>
                         @endif
                     </td>
-                    <td>
+                    <td class="text-center">
                         <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}"
                             class="btn btn-info">
                             <i class="fa-solid fa-eye"></i>

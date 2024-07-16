@@ -6,7 +6,7 @@
     <div class="form-container p-5">
 
         {{-- table --}}
-        <table class="table">
+        <table class="table w-75 m-auto text-center">
 
             {{-- thead --}}
             <thead>
@@ -14,7 +14,7 @@
                     <th>Nome</th>
                     <th>Città</th>
                     <th>Indirizzo</th>
-                    <th>Bottoni</th>
+                    <th>Azioni</th>
                 </tr>
             </thead>
             {{-- /thead --}}
@@ -23,10 +23,10 @@
             <tbody>
                 @foreach ($restaurants as $restaurant)
                     <tr>
-                        <td>{{ $restaurant->name }}</td>
-                        <td>{{ $restaurant->city }}</td>
-                        <td>{{ $restaurant->address }}</td>
-                        <td>
+                        <td class="align-middle">{{ $restaurant->name }}</td>
+                        <td class="align-middle">{{ $restaurant->city }}</td>
+                        <td class="align-middle">{{ $restaurant->address }}</td>
+                        <td class="text-center">
                             <a href="{{ route('admin.restaurants.show', ['restaurant' => $restaurant->slug]) }}"
                                 class="btn btn-info">
                                 <i class="fa-solid fa-eye"></i>

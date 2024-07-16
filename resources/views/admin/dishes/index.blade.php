@@ -16,7 +16,7 @@
     {{-- /header --}}
 
     {{-- table --}}
-    <div class="container m-auto">
+    <div class="container m-auto p-5">
         <table class="table table-striped table-responsive text-center">
 
             {{-- thead --}}
@@ -25,7 +25,7 @@
                     <th scope="col">Nome</th>
                     <th scope="col">Prezzo</th>
                     <th scope="col">Att/Disat</th>
-                    <th scope="col">Button</th>
+                    <th scope="col">Azioni</th>
                 </tr>
             </thead>
             {{-- /thead --}}
@@ -34,8 +34,8 @@
             <tbody>
                 @foreach ($dishesList as $dish)
                     <tr>
-                        <td>{{ $dish->name }}</td>
-                        <td>{{ $dish->price }} €</td>
+                        <td class="align-middle">{{ $dish->name }}</td>
+                        <td class="align-middle">{{ $dish->price }} €</td>
 
                         {{-- change visibility --}}
                         <td>
@@ -62,7 +62,7 @@
 
 
                         {{-- button --}}
-                        <td class="d-flex gap-1">
+                        <td class="d-flex gap-1 justify-content-center">
                             <a class="text-black btn btn-info"
                                 href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
                                 <i class="fa-solid fa-eye"></i>
