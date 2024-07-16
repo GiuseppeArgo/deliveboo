@@ -10,6 +10,7 @@
                 <th>Id ordine</th>
                 <th>Piatto</th>
                 <th>Quantity</th>
+                <th>Prezzo</th>
             </tr>
         </thead>
         @foreach ($orders as $order )
@@ -23,6 +24,9 @@
                 </td>
                 <td>
                     {{$order->pivot->quantity}}
+                </td>
+                <td>
+                    {{$order->price * $order->pivot->quantity}}€
                 </td>
             </tr>
         </tbody>
