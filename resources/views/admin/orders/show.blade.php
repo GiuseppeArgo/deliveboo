@@ -7,7 +7,6 @@
     <table class="table table-responsive striped">
         <thead>
             <tr>
-                <th>Id ordine</th>
                 <th>Piatto</th>
                 <th>Quantity</th>
                 <th>Prezzo</th>
@@ -16,9 +15,6 @@
         @foreach ($orders as $order )
         <tbody>
             <tr>
-                <td>
-                    {{$order->pivot->order_id}}
-                </td>
                 <td>
                     {{$order->name}}
                 </td>
