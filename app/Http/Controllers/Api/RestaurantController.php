@@ -11,14 +11,16 @@ class RestaurantController extends Controller
     public function index(Request $request)
     {
         $restaurants = Restaurant::with('types')->get();
-
         // se arriva il parametro type filtra per tipo
-        if ($request->type) {
-            $typeId = $request->type;
-            $restaurants = Restaurant::with('types')
-                ->whereHas('types', function ($query) use ($typeId) {
-                    $query->where('id', $typeId); // Assicurati che il nome della colonna corrisponda a quello della tua tabella di collegamento
-                })->get();
+        if (is_array($request->type)) {
+            foreach($request->type as $curType) {
+                dd($curType);
+                $typeId = $curType;
+                $restaurants = Restaurant::with('types')
+                    ->whereHas('types', function ($query) use ($typeId) {
+                        $query->where('id', $typeId); // Assicurati che il nome della colonna corrisponda a quello della tua tabella di collegamento
+                    })->get();
+            }
             dd($restaurants);
         }
 
