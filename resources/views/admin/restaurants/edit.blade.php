@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    
+
 
     <h1 class="text-center mt-5">Modifica i tuoi dati</h1>
     <div class="form-container p-5">
