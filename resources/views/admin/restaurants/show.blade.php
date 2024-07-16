@@ -27,7 +27,7 @@
         </div>
 
 
-        <div class="mt-5">
+        <div class="mt-3 mb-3">
             <div class="row align-items-center justify-content-center  text-center">
                 <div class="col-6 mt-3 restaurant-text">
                     <h3>Descrizione:</h3>

@@ -77,7 +77,6 @@ class RestaurantController extends Controller
     public function edit(Restaurant $restaurant)
     {
         //  controllo utente puoi vedere e modificare solo i tuoi ristoranti
-
         if($restaurant->user_id !== Auth::id()){
             abort(403);
          }
