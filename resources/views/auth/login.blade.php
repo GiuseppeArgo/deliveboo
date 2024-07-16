@@ -12,13 +12,14 @@
                         @csrf
 
                         <div class="mb-4 row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Inserisci e-mail') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
+                                    {{-- messaggio errore email --}}
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
@@ -33,6 +34,7 @@
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
+                                    {{-- messaggio errore password --}}
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
@@ -45,7 +47,7 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Ricordati di me') }}
                                     </label>
                                 </div>
                             </div>
@@ -54,12 +56,12 @@
                         <div class="mb-4 row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    {{ __('Accedi') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    {{ __('non ricordi la password?') }}
                                 </a>
                                 @endif
                             </div>

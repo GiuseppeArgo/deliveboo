@@ -31,6 +31,16 @@ class LoginRequest extends FormRequest
             'password' => ['required', 'string'],
         ];
     }
+    
+    public function message(){
+        return
+        [
+            'email.required'    => 'Il campo email è vuoto',
+            'email.email'        => 'Il campo email non rispetta il formato nome@dominio.it/com',
+            'password.required'      => 'la password è sbagliata'
+
+        ];
+    }
 
     /**
      * Attempt to authenticate the request's credentials.
@@ -82,4 +92,6 @@ class LoginRequest extends FormRequest
     {
         return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
     }
+
+
 }

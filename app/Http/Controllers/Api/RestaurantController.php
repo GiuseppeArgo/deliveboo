@@ -10,25 +10,34 @@ class RestaurantController extends Controller
 {
     public function index(Request $request)
     {
-        $restaurants = Restaurant::with('types')->get();
-        // se arriva il parametro type filtra per tipo
-        if (is_array($request->type)) {
-            foreach($request->type as $curType) {
-                dd($curType);
-                $typeId = $curType;
-                $restaurants = Restaurant::with('types')
-                    ->whereHas('types', function ($query) use ($typeId) {
-                        $query->where('id', $typeId); // Assicurati che il nome della colonna corrisponda a quello della tua tabella di collegamento
-                    })->get();
-            }
-            dd($restaurants);
+        //if request type is not null
+        if ($request->type) {
+            //remove all characters except numbers and turns it into numeric array
+            $typesArray = $request->type;
+            $typesArray = preg_replace('/[\[\]\s]/', '', $typesArray);
+            $typesArray = json_decode('[' . $typesArray . ']');
+
+            //create the query by looping typesArray
+            $query = Restaurant::with('types')
+                ->where(function ($query) use ($typesArray) {
+                    foreach ($typesArray as $typeId) {
+                        $query->whereHas('types', function ($q) use ($typeId) {
+                            $q->where('id', $typeId);
+                        });
+                    }
+                });
+
+        //normal query with all restaurants
+        } else {
+            $query = Restaurant::with('types');
         }
 
+        $query = $query->get();
+
         $data = [
-            'result' => $restaurants
+            'result' => $query
         ];
+
         return response()->json($data);
     }
-
-
 }
