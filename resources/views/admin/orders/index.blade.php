@@ -19,6 +19,7 @@
                     <th scope="col">Data</th>
                     <th scope="col">Totale</th>
                     <th scope="col">Stato</th>
+                    <th scope="col">Bottone</th>
                 </tr>
             </thead>
             {{-- /thead --}}
@@ -26,10 +27,6 @@
             {{-- tbody --}}
             <tbody>
                 @foreach ($orders as $order )
-                <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}"
-                    class="btn btn-info">
-                    <i class="fa-solid fa-eye"></i>
-                </a>
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->name }}</td>
@@ -53,6 +50,12 @@
                                 </strong>
                             </span>
                         @endif
+                    </td>
+                    <td>
+                        <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}"
+                            class="btn btn-info">
+                            <i class="fa-solid fa-eye"></i>
+                        </a>
                     </td>
 
                 </tr>
