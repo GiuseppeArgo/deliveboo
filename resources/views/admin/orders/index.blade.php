@@ -26,6 +26,10 @@
             {{-- tbody --}}
             <tbody>
                 @foreach ($orders as $order )
+                <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}"
+                    class="btn btn-info">
+                    <i class="fa-solid fa-eye"></i>
+                </a>
                 <tr>
                     <td>{{ $order->id }}</td>
                     <td>{{ $order->name }}</td>

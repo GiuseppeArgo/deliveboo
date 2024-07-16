@@ -23,7 +23,6 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-
         $user_id = Auth::id();
         // Recupera la lista dei ristoranti
         if(Auth::user()->id != 1){
@@ -67,6 +66,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
+
         // fare easyloading della lista dei piatti
         return view("admin.restaurants.show", compact("restaurant"));
     }

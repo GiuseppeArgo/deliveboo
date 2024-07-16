@@ -22,7 +22,7 @@ class OrderController extends Controller
             $query->whereIn('dish_id', $dishesForRestaurant);
         })->get();
         // dd($dishesForRestaurant);
-        
+
         return view("admin.orders.index", compact('orders'));
     }
 
@@ -47,7 +47,10 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $orders = Order::with('dishes')->find($id);
+        // dd($orders);
+        $orders = $orders->dishes;
+        return view('admin.orders.show', compact('orders'));
     }
 
     /**
