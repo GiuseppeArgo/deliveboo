@@ -11,7 +11,7 @@
             @csrf
 
             <div class="mb-3">
-                <label for="name" class="form-label">Nome Ristorante:
+                <label for="name" class="form-label">Nome Ristorante *
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger"> {{ $errors->first('name') }} </span>
@@ -26,7 +26,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="address" class="form-label">Indirizzo :
+                <label for="address" class="form-label">Indirizzo *
                     {{-- error message --}}
                     @error('address')
                         <span class="text-danger"> {{ $errors->first('address') }} </span>
@@ -42,7 +42,7 @@
 
             {{-- Descrizione --}}
             <div class="mb-3">
-                <label for="description" class="form-label">Descrizione :
+                <label for="description" class="form-label">Descrizione *
                     {{-- error message --}}
                     @error('description')
                         <span class="text-danger"> {{ $errors->first('description') }} </span>
@@ -57,7 +57,10 @@
             {{-- Descrizione --}}
 
             {{-- Tipologia --}}
-            <p>Tipologie:</p>
+            <span>Tipologie * </span>
+            <span id="error-message" style="color:red; display:none;">
+                Non puoi inserire piu di 2 tipologie.
+            </span>
             @error('tipologies')
                 <span class="text-danger"> {{ $errors->first('tipologies') }} </span>
             @enderror
@@ -81,7 +84,7 @@
 
             {{-- Partita_Iva --}}
             <div class="mb-3">
-                <label for="p_iva" class="form-label">Partita Iva:
+                <label for="p_iva" class="form-label">Partita Iva *
                     {{-- error message --}}
                     @error('p_iva')
                         <span class="text-danger"> {{ $errors->first('p_iva') }} </span>
@@ -95,7 +98,7 @@
 
             {{-- Immagine --}}
             <div class="mb-3">
-                <label for="image" class="form-label"> Immagine
+                <label for="image" class="form-label">Immagine *
                     @error('image')
                         <span class="text-danger">{{ $errors->first('image') }}</span>
                     @enderror

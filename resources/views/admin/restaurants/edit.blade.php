@@ -14,7 +14,7 @@
             {{-- title --}}
             <div class="mb-3">
 
-                <label for="name">Nome Attività :
+                <label for="name">Nome Attività *
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger"> {{ $errors->first('name') }} </span>
@@ -34,7 +34,7 @@
             {{-- address --}}
             <div class="mb-3">
 
-                <label for="address">Indirizzo :
+                <label for="address">Indirizzo *
                     {{-- error message --}}
                     @error('address')
                         <span class="text-danger"> {{ $errors->first('address') }} </span>
@@ -55,7 +55,7 @@
             {{-- description --}}
             <div class="mb-3">
 
-                <label for="description">Descrizione :
+                <label for="description">Descrizione *
                     {{-- error message --}}
                     @error('description')
                         <span class="text-danger"> {{ $errors->first('description') }} </span>
@@ -72,7 +72,10 @@
 
             {{-- Tipologia --}}
 
-            <p>Tipologie:</p>
+            <span>Tipologie * </span>
+            <span id="error-message" style="color:red; display:none;">
+                Non puoi inserire piu di 2 tipologie.
+            </span>
             @error('tipologies')
                 <span class="text-danger"> {{ $errors->first('tipologies') }} </span>
             @enderror
@@ -102,7 +105,7 @@
             {{-- file image --}}
             <div class="mb-3">
 
-                <label for="image"> Immagine</label>
+                <label for="image"> Immagine *</label>
                 <input class="form-control" type="file" name="image" id="image" {{-- dynamic class with red border --}}
                     @error('image') is-invalid @enderror {{-- /dynamic class with red border --}}
                     value="{{ old('address', $restaurant->address) }}">

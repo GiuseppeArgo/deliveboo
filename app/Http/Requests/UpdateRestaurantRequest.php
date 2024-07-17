@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Rules\MaxTipologies;
 
 class UpdateRestaurantRequest extends FormRequest
 {
@@ -26,8 +27,8 @@ class UpdateRestaurantRequest extends FormRequest
             'name'              => ['required', 'min:3','max:25', Rule::unique('restaurants')->ignore($this->restaurant)],
             'address'           => ['required', 'min:5','max: 50'],
             'image'             => ['nullable', 'image', 'mimes: jpeg,jpg,png', 'max:2048'],
-            'description'       => ['required', 'min:5', 'max:255'],    
-            'tipologies'        => ['required'],
+            'description'       => ['required', 'min:5', 'max:255'],
+            'tipologies'        => ['required', new MaxTipologies(2)],
             'slug'              => ['nullable'],
         ];
     }
@@ -42,7 +43,8 @@ class UpdateRestaurantRequest extends FormRequest
             'unique'            => 'non si possono avere due :attribute uguali',
             'image.image'       => ' il campo :attribute deve essere una foto',
             'image.mimes'       => 'formato consentito jpg,jpeg o png',
-            'image.max'         => 'dimensione massima 2 mb',    
+            'image.max'         => 'dimensione massima 2 mb',
+            'tipologie.count' => 'Hai selezionato troppi tipi. Seleziona al massimo 2.',
         ];
     }
 }

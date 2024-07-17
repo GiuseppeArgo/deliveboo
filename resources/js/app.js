@@ -73,3 +73,20 @@ btnDeleteElem.addEventListener('click', function(e){
 });
 
 
+// controllo checkbox premuti non piu di 2
+
+const checkboxes = document.querySelectorAll('input[type=checkbox][name="tipologies[]"]');
+const errorMessage = document.getElementById('error-message');
+checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('click', function(e) {
+        var selectedCount = Array.from(document.querySelectorAll('input[name="tipologies[]"]:checked')).length;
+        if (selectedCount > 2) {
+            e.preventDefault(); // Prevent further selection
+            errorMessage.style.display = 'inline-block';
+            // Deselect the extra checkbox
+            Array.from(checkboxes).slice(-1)[0].click();
+        }else {
+            errorMessage.style.display = 'none'; // Hide the error message if under the limit
+        }
+    });
+});
