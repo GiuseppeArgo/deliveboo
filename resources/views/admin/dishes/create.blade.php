@@ -10,7 +10,7 @@
 
             {{-- Nome --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Nome Piatto:
+                <label for="name" class="form-label">Nome Piatto *
 
                     {{-- error message --}}
                     @error('name')
@@ -20,7 +20,7 @@
 
                     {{-- gestiamo errore nome del piatto gia esistente --}}
                     @if (session('error'))
-                            <span class="text-danger">{{ session('error') }}</span>
+                        <span class="text-danger">{{ session('error') }}</span>
                     @endif
                     {{-- gestiamo errore nome del piatto gia esistente --}}
                 </label>
@@ -33,24 +33,9 @@
             {{-- /Nome --}}
 
 
-            {{-- Immagine --}}
-            <div class="mb-3">
-                <label for="image" class="form-label"> Immagine
-                    {{-- error message --}}
-                    @error('image')
-                        <span class="text-danger"> {{ $errors->first('image') }} </span>
-                    @enderror
-                    {{-- /error message --}}
-                </label>
-                <input value="{{ old('image') }}" type="file" name="image" id="image" aria-describedby="image"
-                    class="form-control
-                @error('image') is-invalid @enderror">
-            </div>
-            {{-- /Immagine --}}
-
             {{-- Descrizione --}}
             <div class="mb-3">
-                <label for="description" class="form-label">Descrizione :
+                <label for="description" class="form-label">Descrizione *
                     {{-- error message --}}
                     @error('description')
                         <span class="text-danger"> {{ $errors->first('description') }} </span>
@@ -67,7 +52,7 @@
 
             {{-- Prezzo --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Prezzo:
+                <label for="price" class="form-label">Prezzo *
                     {{-- error message --}}
                     @error('price')
                         <span class="text-danger"> {{ $errors->first('price') }} </span>
@@ -83,11 +68,44 @@
             {{-- Prezzo --}}
 
             {{-- restaurant id che dovra passarci l'index adesso lo impostiamo noi a mano --}}
-            <input type="text" name="restaurant_id" class="hide" value="{{$restaurant_id}}">
+            <input type="text" name="restaurant_id" class="hide" value="{{ $restaurant_id }}">
 
+            {{-- Immagine --}}
+            <div class="mb-3">
+                <label for="image" class="form-label"> Immagine *
+                    {{-- error message --}}
+                    @error('image')
+                        <span class="text-danger"> {{ $errors->first('image') }} </span>
+                    @enderror
+                    {{-- /error message --}}
+                </label>
+                <input value="{{ old('image') }}" type="file" name="image" id="image" aria-describedby="image"
+                    class="form-control
+                            @error('image') is-invalid @enderror">
+            </div>
+            {{-- /Immagine --}}
 
+            <div class="container-preview m-auto mt-3">
 
-            <button type="submit" class="btn btn-primary">Aggiungi</button>
+                {{-- img preview --}}
+                <div class="container-preview m-auto mt-3">
+                    <div class="mt-2 card-img">
+                        <img id="imagePreview" class="hide" src="" alt="new-image">
+                    </div>
+                </div>
+                {{-- /img preview --}}
+
+                {{-- button add and remove --}}
+                <div class="container">
+                    <div class="row gap-2 mt-3 align-items-center justify-content-center">
+                        <button class="btn btn-success col" type="submit">Conferma</button>
+                        <a id="btnDelete" class="btn btn-danger col hide">Rimuovi</a>
+                    </div>
+                </div>
+                {{-- /button add and remove --}}
+
+            </div>
+
         </form>
 
     </div>
