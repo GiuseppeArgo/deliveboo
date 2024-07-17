@@ -104,7 +104,8 @@
                     @enderror
                 </label>
                 <input value="{{ old('image') }}" type="file" name="image"
-                    class="form-control  @error('image') is-invalid @enderror" id="image" aria-describedby="image">
+                    class="form-control  @error('image') is-invalid
+                    @enderror" id="image" aria-describedby="image">
             </div>
             {{-- /Immagine --}}
 

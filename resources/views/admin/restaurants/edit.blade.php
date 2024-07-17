@@ -106,9 +106,11 @@
             <div class="mb-3">
 
                 <label for="image"> Immagine *</label>
-                <input class="form-control" type="file" name="image" id="image" {{-- dynamic class with red border --}}
-                    @error('image') is-invalid @enderror {{-- /dynamic class with red border --}}
-                    value="{{ old('address', $restaurant->address) }}">
+                <input class="form-control
+                @error('image') is-invalid @enderror"
+                type="file" name="image" id="image" {{-- dynamic class with red border --}}
+                    {{-- /dynamic class with red border --}}
+                    value="{{ old('image', $restaurant->image) }}">
 
 
                 {{-- error message --}}
