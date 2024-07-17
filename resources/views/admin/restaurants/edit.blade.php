@@ -1,9 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-
-
-    <h1 class="text-center mt-5">Modifica i tuoi dati</h1>
+<div class="d-flex flex-column justify-content-center align-items-center gap-2 mt-5">
+    <h1 class="text-center">Modifica i tuoi dati</h1>
+    <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
+        Torna Alla Home
+    </a>
+</div>
     <div class="form-container p-5">
         {{-- form --}}
         <form class="d-flex flex-column" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->slug]) }}"
@@ -63,7 +66,8 @@
                     {{-- /error message --}}
                 </label>
 
-                <textarea class="form-control @error('description') is-invalid @enderror" type="text" id="description" name="description">{{ old('description', $restaurant->description) }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" type="text" id="description"
+                    name="description">{{ old('description', $restaurant->description) }}</textarea>
             </div>
             {{-- /description --}}
 
@@ -76,13 +80,13 @@
             </span>
             {{-- errors typologies --}}
             @if ($errors->first('tipologies'))
-            <span id="error-message" class="text-danger" style="display:none;">
-                Non puoi inserire piu di 2 tipologie.
-            </span>
+                <span id="error-message" class="text-danger" style="display:none;">
+                    Non puoi inserire piu di 2 tipologie.
+                </span>
             @else
-            @error('tipologies')
-                <span class="text-danger"> {{ $errors->first('tipologies') }} </span>
-            @enderror
+                @error('tipologies')
+                    <span class="text-danger"> {{ $errors->first('tipologies') }} </span>
+                @enderror
             @endif
             {{-- errors typologies --}}
             <div class="container mb-4">
@@ -113,9 +117,8 @@
 
                 <label for="image"> Immagine *</label>
                 <input class="form-control
-                @error('image') is-invalid @enderror"
-                type="file" name="image" id="image" {{-- dynamic class with red border --}}
-                    {{-- /dynamic class with red border --}}
+                @error('image') is-invalid @enderror" type="file"
+                    name="image" id="image" {{-- dynamic class with red border --}} {{-- /dynamic class with red border --}}
                     value="{{ old('image', $restaurant->image) }}">
 
 

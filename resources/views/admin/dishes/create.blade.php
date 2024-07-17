@@ -2,7 +2,12 @@
 
 @section('content')
     <div class="form-container p-5">
-        <h1 class="text-center mt-5 mb-5">Aggiungi un piatto</h1>
+        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
+            <h1 class="text-center">Aggiungi un piatto</h1>
+            <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
+                <i class="fa-solid fa-user"></i> Home
+            </a>
+        </div>
         {{-- @include('partials.errors') --}}
 
         <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">

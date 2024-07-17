@@ -43,17 +43,17 @@ class OrderController extends Controller
     {
         //
     }
-
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(string $id)
-    {
-        $orders = Order::with('dishes')->find($id);
-        // dd($orders);
-        $orders = $orders->dishes;
-        return view('admin.orders.show', compact('orders'));
-    }
+{
+    $data = Auth::id();
+    $order = Order::with('dishes')->find($id); // Trova l'ordine specificato
+    $orders = [
+        'restaurant_id' => $order->dishes[0]->restaurant_id, // Ottieni il restaurant_id del primo piatto
+        'dishes' => $order->dishes // Salva tutta la collezione di piatti
+    ];
+    return view('admin.orders.show', compact('orders')); // Passa i dati all'view
+}
 
     /**
      * Show the form for editing the specified resource.

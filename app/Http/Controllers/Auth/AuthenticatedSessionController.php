@@ -43,6 +43,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->away('http://localhost:5175/');
+        return redirect()->away('http://localhost:5174/');
     }
 }

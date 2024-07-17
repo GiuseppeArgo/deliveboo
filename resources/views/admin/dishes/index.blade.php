@@ -3,15 +3,29 @@
 @section('content')
     {{-- header --}}
     <div class="d-flex gap-2 justify-content-center align-items-center mt-5">
-        <h1 class="text-center p-0">Piatti Del menu ( {{ count($dishesList) }} )</h1>
-        {{-- Aggiungi piatto --}}
-        <form action="{{ route('admin.dishes.create') }}" method="GET">
-            <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant_id }}">
-            <button type="submit" class="btn btn-primary">
-                <i class="fa-solid fa-plus"></i> Piatto
-            </button>
-        </form>
-        {{-- Aggiungi piatto --}}
+        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
+            <h1 class="text-center p-0">Piatti Del menu ( {{ count($dishesList) }} )</h1>
+
+            {{-- btn --}}
+            <div class="d-flex gap-2">
+                {{-- btn home --}}
+                <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
+                    <i class="fa-solid fa-user"></i> Home
+                </a>
+                {{-- btn home --}}
+
+                {{-- Aggiungi piatto --}}
+                <form action="{{ route('admin.dishes.create') }}" method="GET">
+                    <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant_id }}">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-plus"></i> Piatto
+                    </button>
+                </form>
+                {{-- /Aggiungi piatto --}}
+            </div>
+            {{-- /btn --}}
+
+        </div>
     </div>
     {{-- /header --}}
 
