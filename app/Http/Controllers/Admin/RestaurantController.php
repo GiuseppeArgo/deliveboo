@@ -30,7 +30,6 @@ class RestaurantController extends Controller
         } else{
             $restaurants = Restaurant::all();
         }
-
         // Passa la lista alla vista index
         return view('admin.restaurants.index', compact('restaurants'));
     }

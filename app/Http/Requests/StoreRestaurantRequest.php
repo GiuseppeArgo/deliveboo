@@ -32,22 +32,21 @@ class StoreRestaurantRequest extends FormRequest
             'tipologies'        => ['required', new MaxTipologies(2)],
             'slug'              => ['nullable'],
         ];
-
     }
 
     public function messages()
     {
         return
         [
-            'required'          => 'Il campo :attribute è vuoto',
-            'min'               => 'Il campo :attribute deve contenere almeno :min caratteri',
-            'max'               => 'il campo :attribute deve contenere massimo :max caratteri',
-            'unique'            => 'non si possono avere due :attribute uguali',
-            'image.image'       => ' il campo :attribute deve essere una foto',
+            'required'          => 'Il campo è obbligatorio',
+            'min'               => 'Deve contenere almeno :min caratteri',
+            'max'               => 'Deve contenere massimo :max caratteri',
+            'unique'            => 'Il valore inserito è gia esistente',
+            'image.image'       => 'Deve essere una foto',
             'image.mimes'       => 'formato consentito jpg,jpeg o png',
             'image.max'         => 'dimensione massima 2 mb',
-            'p_iva.min'         => 'la partita iva deve avere 11 caratteri numerici',
-            'p_iva.max'         => 'la partita iva deve avere 11 caratteri numerici',
+            'p_iva.min'         => 'deve avere 11 caratteri numerici',
+            'p_iva.max'         => 'deve avere 11 caratteri numerici',
 
         ];
     }

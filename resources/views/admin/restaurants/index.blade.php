@@ -4,8 +4,8 @@
     <h1 class="text-center mt-5 mb-5">Lista dei Ristoranti</h1>
 
     <div class="form-container p-5">
-
-        {{-- table --}}
+        @if (count($restaurants) >0)
+        table
         <table class="table w-75 m-auto text-center">
 
             {{-- thead --}}
@@ -44,6 +44,9 @@
 
         </table>
         {{-- /table --}}
+        @else
+            <p class="text-center p-0 m-0">Non hai ancora aggiunto un ristorante</p>
+        @endif
 
     </div>
 @endsection

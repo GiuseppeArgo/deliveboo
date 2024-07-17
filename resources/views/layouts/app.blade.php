@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Deliveboo') }}</title>
 
 
     <!-- Fonts -->
@@ -31,7 +31,7 @@
                         <span>BOO</span>
                         {{-- <img class="logo" src="{{ asset('storage/img/logo.png') }}" alt="logo"> --}}
                     </div>
-                    {{-- config('app.name', 'Laravel') --}}
+                    {{-- config('app.name', 'Deliveboo') --}}
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

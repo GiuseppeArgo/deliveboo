@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Deliveboo') }}</title>
 
     <!-- Fontawesome 6 cdn -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'
@@ -21,6 +21,7 @@
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
+
 </head>
 
 <body>
@@ -68,12 +69,14 @@
                     <i class="fa-solid fa-user"></i> Home
                   </a>
                 </li>
+                @if(isset($restaurants) && empty($restaurant))
                 <li>
                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                     href="{{ route('admin.restaurants.create') }}">
                     <i class="fa-solid fa-plus"></i> Agg. Ristorante
                   </a>
                 </li>
+                @endif
                 {{-- <li>
                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                     href="{{ route('admin.dishes.index') }}">

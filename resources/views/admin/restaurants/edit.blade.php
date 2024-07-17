@@ -63,9 +63,7 @@
                     {{-- /error message --}}
                 </label>
 
-                <textarea class="form-control
-            @error('description') is-invalid @enderror" type="text" id="description"
-                    name="description">{{ old('description', $restaurant->description) }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" type="text" id="description" name="description">{{ old('description', $restaurant->description) }}</textarea>
             </div>
             {{-- /description --}}
 
@@ -73,12 +71,20 @@
             {{-- Tipologia --}}
 
             <span>Tipologie * </span>
-            <span id="error-message" style="color:red; display:none;">
+            <span id="error-message" class="text-danger" style="display:none;">
                 Non puoi inserire piu di 2 tipologie.
             </span>
+            {{-- errors typologies --}}
+            @if ($errors->first('tipologies'))
+            <span id="error-message" class="text-danger" style="display:none;">
+                Non puoi inserire piu di 2 tipologie.
+            </span>
+            @else
             @error('tipologies')
                 <span class="text-danger"> {{ $errors->first('tipologies') }} </span>
             @enderror
+            @endif
+            {{-- errors typologies --}}
             <div class="container mb-4">
                 <div class="row" role="group" aria-label="Basic checkbox toggle button group">
 

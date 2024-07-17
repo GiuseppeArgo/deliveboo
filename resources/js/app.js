@@ -73,8 +73,7 @@ btnDeleteElem.addEventListener('click', function(e){
 });
 
 
-// controllo checkbox premuti non piu di 2
-
+// typologies max 2
 const checkboxes = document.querySelectorAll('input[type=checkbox][name="tipologies[]"]');
 const errorMessage = document.getElementById('error-message');
 checkboxes.forEach(function(checkbox) {
@@ -90,3 +89,44 @@ checkboxes.forEach(function(checkbox) {
         }
     });
 });
+// typologies max 2
+
+
+//control password lenght     // non funziona
+// document.addEventListener("DOMContentLoaded", function() {
+//     const passwordInput = document.getElementById('password');
+//     const confirmPasswordInput = document.getElementById('password-confirm');
+//     const submitButton = document.querySelector('.btn-register'); // Seleziona il pulsante di invio
+
+//     // Funzione per verificare se le password corrispondono
+//     function checkPasswordsMatch() {
+//         const password = passwordInput.value;
+//         const confirmPassword = confirmPasswordInput.value;
+
+//         if (password !== confirmPassword) {
+//             passwordInput.setCustomValidity('Le password non corrispondono.');
+//             confirmPasswordInput.setCustomValidity('Le password non corrispondono.');
+//         } else {
+//             passwordInput.setCustomValidity('');
+//             confirmPasswordInput.setCustomValidity('');
+//         }
+//     }
+
+//     // Aggiungi l'event listener al pulsante di invio
+//     submitButton.addEventListener('click', function(event) {
+//         event.preventDefault();
+//         console.log("submitButton");
+//         // Chiama la funzione di verifica delle password
+//         checkPasswordsMatch();
+
+//         // Se le password non corrispondono, impedisce l'invio del form
+//         if (passwordInput.validity.customError || confirmPasswordInput.validity.customError) {
+//             event.preventDefault(); // Impedisce l'invio del form
+//         }
+//     });
+// });
+//control password lenght
+
+
+
+
