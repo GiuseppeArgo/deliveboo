@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Dish;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class OrderController extends Controller
 {
@@ -15,7 +17,7 @@ class OrderController extends Controller
     public function index(Request $request)
     {
         $data = $request->all();
-        $restaurantId = $data['restaurant_id']; // L'ID del ristorante che stiamo cercando
+        $restaurantId = Auth::id(); // L'ID del ristorante che stiamo cercando
         $dishesForRestaurant = Dish::where('restaurant_id', $restaurantId)->pluck('id');
         // Passaggio 2: Trova gli ordini che includono quei piatti
         $orders = Order::whereHas('dishes', function ($query) use ($dishesForRestaurant) {

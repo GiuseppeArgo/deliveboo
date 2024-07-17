@@ -63,12 +63,26 @@
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                             </li>
+
+                            {{-- home --}}
                             <li>
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.restaurants.index') }}">
                                     <i class="fa-solid fa-user"></i> Home
                                 </a>
                             </li>
+                            {{-- /home --}}
+
+                            {{-- modifica anagrafica --}}
+                            {{-- <li>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                   href="{{ route('admin.restaurants.edit', ['restaurant' => 'ciao']) }}">>
+                                   <i class="fa-solid fa-pen"></i> Mod. Ristorante
+                                </a>
+                            </li> --}}
+                            {{-- /modifica anagrafica --}}
+
+                            {{-- agg ristorante --}}
                             @if (isset($restaurants) && empty($restaurant))
                                 <li>
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
@@ -77,16 +91,40 @@
                                     </a>
                                 </li>
                             @endif
-                            <li>
-                                {{-- Visualizza menu --}}
-                                <a class="nav-link text-white"
-                                    {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.dishes.index') }}">
-                                    <i class="fa-solid fa-list"></i> Visualizza Menu
+                            {{-- /agg ristorante --}}
 
+                            {{-- Visualizza menu --}}
+                            <li>
+                                <a class="nav-link text-white"
+                                    {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
+                                    href="{{ route('admin.dishes.index') }}">
+                                    <i class="fa-solid fa-utensils"></i> Menu
                                 </a>
-                                {{-- /Visualizza menu --}}
                             </li>
+                            {{-- /Visualizza menu --}}
+
+                            {{-- visualizza ordini --}}
+                            <li>
+                                <a class="nav-link text-white"
+                                    {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
+                                    href="{{ route('admin.orders.index') }}">
+                                    <i class="fa-solid fa-list-ul"></i> Ordini
+                                </a>
+                            </li>
+                            {{-- visualizza ordini --}}
+
+                            {{-- aggiungi piatto --}}
+                            <li>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.dishes.create') }}">
+                                    <i class="fa-solid fa-plus"></i> Agg. Piatto
+                                </a>
+                            </li>
+                            {{-- /aggiungi piatto --}}
+
+
+                            {{-- Btn orders --}}
+                            {{-- /Btn orders --}}
                             {{-- <li>
                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                     href="{{ route('admin.dishes.index') }}">
