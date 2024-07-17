@@ -26,10 +26,11 @@ class RestaurantController extends Controller
         $user_id = Auth::id();
         // Recupera la lista dei ristoranti
         if(Auth::user()->id != 1){
-            $restaurants = Restaurant::where('user_id',$user_id)->get();
+            $restaurants = Restaurant::with('types')->where('user_id',$user_id)->get();
         } else{
-            $restaurants = Restaurant::all();
+            $restaurants = Restaurant::with('types')->get();
         }
+        // dd($restaurants);
         // Passa la lista alla vista index
         return view('admin.restaurants.index', compact('restaurants'));
     }
@@ -39,6 +40,7 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        // fare controllo se l'utente ha gia un ristorante e riportarlo all index.
         $listTypes = Type::all();
         return view("admin.restaurants.create", compact("listTypes"));
     }

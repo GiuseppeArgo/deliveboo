@@ -92,7 +92,7 @@ checkboxes.forEach(function(checkbox) {
 // typologies max 2
 
 
-//control password lenght     // non funziona
+// control password lenght     // non funziona
 // document.addEventListener("DOMContentLoaded", function() {
 //     const passwordInput = document.getElementById('password');
 //     const confirmPasswordInput = document.getElementById('password-confirm');
@@ -125,7 +125,7 @@ checkboxes.forEach(function(checkbox) {
 //         }
 //     });
 // });
-//control password lenght
+// control password lenght
 
 
 

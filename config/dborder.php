@@ -19,7 +19,7 @@ return [
         'address' => 'Corso Italia 100',
         'data' => '2024-07-02 14:30:00',
         'total_price' => 75.00,
-        'status' => false
+        'status' => true
     ],
     [
         'name' => 'Anna',
@@ -39,7 +39,7 @@ return [
         'address' => 'Via Veneto 119',
         'data' => '2024-07-04 20:15:00',
         'total_price' => 80.00,
-        'status' => false
+        'status' => true
     ],
     [
         'name' => 'Maria',
@@ -59,7 +59,7 @@ return [
         'address' => 'Via Nazionale 132',
         'data' => '2024-07-06 11:30:00',
         'total_price' => 70.00,
-        'status' => false
+        'status' => true
     ],
     [
         'name' => 'Beatrice',
@@ -79,7 +79,7 @@ return [
         'address' => 'Via del Corso 200',
         'data' => '2024-07-08 15:00:00',
         'total_price' => 90.00,
-        'status' => false
+        'status' => true
     ],
     [
         'name' => 'Elisa',
@@ -99,6 +99,6 @@ return [
     //     'address' => 'Via del Teatro 150, 00185 Roma',
     //     'data' => '2024-07-10 18:00:00',
     //     'total_price' => 95.00,
-    //     'status' => false
+    //     'status' => true
     // ]
 ];

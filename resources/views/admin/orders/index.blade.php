@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="form-container w-100 p-5 mt-5">
+        @if(count($orders)>0)
+
         <h1 class="text-center mb-4">Lista Ordini</h1>
 
         {{-- table --}}
@@ -53,8 +55,8 @@
                     </td>
                     <td class="text-center">
                         <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}"
-                            class="btn btn-info">
-                            <i class="fa-solid fa-eye"></i>
+                            class="btn btn-primary">
+                            >
                         </a>
                     </td>
 
@@ -65,5 +67,8 @@
 
         </table>
         {{-- /table --}}
+        @else
+            <p class="fs-3 text-center"><strong>non ci sono ordini</strong></p>
+        @endif
     </div>
 @endsection

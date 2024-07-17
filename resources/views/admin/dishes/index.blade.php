@@ -39,7 +39,23 @@
 
                         {{-- change visibility --}}
                         <td>
-                            <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST"
+                            <div class="text-center d-flex gap-2 justify-content-center align-items-center">
+                                <span>
+                                    {{ $dish->visibility == 1 ? 'Visibile' : 'Non visibile' }}
+                                </span>
+                                <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST"
+                                    class="d-flex gap-1 justify-content-center">
+                                    @csrf
+                                    @method('PUT')
+                                    <input type="text" class="hide" name="restaurant_id" value="{{$restaurant_id}}">
+                                    <input type="text" class="hide" name="visibility" value="{{$dish->visibility}}">
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        <i class="fa-solid fa-rotate"></i>
+                                    </button>
+                                </form>
+                            </div>
+
+                            {{-- <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST"
                                 class="d-flex gap-1 justify-content-center">
                                 @csrf
                                 @method('PUT')
@@ -56,20 +72,20 @@
                                 <button type="submit" class="btn btn-outline-danger">
                                     <i class="fa-solid fa-rotate"></i>
                                 </button>
-                            </form>
+                            </form> --}}
                         </td>
                         {{-- /change visibility --}}
 
 
                         {{-- button --}}
                         <td class="d-flex gap-1 justify-content-center">
-                            <a class="text-black btn btn-info"
+                            <a class="btn btn-primary"
                                 href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
-                                <i class="fa-solid fa-eye"></i>
+                                <i class="fa-solid fa-eye"></i> Dettagli
                             </a>
-                            <a class="text-black btn btn-success"
+                            <a class="btn btn-primary"
                                 href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
-                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-pen"></i> Modifica
                             </a>
                         </td>
                         {{-- /button --}}

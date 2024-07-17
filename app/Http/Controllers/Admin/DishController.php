@@ -124,7 +124,13 @@ class DishController extends Controller
     public function toggle(Request $request, string $id)
     {
         $data = $request->all();
-        $restaurant_id =$data['restaurant_id'];
+        $restaurant_id = $data['restaurant_id'];
+        if($data['visibility'] == 1){
+            $data['visibility'] = 0;
+        } else {
+            $data['visibility'] = 1;
+        }
+        // dd($data);
         $dish = Dish::findOrFail($id);
         $dish->visibility = $data['visibility'];
         $dish->save();

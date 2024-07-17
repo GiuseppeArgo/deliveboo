@@ -1,52 +1,104 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-center mt-5 mb-5">Lista dei Ristoranti</h1>
+    @if (count($restaurants) > 0)
+        @foreach ($restaurants as $restaurant)
+            <div class="form-container p-5">
+                <div class="container d-flex align-itenms-center justify-content-center gap-2 mb-2">
+                    {{-- btn edit --}}
+                    <div>
+                        <a class="btn btn-primary"
+                            href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}">
+                            <i class="fa-solid fa-pen"></i> Mod. Ristorante
+                        </a>
+                    </div>
 
-    <div class="form-container p-5">
-        @if (count($restaurants) >0)
-        table
-        <table class="table w-75 m-auto text-center">
+                    {{-- Btn orders --}}
+                    <form action="{{ route('admin.orders.index') }}" method="GET">
+                        @csrf
+                        <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa-solid fa-list-ul"></i> Visualizza Ordini
+                        </button>
+                    </form>
+                    {{-- /Btn orders --}}
 
-            {{-- thead --}}
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Città</th>
-                    <th>Indirizzo</th>
-                    <th>Azioni</th>
-                </tr>
-            </thead>
-            {{-- /thead --}}
+                    {{-- btn Aggiungi piatto --}}
+                    <form action="{{ route('admin.dishes.create') }}" method="GET">
+                        <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
+                        <button type="submit" class="btn btn-primary mb-4">
+                            <i class="fa-solid fa-plus"></i> Aggiungi Piatto
+                        </button>
+                    </form>
+                    {{-- /btn Aggiungi piatto --}}
 
-            {{-- tbody --}}
-            <tbody>
-                @foreach ($restaurants as $restaurant)
-                    <tr>
-                        <td class="align-middle">{{ $restaurant->name }}</td>
-                        <td class="align-middle">{{ $restaurant->city }}</td>
-                        <td class="align-middle">{{ $restaurant->address }}</td>
-                        <td class="text-center">
-                            <a href="{{ route('admin.restaurants.show', ['restaurant' => $restaurant->slug]) }}"
-                                class="btn btn-info">
-                                <i class="fa-solid fa-eye"></i>
-                            </a>
-                            <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}"
-                                class="btn btn-success">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
-                        </td>
+                    {{-- btn modifica visibilità --}}
+                    <form action="{{ route('admin.dishes.index') }}" method="GET">
+                        <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
+                        <button type="submit" class="btn btn-primary mb-4">
+                            <i class="fa-solid fa-list"></i> Visualizza Menu
+                        </button>
+                    </form>
+                    {{-- /btn modifica visibilità --}}
 
-                    </tr>
-                @endforeach
-            </tbody>
-            {{-- /tbody --}}
+                </div>
+                <div class="row justify content-center align-items-center">
+                    <div class="col-lg-6 col-md-8 mb-3 text-lg-start ">
 
-        </table>
-        {{-- /table --}}
-        @else
-            <p class="text-center p-0 m-0">Non hai ancora aggiunto un ristorante</p>
-        @endif
+                        <div class="p-0 m-0">
+                            <span>
+                                <strong>Nome Ristorante: </strong>
+                            </span>
+                            <span class=" mt-5 mb-5">{{ $restaurant->name }}</span>
+                        </div>
+                        <div class="p-0 m-0">
+                            <span>
+                                <strong>Città: </strong>
+                            </span>
+                            <span class=" mt-5 mb-5">{{ $restaurant->city }}</span>
+                        </div>
+                        <div class="p-0 m-0">
+                            <span>
+                                <strong>Indirizzo: </strong>
+                            </span>
+                            <span class=" mt-5 mb-5">{{ $restaurant->address }}</span>
+                        </div>
+                        <div class="p-0 m-0">
+                            <span>
+                                @if (count($restaurant->types) === 1)
+                                    <strong>Tipologia: </strong>
+                                @else
+                                    <strong>Tipologie: </strong>
+                                @endif
+                            </span>
+                            <ul>
+                                @foreach ($restaurant->types as $type)
+                                    <li>
+                                        <span class=" mt-5 mb-5">{{ $type->name }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
 
-    </div>
+
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <img class="img-fluid" src="{{ asset('storage/' . $restaurant->image) }}" alt="img-restaurant">
+                    </div>
+                </div>
+
+                {{-- <a href="{{ route('admin.restaurants.show', ['restaurant' => $restaurant->slug]) }}" class="btn btn-info">
+                        <i class="fa-solid fa-eye"></i>
+                    </a>
+                    <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}"
+                        class="btn btn-success">
+                        <i class="fa-solid fa-pen"></i>
+                    </a> --}}
+            </div>
+        @endforeach
+        </div>
+    @else
+        <p class=" p-0 m-0">Non hai ancora aggiunto un ristorante</p>
+    @endif
+
 @endsection
