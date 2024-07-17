@@ -40,4 +40,14 @@ class RestaurantController extends Controller
 
         return response()->json($data);
     }
+
+    public function show(string $slug) {
+        
+        $showRestaurant = Restaurant::with('types')->where('slug', $slug)->first();
+        $data = [
+            'result' => $showRestaurant,
+        ];
+
+        return response()->json($data);
+    }
 }
