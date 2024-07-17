@@ -60,7 +60,7 @@ class RestaurantController extends Controller
         $newRestaurant->save();
         $newRestaurant->types()->sync($request->tipologies);
 
-        return redirect()->route("admin.restaurants.show", ["restaurant" => $newRestaurant->slug]);
+        return redirect()->route("admin.restaurants.index", ["restaurant" => $newRestaurant->slug]);
     }
 
     /**

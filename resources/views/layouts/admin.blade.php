@@ -55,29 +55,39 @@
                 <!-- Definire solo parte del menu di navigazione inizialmente per poi
         aggiungere i link necessari giorno per giorno
         -->
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
-          <div class="position-sticky pt-3">
-            <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                  href="{{ route('admin.dashboard') }}">
-                  <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
-                </li>
-                <li>
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                    href="{{ route('admin.restaurants.index') }}">
-                    <i class="fa-solid fa-user"></i> Home
-                  </a>
-                </li>
-                @if(isset($restaurants) && empty($restaurant))
-                <li>
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                    href="{{ route('admin.restaurants.create') }}">
-                    <i class="fa-solid fa-plus"></i> Agg. Ristorante
-                  </a>
-                </li>
-                @endif
-                {{-- <li>
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+                    <div class="position-sticky pt-3">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.dashboard') }}">
+                                    <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+                            </li>
+                            <li>
+                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.restaurants.index') }}">
+                                    <i class="fa-solid fa-user"></i> Home
+                                </a>
+                            </li>
+                            @if (isset($restaurants) && empty($restaurant))
+                                <li>
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.restaurants.create') }}">
+                                        <i class="fa-solid fa-plus"></i> Agg. Ristorante
+                                    </a>
+                                </li>
+                            @endif
+                            <li>
+                                {{-- Visualizza menu --}}
+                                <a class="nav-link text-white"
+                                    {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                    href="{{ route('admin.dishes.index') }}">
+                                    <i class="fa-solid fa-list"></i> Visualizza Menu
+
+                                </a>
+                                {{-- /Visualizza menu --}}
+                            </li>
+                            {{-- <li>
                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                     href="{{ route('admin.dishes.index') }}">
                     <i class="fa-solid fa-utensils"></i> Piatto
@@ -90,7 +100,7 @@
                   </a>
                 </li> --}}
 
-            </ul>
+                        </ul>
 
 
                     </div>

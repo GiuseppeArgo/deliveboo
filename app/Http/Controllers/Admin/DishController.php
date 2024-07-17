@@ -18,12 +18,10 @@ class DishController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
-    public function index(Request $request)
+     */             //Request $request
+    public function index()
     {
-        $data = $request->all();
-        $restaurant_id = $data['restaurant_id'];
-
+        $restaurant_id = Auth::id();
         // dd($restaurant_id);
         $dishesList = Dish::where('restaurant_id',$restaurant_id)->get();
         return view("admin.dishes.index", compact("dishesList",'restaurant_id'));
@@ -31,11 +29,13 @@ class DishController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     */
-    public function create(Request $request)
+     */                 //Request $request
+    public function create()
     {
-        $data = $request->all();
-        $restaurant_id = $data['restaurant_id'];
+        $restaurant_id = Auth::id();
+        // dd($restaurant_id);
+
+        // $restaurant_id = $data['restaurant_id'];
 
         return view("admin.dishes.create",compact('restaurant_id'));
     }
@@ -46,7 +46,7 @@ class DishController extends Controller
     public function store(StoreDishRequest $request, Dish $dish)
     {
         $data = $request->validated();
-        $id = $data['restaurant_id'];
+        $id = Auth::id();
         $name= Dish::where('name',$data['name'])->where('restaurant_id', $id)->get();
 
         $data['restaurant_id'] = $request->restaurant_id;
@@ -94,9 +94,9 @@ class DishController extends Controller
     public function update(UpdateDishRequest $request, Dish $dish)
     {
         $data = $request->validated();
-        $id = $data['restaurant_id'];
-        $name = Dish::where('restaurant_id', $id)->where('name',$data['name'])->firstOrFail();
-        if($name['name'] == $data['oldname']) {
+        $id = Auth::id();
+        $name = Dish::where('restaurant_id', $id)->where('name',$data['name'])->first();
+        if (!$name || $name->name == $data['oldname']) {
             $data['restaurant_id'] = $request->restaurant_id;
             $data['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
             if (isset($data['image'])) {

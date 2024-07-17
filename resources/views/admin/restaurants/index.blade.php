@@ -32,14 +32,14 @@
                     </form>
                     {{-- /btn Aggiungi piatto --}}
 
-                    {{-- btn modifica visibilità --}}
+                    {{-- Visualizza menu --}}
                     <form action="{{ route('admin.dishes.index') }}" method="GET">
                         <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
                         <button type="submit" class="btn btn-primary mb-4">
                             <i class="fa-solid fa-list"></i> Visualizza Menu
                         </button>
                     </form>
-                    {{-- /btn modifica visibilità --}}
+                    {{-- /Visualizza menu --}}
 
                 </div>
                 <div class="row justify content-center align-items-center">
@@ -98,7 +98,12 @@
         @endforeach
         </div>
     @else
-        <p class=" p-0 m-0">Non hai ancora aggiunto un ristorante</p>
+    <div class="form-container d-flex justify-content-center align-items-center">
+        <p class="fs-1 p-5">Non hai ancora aggiunto un ristorante</p>
+        <a class="btn btn-primary" href="{{ route('admin.restaurants.create') }}">
+            <i class="fa-solid fa-plus"></i> Nuovo ristorante
+        </a>
+    </div>
     @endif
 
 @endsection
