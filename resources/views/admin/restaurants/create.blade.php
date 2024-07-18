@@ -22,7 +22,8 @@
                     class="form-control
                  {{-- dynamic class with red border --}}
                 @error('name') is-invalid @enderror"
-                    {{-- /dynamic class with red border --}} id="name" aria-describedby="name_restaurant">
+                    {{-- /dynamic class with red border --}}
+                    id="name" aria-describedby="name_restaurant" required>
             </div>
 
             <div class="mb-3">
@@ -34,10 +35,9 @@
                     {{-- /error message --}}
                 </label>
                 <input value="{{ old('address') }}" type="text" name="address"
-                    class="form-control
-                @error('address') is-invalid @enderror
-                "
-                    id="address" aria-describedby="address">
+                    class="form-control @error('address') is-invalid @enderror"
+                    id="address" aria-describedby="address"
+                    required>
             </div>
 
             {{-- Descrizione --}}
@@ -49,7 +49,7 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <textarea for="description @error('description') is-invalid @enderror" class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3">{{ old('description') }}</textarea>
+                <textarea for="description @error('description') is-invalid @enderror" class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3" required>{{ old('description') }}</textarea>
             </div>
             {{-- Descrizione --}}
 
@@ -58,7 +58,7 @@
             {{-- errors typologies --}}
             @if (!$errors->first('tipologies'))
             <span id="error-message" class="text-danger" style="display:none;">
-                Non puoi inserire piu di 2 tipologie.
+                {{-- non puoi avere 0 tipologie e Non puoi inserire piu di 2 tipologie. --}}
             </span>
             @else
             @error('tipologies')
@@ -95,7 +95,7 @@
                     {{-- /error message --}}
                 </label>
                 <input value="{{ old('p_iva') }}" type="number" name="p_iva"
-                    class="form-control  @error('p_iva') is-invalid @enderror" id="p_iva" aria-describedby="p_iva">
+                    class="form-control  @error('p_iva') is-invalid @enderror" id="p_iva" aria-describedby="p_iva" required>
             </div>
             {{-- /Partita_Iva --}}
 
@@ -108,7 +108,7 @@
                 </label>
                 <input value="{{ old('image') }}" type="file" name="image"
                     class="form-control  @error('image') is-invalid
-                    @enderror" id="image" aria-describedby="image">
+                    @enderror" id="image" aria-describedby="image" required>
             </div>
             {{-- /Immagine --}}
 

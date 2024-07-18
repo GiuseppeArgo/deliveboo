@@ -22,7 +22,13 @@ form{
     height: min-content;
 }
 
-// input.is-invalid ~ .invalid-feedback {    non funziona
-//     display: block;
-//     color: red;
-// }
+
+//
+// menu hamburger
+#sidebarMenu.collapse.show {
+    height: min-content !important; /* o un'altezza specifica */
+}
+
+#sidebarMenu.collapse.hide {
+    height: auto !important; /* o un'altezza specifica */
+}

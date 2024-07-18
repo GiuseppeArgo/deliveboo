@@ -76,17 +76,22 @@ btnDeleteElem.addEventListener('click', function(e){
 // typologies max 2
 const checkboxes = document.querySelectorAll('input[type=checkbox][name="tipologies[]"]');
 const errorMessage = document.getElementById('error-message');
+
 checkboxes.forEach(function(checkbox) {
     checkbox.addEventListener('click', function(e) {
         var selectedCount = Array.from(document.querySelectorAll('input[name="tipologies[]"]:checked')).length;
         if (selectedCount > 2) {
-            e.preventDefault(); // Prevent further selection
+            e.preventDefault();
             errorMessage.style.display = 'inline-block';
-            // Deselect the extra checkbox
+            errorMessage.innerHTML = "puoi selezionare al massimo 2 tipologie";
             Array.from(checkboxes).slice(-1)[0].click();
-        }else {
-            errorMessage.style.display = 'none'; // Hide the error message if under the limit
+        }else if(selectedCount === 0) {
+            errorMessage.style.display = 'inline-block';
+            errorMessage.innerHTML = "devi selezionare almeno una tipologia";
+        } else{
+            errorMessage.style.display = 'none';
         }
+
     });
 });
 // typologies max 2
@@ -126,6 +131,7 @@ checkboxes.forEach(function(checkbox) {
 //     });
 // });
 // control password lenght
+
 
 
 

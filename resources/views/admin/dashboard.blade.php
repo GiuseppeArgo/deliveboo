@@ -14,12 +14,14 @@
                     {{-- /title --}}
 
                     {{-- hello user --}}
-                    <div class="card-body" role="alert">
+                    <div class="card-body text-center alert alert-primary d-flex justify-content-center align-items-center gap-2"
+                        role="alert">
                         <span class="fs-1">
-                            <strong>
-                                {{ __('Benvenuto') }} {{ $user->name }}
-                            </strong>
+                            {{ __('Benvenuto') }} {{ $user->name }}
                         </span>
+                        <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
+                            Pagina Ristorante
+                        </a>
                     </div>
                     {{-- /hello user --}}
 

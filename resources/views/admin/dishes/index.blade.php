@@ -29,75 +29,85 @@
     </div>
     {{-- /header --}}
 
-    @if(count($dishesList) > 0)
-    {{-- table --}}
-    <div class="container m-auto p-5">
-        <table class="table table-striped table-responsive text-center">
+    @if (count($dishesList) > 0)
+        {{-- table --}}
+        <div class="container w-75 m-auto p-5">
+            <table class="table table-striped table-responsive text-center">
 
-            {{-- thead --}}
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Prezzo</th>
-                    <th scope="col">Att/Disat</th>
-                    <th scope="col">Azioni</th>
-                </tr>
-            </thead>
-            {{-- /thead --}}
-
-            {{-- tbody --}}
-            <tbody>
-                @foreach ($dishesList as $dish)
+                {{-- thead --}}
+                <thead>
                     <tr>
-                        <td class="align-middle">{{ $dish->name }}</td>
-                        <td class="align-middle">{{ $dish->price }} €</td>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Prezzo</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Status on/off</th>
+                        <th scope="col">Dettagli</th>
+                        <th scope="col">Modifica</th>
+                    </tr>
+                </thead>
+                {{-- /thead --}}
 
-                        {{-- change visibility --}}
-                        <td>
-                            <div class="text-center d-flex gap-2 justify-content-center align-items-center">
-                                <span>
-                                    {{ $dish->visibility == 1 ? 'Visibile' : 'Non visibile' }}
-                                </span>
+                {{-- tbody --}}
+                <tbody>
+                    @foreach ($dishesList as $dish)
+                        <tr>
+                            <td class="align-middle">{{ $dish->name }}</td>
+                            <td class="align-middle">{{ $dish->price }} €</td>
+
+                            {{-- statuts --}}
+                            <td>
+                                <div>
+                                    <span>
+                                        {{ $dish->visibility == 1 ? 'Visibile' : 'Non visibile' }}
+                                    </span>
+                                </div>
+                            </td>
+                            {{-- /status --}}
+
+                            {{-- change status --}}
+                            <td>
                                 <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST"
                                     class="d-flex gap-1 justify-content-center">
                                     @csrf
                                     @method('PUT')
-                                    <input type="text" class="hide" name="restaurant_id" value="{{$restaurant_id}}">
-                                    <input type="text" class="hide" name="visibility" value="{{$dish->visibility}}">
-                                    <button type="submit" class="btn btn-outline-danger">
+                                    <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant_id }}">
+                                    <input type="text" class="hide" name="visibility" value="{{ $dish->visibility }}">
+                                    <button type="submit" class="btn btn-outline-primary">
                                         <i class="fa-solid fa-rotate"></i>
                                     </button>
                                 </form>
-                            </div>
-                        </td>
-                        {{-- /change visibility --}}
+                            </td>
+                            {{-- change status --}}
 
 
-                        {{-- button --}}
-                        <td class="d-flex gap-1 justify-content-center">
-                            <a class="btn btn-primary"
-                                href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
-                                <i class="fa-solid fa-eye"></i> Dettagli
-                            </a>
-                            <a class="btn btn-primary"
-                                href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
-                                <i class="fa-solid fa-pen"></i> Modifica
-                            </a>
-                        </td>
-                        {{-- /button --}}
 
-                    </tr>
-                @endforeach
-            </tbody>
-            {{-- /tbody --}}
+                            {{-- button --}}
+                            <td class="d-flex gap-1 justify-content-center">
+                                <a class="btn btn-outline-primary"
+                                    href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
+                                    <i class="fa-solid fa-eye"></i> Dettagli
+                                </a>
+                            </td>
+                            <td>
+                                <a class="btn btn-outline-primary"
+                                    href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
+                                    <i class="fa-solid fa-pen"></i> Modifica
+                                </a>
+                            </td>
+                            {{-- /button --}}
 
-        </table>
-        {{-- /table --}}
+                        </tr>
+                    @endforeach
+                </tbody>
+                {{-- /tbody --}}
 
-    </div>
+            </table>
+            {{-- /table --}}
+
+        </div>
     @else
-    <div class="form-container p-5 text-center">
-        <p class="fs-3"> Non ci sono ancora piatti nel tuo menu</p>
-    </div>
+        <div class="form-container p-5 text-center">
+            <p class="fs-3"> Non ci sono ancora piatti nel tuo menu</p>
+        </div>
     @endif
 @endsection

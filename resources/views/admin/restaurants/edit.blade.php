@@ -30,7 +30,7 @@
             {{-- dynamic class with red border --}}
                 @error('name') is-invalid @enderror"
                     {{-- /dynamic class with red border --}} type="text" id="name" name="name"
-                    value="{{ old('name', $restaurant->name) }}">
+                    value="{{ old('name', $restaurant->name) }}"  required>
             </div>
             {{-- /title --}}
 
@@ -50,7 +50,7 @@
             {{-- dynamic class with red border --}}
             @error('address') is-invalid @enderror"
                     {{-- /dynamic class with red border --}} type="text" id="address" name="address"
-                    value="{{ old('address', $restaurant->address) }}">
+                    value="{{ old('address', $restaurant->address) }}" required>
             </div>
             {{-- /address --}}
 
@@ -67,7 +67,7 @@
                 </label>
 
                 <textarea class="form-control @error('description') is-invalid @enderror" type="text" id="description"
-                    name="description">{{ old('description', $restaurant->description) }}</textarea>
+                    name="description" required>{{ old('description', $restaurant->description) }}</textarea>
             </div>
             {{-- /description --}}
 
@@ -81,7 +81,7 @@
             {{-- errors typologies --}}
             @if ($errors->first('tipologies'))
                 <span id="error-message" class="text-danger" style="display:none;">
-                    Non puoi inserire piu di 2 tipologie.
+
                 </span>
             @else
                 @error('tipologies')
@@ -97,10 +97,10 @@
 
                             @if (old('tipologies') !== null)
                                 <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
-                                    value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies')))>
+                                    value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies')))   data-msg-required="ciao">
                             @else
                                 <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
-                                    value="{{ $curType->id }}" @checked($restaurant->types->contains($curType))>
+                                    value="{{ $curType->id }}" @checked($restaurant->types->contains($curType))   data-msg-required="ciao">
                             @endif
 
                             <label class="btn btn-outline-secondary"
@@ -118,7 +118,7 @@
                 <label for="image"> Immagine *</label>
                 <input class="form-control
                 @error('image') is-invalid @enderror" type="file"
-                    name="image" id="image" {{-- dynamic class with red border --}} {{-- /dynamic class with red border --}}
+                    name="image" id="image"
                     value="{{ old('image', $restaurant->image) }}">
 
 

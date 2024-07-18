@@ -39,7 +39,7 @@
                             <td class="align-middle">{{ $order->data }}</td>
                             <td class="align-middle">{{ $order->total_price }}€</td>
                             <td class="text-center">
-                                <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}" class="btn btn-primary">
+                                <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}" class="btn btn-outline-primary">
                                     >
                                 </a>
                             </td>

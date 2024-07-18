@@ -33,6 +33,7 @@
                     class="form-control
                     {{-- dynamic class with red border --}}
                     @error('name') is-invalid @enderror"
+                    required
                     {{-- /dynamic class with red border --}} id="name" aria-describedby="name">
             </div>
             {{-- /Nome --}}
@@ -47,7 +48,7 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <textarea for="description @error('description') is-invalid @enderror" class="form-control   @error('description') is-invalid @enderror" name="description" id="description" rows="3">{{ old('description') }}</textarea>
+                <textarea for="description @error('description') is-invalid @enderror" class="form-control   @error('description') is-invalid @enderror" name="description" id="description" rows="3" required>{{ old('description') }}</textarea>
             </div>
             {{-- Descrizione --}}
 
@@ -60,16 +61,17 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <input value="{{ old('price') }}" type="number" name="price"
+                <input value="{{ old('price') }}" type="text" pattern="\d*(\.\d{1,2})?" name="price"
                     class="form-control
                     {{-- dynamic class with red border --}}
                     @error('price') is-invalid @enderror"
-                    {{-- /dynamic class with red border --}} id="price" aria-describedby="price">
+                    {{-- /dynamic class with red border --}} id="price" aria-describedby="price"
+                    required>
             </div>
             {{-- Prezzo --}}
 
             {{-- restaurant id che dovra passarci l'index adesso lo impostiamo noi a mano --}}
-            <input type="text" name="restaurant_id" class="hide" value="{{ $restaurant_id }}">
+            <input type="text" name="restaurant_id" class="hide" value="{{ $restaurant_id }}" required>
 
             {{-- Immagine --}}
             <div class="mb-3">
@@ -81,8 +83,7 @@
                     {{-- /error message --}}
                 </label>
                 <input value="{{ old('image') }}" type="file" name="image" id="image" aria-describedby="image"
-                    class="form-control
-                            @error('image') is-invalid @enderror">
+                    class="form-control @error('image') is-invalid @enderror" required>
             </div>
             {{-- /Immagine --}}
 
@@ -91,7 +92,8 @@
                 {{-- img preview --}}
                 <div class="container-preview m-auto mt-3">
                     <div class="mt-2 card-img">
-                        <img id="imagePreview" class="hide" src="" alt="new-image">
+                        <img id="imagePreview" class="hide mb-3" src="" alt="new-image">
+                        <a id="btnDelete" class="btn btn-danger col hide w-100">Rimuovi immagine</a>
                     </div>
                 </div>
                 {{-- /img preview --}}
@@ -99,8 +101,7 @@
                 {{-- button add and remove --}}
                 <div class="container">
                     <div class="row gap-2 mt-3 align-items-center justify-content-center">
-                        <button class="btn btn-success col" type="submit">Conferma</button>
-                        <a id="btnDelete" class="btn btn-danger col hide">Rimuovi</a>
+                        <button class="btn btn-success col" type="submit">Crea piatto</button>
                     </div>
                 </div>
                 {{-- /button add and remove --}}

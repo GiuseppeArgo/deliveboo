@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('image');
             $table->decimal('price',4,2);
             $table->boolean('visibility');
+            // ->default(true);    possiamo togliere il data visibility = 1 nello store e inserirlo di default qui
             $table->string('slug');
             // $table->unique(['restaurant_id','name']);
             $table->timestamps();

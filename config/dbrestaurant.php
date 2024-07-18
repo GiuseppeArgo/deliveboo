@@ -68,7 +68,7 @@ return [
         'name' => 'La Bottega del Gusto',
         'city' => 'Milano',
         'address' => 'Via della Spiga 8',
-        'image' => 'img/pizzerie/002.png',
+        'image' => 'img/pizzerie/003.png',
         'description' => 'Piatti regionali e prodotti locali.',
         'p_iva' => '12345678908'
     ],

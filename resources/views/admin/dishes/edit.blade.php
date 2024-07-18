@@ -23,7 +23,7 @@
                 @endif
                 {{-- gestiamo errore nome del piatto gia esistente --}}
             </label>
-            <input type="text" id="name" name="name" class="form-control" value="{{ old('name', $dish->name) }}">
+            <input type="text" id="name" name="name" class="form-control mb-3" value="{{ old('name', $dish->name) }}" required>
             {{-- /name --}}
 
             {{-- description  --}}
@@ -33,7 +33,7 @@
                     <span class="text-danger"> {{ $errors->first('description') }} </span>
                 @enderror
             </label>
-            <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{ old('description', $dish->description) }}</textarea>
+            <textarea name="description" id="description" class="form-control" cols="30" rows="10" required>{{ old('description', $dish->description) }}</textarea>
             {{-- /description  --}}
 
             {{-- price --}}
@@ -43,8 +43,8 @@
                     <span class="text-danger"> {{ $errors->first('price') }} </span>
                 @enderror
             </label>
-            <input type="number" id="price" name="price" class="form-control"
-                value="{{ old('price', $dish->price) }}">
+            <input type="text" pattern="\d*(\.\d{1,2})?" name="price"
+                value="{{ old('price', $dish->price) }}" required>
             {{-- /price --}}
 
             {{-- visibility --}}
@@ -84,14 +84,15 @@
                 <div class="mt-2 card-img">
                     <img id="oldImg" src="{{ asset('storage/' . $dish->image) }}" alt="">
                     <img id="imagePreview" class="hide" src="" alt="new-image">
+                    <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3">Rimuovi immagine</a>
                 </div>
                 {{-- /old and new img --}}
 
                 {{-- button add and remove --}}
                 <div class="container mt-3 mb-3">
                     <div class="row gap-2 justify-content-center">
-                        <button class="btn btn-success p-0 col-5" type="submit">Aggiorna</button>
-                        <a id="btnDelete" class="btn btn-danger col-5 hide">Rimuovi</a>
+                        <button class="btn btn-success col-5 w-100" type="submit">Aggiorna dettagli</button>
+
                     </div>
                 </div>
                 {{-- /button add and remove --}}
