@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('image');
             $table->text('description');
-            $table->string('p_iva')->unique();
+            $table->char('p_iva', 11)->unique();
             $table->string('slug');
             $table->timestamps();
         });

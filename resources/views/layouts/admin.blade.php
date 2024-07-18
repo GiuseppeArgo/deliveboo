@@ -83,7 +83,7 @@
                             {{-- /modifica anagrafica --}}
 
                             {{-- agg ristorante --}}
-                            @if (isset($restaurants) && empty($restaurant))
+                            @if (!isset($restaurant) || $restaurant->isEmpty())
                                 <li>
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.restaurants.create') }}">

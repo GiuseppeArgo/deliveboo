@@ -24,15 +24,24 @@ class RestaurantController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        // Recupera la lista dei ristoranti
+        // Preparazione della query per ottenere i ristoranti
+        $query = Restaurant::with('types');
+
+        // Applica la condizione basata sull'ID utente
         if(Auth::user()->id != 1){
-            $restaurants = Restaurant::with('types')->where('user_id',$user_id)->get();
-        } else{
-            $restaurants = Restaurant::with('types')->get();
+            $query->where('user_id', $user_id);
         }
-        // dd($restaurants);
+
+        // Esegui la query e ottieni i risultati
+        $restaurant = $query->get();
+
         // Passa la lista alla vista index
-        return view('admin.restaurants.index', compact('restaurants'));
+
+        if ($restaurant->isEmpty()) {
+            $restaurant = collect([]);
+        }
+        // dd($restaurant);
+        return view('admin.restaurants.index', compact('restaurant'));
     }
 
     /**
@@ -104,7 +113,16 @@ class RestaurantController extends Controller
             }
             $restaurant->update($data);
             $restaurant->types()->sync($request->tipologies);
-            return view('admin.restaurants.show', compact('restaurant'));
+            $restaurant->load('types');
+
+            $user_id = Auth::id();
+            if(Auth::user()->id != 1){
+                $restaurant = Restaurant::with('types')->where('user_id',$user_id)->get();
+            } else{
+                $restaurant = Restaurant::with('types')->get();
+            }
+            // dd($restaurant);
+            return view('admin.restaurants.index', compact('restaurant'));
     }
 
     /**

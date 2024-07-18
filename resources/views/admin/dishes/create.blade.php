@@ -47,11 +47,7 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <textarea for="description @error('description') is-invalid @enderror"
-                    class="form-control   @error('description') is-invalid @enderror" name="description" id="description"
-                    rows="3">
-                            {{ old('description') }}
-                </textarea>
+                <textarea for="description @error('description') is-invalid @enderror" class="form-control   @error('description') is-invalid @enderror" name="description" id="description" rows="3">{{ old('description') }}</textarea>
             </div>
             {{-- Descrizione --}}
 

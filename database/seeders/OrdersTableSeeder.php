@@ -26,7 +26,6 @@ class OrdersTableSeeder extends Seeder
             $newOrder->address = $order['address'];
             $newOrder->data = $order['data'];
             $newOrder->total_price = $order['total_price'];
-            $newOrder->status = $order['status'];
             $newOrder->save();
 
             for ($i = 0; $i < rand(1, 3); $i++) {

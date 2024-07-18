@@ -9,7 +9,6 @@ return [
         'address' => 'Via Roma 1',
         'data' => '2024-07-01 12:00:00',
         'total_price' => 50.00,
-        'status' => true
     ],
     [
         'name' => 'Luigi',
@@ -19,7 +18,6 @@ return [
         'address' => 'Corso Italia 100',
         'data' => '2024-07-02 14:30:00',
         'total_price' => 75.00,
-        'status' => true
     ],
     [
         'name' => 'Anna',
@@ -29,7 +27,6 @@ return [
         'address' => 'Piazza San Marco 1',
         'data' => '2024-07-03 18:00:00',
         'total_price' => 60.00,
-        'status' => true
     ],
     [
         'name' => 'Paolo',
@@ -39,7 +36,6 @@ return [
         'address' => 'Via Veneto 119',
         'data' => '2024-07-04 20:15:00',
         'total_price' => 80.00,
-        'status' => true
     ],
     [
         'name' => 'Maria',
@@ -49,7 +45,6 @@ return [
         'address' => 'Lungotevere dei Cadorna 34',
         'data' => '2024-07-05 09:00:00',
         'total_price' => 55.00,
-        'status' => true
     ],
     [
         'name' => 'Alessandro',
@@ -59,7 +54,6 @@ return [
         'address' => 'Via Nazionale 132',
         'data' => '2024-07-06 11:30:00',
         'total_price' => 70.00,
-        'status' => true
     ],
     [
         'name' => 'Beatrice',
@@ -69,7 +63,6 @@ return [
         'address' => 'Piazza del Popolo 15',
         'data' => '2024-07-07 13:45:00',
         'total_price' => 65.00,
-        'status' => true
     ],
     [
         'name' => 'Carlo',
@@ -79,7 +72,6 @@ return [
         'address' => 'Via del Corso 200',
         'data' => '2024-07-08 15:00:00',
         'total_price' => 90.00,
-        'status' => true
     ],
     [
         'name' => 'Elisa',
@@ -89,7 +81,6 @@ return [
         'address' => 'Piazza San Giovanni 1',
         'data' => '2024-07-09 16:30:00',
         'total_price' => 85.00,
-        'status' => true
     ],
     // [
     //     'name' => 'Fabio',
@@ -99,6 +90,5 @@ return [
     //     'address' => 'Via del Teatro 150, 00185 Roma',
     //     'data' => '2024-07-10 18:00:00',
     //     'total_price' => 95.00,
-    //     'status' => true
     // ]
 ];
