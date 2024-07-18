@@ -121,25 +121,7 @@
                                 </a>
                             </li>
                             {{-- /aggiungi piatto --}}
-
-
-                            {{-- Btn orders --}}
-                            {{-- /Btn orders --}}
-                            {{-- <li>
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                    href="{{ route('admin.dishes.index') }}">
-                    <i class="fa-solid fa-utensils"></i> Piatto
-                  </a>
-                </li>
-                <li>
-                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                    href="{{ route('admin.dishes.create') }}">
-                    <i class="fa-solid fa-plus"></i> Agg. Piatto
-                  </a>
-                </li> --}}
-
                         </ul>
-
 
                     </div>
                 </nav>
