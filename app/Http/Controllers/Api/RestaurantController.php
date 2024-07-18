@@ -43,7 +43,7 @@ class RestaurantController extends Controller
 
     public function show(string $slug) {
         
-        $showRestaurant = Restaurant::with('types')->where('slug', $slug)->first();
+        $showRestaurant = Restaurant::with(['types','dishes'])->where('slug', $slug)->first();
         $data = [
             'result' => $showRestaurant,
         ];
