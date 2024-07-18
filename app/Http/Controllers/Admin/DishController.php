@@ -49,7 +49,8 @@ class DishController extends Controller
         $id = Auth::id();
         $name= Dish::where('name',$data['name'])->where('restaurant_id', $id)->get();
         $data['restaurant_id'] = $request->restaurant_id;
-        
+        //se price è scritto 12.5 deve diventare 12.50 se price è scritto 10 deve diventare 10.00
+        $data['price'] = number_format($data['price'], 2, '.', '');
         $data['visibility'] = 1;
         $data['image'] = Storage::put('img', $data['image']);
         $newDish = new Dish();
@@ -105,6 +106,9 @@ class DishController extends Controller
                 }
                 $data['image'] = Storage::put('img', $data['image']);
             }
+            //formatting price
+            $data['price'] = number_format($data['price'], 2, '.', '');
+            
             $dish->update($data);
             return view('admin.dishes.show', compact('dish'));
         } else{

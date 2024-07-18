@@ -103,8 +103,8 @@
         @endforeach
         </div>
     @else
-        <div class="form-container d-flex justify-content-center align-items-center">
-            <p class="fs-3 p-5">Non hai ancora aggiunto un ristorante</p>
+        <div class="form-container d-flex justify-content-center align-items-center p-5 gap-5">
+            <p class="fs-3">Nessun ristorante aggiunto. Aggiungine uno</p>
             <a class="btn btn-primary" href="{{ route('admin.restaurants.create') }}">
                 <i class="fa-solid fa-plus"></i> Nuovo ristorante
             </a>

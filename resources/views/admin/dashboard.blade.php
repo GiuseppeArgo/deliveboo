@@ -14,7 +14,7 @@
                     {{-- /title --}}
 
                     {{-- hello user --}}
-                    <div class="card-body text-center alert alert-primary d-flex justify-content-center align-items-center gap-2"
+                    <div class="card-body border-0 rounded-0 text-center alert alert-primary d-flex justify-content-center align-items-center gap-2"
                         role="alert">
                         <span class="fs-1">
                             {{ __('Benvenuto') }} {{ $user->name }}

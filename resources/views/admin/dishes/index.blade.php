@@ -55,7 +55,7 @@
                             <td class="align-middle">{{ $dish->price }} €</td>
 
                             {{-- statuts --}}
-                            <td>
+                            <td class="align-middle">
                                 <div>
                                     <span>
                                         {{ $dish->visibility == 1 ? 'Visibile' : 'Non visibile' }}
