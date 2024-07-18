@@ -83,14 +83,14 @@
                             {{-- /modifica anagrafica --}}
 
                             {{-- agg ristorante --}}
-                            @if (!isset($restaurant) || $restaurant->isEmpty())
+                            {{-- @if (!isset($restaurant) || $restaurant->isEmpty())
                                 <li>
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.restaurants.create') }}">
                                         <i class="fa-solid fa-plus"></i> Agg. Ristorante
                                     </a>
                                 </li>
-                            @endif
+                            @endif --}}
                             {{-- /agg ristorante --}}
 
                             {{-- Visualizza menu --}}

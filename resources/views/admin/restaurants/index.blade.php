@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+
 @if ($restaurant->isNotEmpty())
 
         @foreach ($restaurant as $curRestaurant)

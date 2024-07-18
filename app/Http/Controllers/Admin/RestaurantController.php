@@ -24,23 +24,21 @@ class RestaurantController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        // Preparazione della query per ottenere i ristoranti
+
         $query = Restaurant::with('types');
 
-        // Applica la condizione basata sull'ID utente
+
         if(Auth::user()->id != 1){
             $query->where('user_id', $user_id);
         }
 
-        // Esegui la query e ottieni i risultati
         $restaurant = $query->get();
 
-        // Passa la lista alla vista index
 
         if ($restaurant->isEmpty()) {
             $restaurant = collect([]);
         }
-        // dd($restaurant);
+
         return view('admin.restaurants.index', compact('restaurant'));
     }
 
@@ -79,7 +77,7 @@ class RestaurantController extends Controller
     {
 
         // fare easyloading della lista dei piatti
-        return view("admin.restaurants.show", compact("restaurant"));
+        return view("admin.restaurants.index", compact("restaurant"));
     }
 
     /**

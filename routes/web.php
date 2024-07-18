@@ -28,13 +28,18 @@ Route::middleware('auth')
     ->name('admin.')
     ->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('restaurants', RestaurantController::class)->parameters(['restaurants' => 'restaurant:slug']);
+        Route::resource('restaurants', RestaurantController::class)->except(['show'])->parameters(['restaurants' => 'restaurant:slug']);
         Route::resource('dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
 
         // Route::put('/dishes/{id}/toggle', 'DishController@toggle')->name('admin.dishes.toggle');
         Route::put('/dishes/{id}/toggle', [DishController::class, 'toggle'])->name('dishes.toggle');
 
         Route::resource('orders', OrderController::class);
+
+        //  pagina not found per rotte che non esistono.
+        Route::fallback(function () {
+            abort(404, 'Pagina non trovata');
+        });
     });
 
 require __DIR__ . '/auth.php';

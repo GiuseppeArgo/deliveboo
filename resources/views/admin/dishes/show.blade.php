@@ -15,11 +15,17 @@
     @endif
     {{-- /success message --}}
 
+    {{-- container --}}
     <div class="form-container container p-5">
         <div class="row">
+
+            {{-- img --}}
             <div class="col-lg-6">
                     <img src="{{ asset('storage/' . $dish->image) }}" alt="">
             </div>
+            {{-- /img --}}
+
+            {{-- details dish --}}
             <div class="col-lg-6 d-flex flex-column justify-content-center">
                 <dt>
                     Nome del Piatto:
@@ -41,9 +47,11 @@
                 </dd>
 
             </div>
+            {{-- /details dish --}}
+
         </div>
 
-
-
     </div>
+    {{-- /container --}}
+    
 @endsection

@@ -48,7 +48,6 @@ class DishController extends Controller
         $data = $request->validated();
         $id = Auth::id();
         $name= Dish::where('name',$data['name'])->where('restaurant_id', $id)->get();
-
         $data['restaurant_id'] = $request->restaurant_id;
         $data['visibility'] = 1;
         $data['image'] = Storage::put('img', $data['image']);

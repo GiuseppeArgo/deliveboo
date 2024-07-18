@@ -29,6 +29,7 @@
     </div>
     {{-- /header --}}
 
+    @if(count($dishesList) > 0)
     {{-- table --}}
     <div class="container m-auto p-5">
         <table class="table table-striped table-responsive text-center">
@@ -68,25 +69,6 @@
                                     </button>
                                 </form>
                             </div>
-
-                            {{-- <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}" method="POST"
-                                class="d-flex gap-1 justify-content-center">
-                                @csrf
-                                @method('PUT')
-                                <select name="visibility" id="visibility" class="form-control w-50">
-
-                                    <option @selected($dish->visibility === 1) value="1">
-                                        Attivo
-                                    </option>
-                                    <option @selected($dish->visibility === 0) value="0">
-                                        Non Attivo
-                                    </option>
-                                </select>
-                                <input type="text" class="hide" name="restaurant_id" value="1">
-                                <button type="submit" class="btn btn-outline-danger">
-                                    <i class="fa-solid fa-rotate"></i>
-                                </button>
-                            </form> --}}
                         </td>
                         {{-- /change visibility --}}
 
@@ -113,4 +95,9 @@
         {{-- /table --}}
 
     </div>
+    @else
+    <div class="form-container p-5 text-center">
+        <p class="fs-3"> Non ci sono ancora piatti nel tuo menu</p>
+    </div>
+    @endif
 @endsection
