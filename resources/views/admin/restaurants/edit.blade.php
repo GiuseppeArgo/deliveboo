@@ -30,7 +30,7 @@
             {{-- dynamic class with red border --}}
                 @error('name') is-invalid @enderror"
                     {{-- /dynamic class with red border --}} type="text" id="name" name="name"
-                    value="{{ old('name', $restaurant->name) }}"  required>
+                    value="{{ old('name', $restaurant->name) }}" placeholder="es. Bar Portici" required>
             </div>
             {{-- /title --}}
 
@@ -50,7 +50,7 @@
             {{-- dynamic class with red border --}}
             @error('address') is-invalid @enderror"
                     {{-- /dynamic class with red border --}} type="text" id="address" name="address"
-                    value="{{ old('address', $restaurant->address) }}" required>
+                    value="{{ old('address', $restaurant->address) }}" placeholder="es. Via Ugo Foscolo" required>
             </div>
             {{-- /address --}}
 
@@ -67,7 +67,7 @@
                 </label>
 
                 <textarea class="form-control @error('description') is-invalid @enderror" type="text" id="description"
-                    name="description" required>{{ old('description', $restaurant->description) }}</textarea>
+                    name="description" required placeholder="es. Situati vicino alle stalle dei cavalli di San Siro">{{ old('description', $restaurant->description) }}</textarea>
             </div>
             {{-- /description --}}
 

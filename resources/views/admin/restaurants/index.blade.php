@@ -2,8 +2,15 @@
 
 @section('content')
 
-@if ($restaurant->isNotEmpty())
+    @if ($restaurant->isNotEmpty())
 
+    <div class="mt-5">
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+    </div>
         @foreach ($restaurant as $curRestaurant)
             <div class="form-container p-5">
                 <div class="container d-flex align-itenms-center justify-content-center gap-2 mb-2">

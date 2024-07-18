@@ -32,7 +32,7 @@
                 <input value="{{ old('name') }}" type="text" name="name"
                     class="form-control
                     {{-- dynamic class with red border --}}
-                    @error('name') is-invalid @enderror"
+                    @error('name') is-invalid @enderror" placeholder="es. Lasagna"
                     required
                     {{-- /dynamic class with red border --}} id="name" aria-describedby="name">
             </div>
@@ -48,7 +48,7 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <textarea for="description @error('description') is-invalid @enderror" class="form-control   @error('description') is-invalid @enderror" name="description" id="description" rows="3" required>{{ old('description') }}</textarea>
+                <textarea for="description @error('description') is-invalid @enderror" class="form-control   @error('description') is-invalid @enderror" name="description" id="description" rows="3" placeholder="es. breve descrizione e ingredienti..." required>{{ old('description') }}</textarea>
             </div>
             {{-- Descrizione --}}
 
@@ -64,7 +64,7 @@
                 <input value="{{ old('price') }}" type="text" pattern="\d*(\.\d{1,2})?" name="price"
                     class="form-control
                     {{-- dynamic class with red border --}}
-                    @error('price') is-invalid @enderror"
+                    @error('price') is-invalid @enderror" placeholder="es. 10.00"
                     {{-- /dynamic class with red border --}} id="price" aria-describedby="price"
                     required>
             </div>

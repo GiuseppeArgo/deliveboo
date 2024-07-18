@@ -4,7 +4,7 @@
     {{-- header --}}
     <div class="d-flex gap-2 justify-content-center align-items-center mt-5">
         <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
-            <h1 class="text-center p-0">Piatti Del menu ( {{ count($dishesList) }} )</h1>
+            <h1 class="text-center p-0">Menu del ristorante ( {{ count($dishesList) }} Piatti )</h1>
 
             {{-- btn --}}
             <div class="d-flex gap-2">
@@ -31,7 +31,7 @@
 
     @if (count($dishesList) > 0)
         {{-- table --}}
-        <div class="container w-75 m-auto p-5">
+        <div class="container w-75 m-auto">
             <table class="table table-striped table-responsive text-center">
 
                 {{-- thead --}}
@@ -58,7 +58,7 @@
                             <td class="align-middle">
                                 <div>
                                     <span>
-                                        {{ $dish->visibility == 1 ? 'Visibile' : 'Non visibile' }}
+                                        {{ $dish->visibility == 1 ? 'Disponibile' : 'Non disponibile' }}
                                     </span>
                                 </div>
                             </td>

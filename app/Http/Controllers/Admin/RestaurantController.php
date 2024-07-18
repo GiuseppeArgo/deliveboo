@@ -39,6 +39,8 @@ class RestaurantController extends Controller
             $restaurant = collect([]);
         }
 
+        $userHasRestaurant = Restaurant::where('user_id', $user_id)->exists();
+        
         return view('admin.restaurants.index', compact('restaurant'));
     }
 
@@ -47,6 +49,16 @@ class RestaurantController extends Controller
      */
     public function create()
     {
+        // Ottieni l'ID dell'utente autenticato
+        $userId = Auth::id();
+
+        // Controlla se l'utente ha già un ristorante
+        $existingRestaurant = Restaurant::where('user_id', $userId)->first();
+
+        // Se l'utente ha già un ristorante, reindirizzalo alla pagina index con un messaggio
+        if ($existingRestaurant) {
+        return redirect()->route('admin.restaurants.index')->with('error', 'Hai già un ristorante registrato.');
+        }
         // fare controllo se l'utente ha gia un ristorante e riportarlo all index.
         $listTypes = Type::all();
         return view("admin.restaurants.create", compact("listTypes"));

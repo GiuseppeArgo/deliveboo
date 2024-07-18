@@ -21,7 +21,7 @@
                 <input value="{{ old('name') }}" type="text" name="name"
                     class="form-control
                  {{-- dynamic class with red border --}}
-                @error('name') is-invalid @enderror"
+                @error('name') is-invalid @enderror" placeholder="es. Da Mario"
                     {{-- /dynamic class with red border --}}
                     id="name" aria-describedby="name_restaurant" required>
             </div>
@@ -37,7 +37,7 @@
                 <input value="{{ old('address') }}" type="text" name="address"
                     class="form-control @error('address') is-invalid @enderror"
                     id="address" aria-describedby="address"
-                    required>
+                    required placeholder="es. Via Delle Alpi 15">
             </div>
 
             {{-- Descrizione --}}
@@ -49,7 +49,7 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <textarea for="description @error('description') is-invalid @enderror" class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3" required>{{ old('description') }}</textarea>
+                <textarea for="description @error('description') is-invalid @enderror" class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3" required placeholder="es. ristorante accogliente in una corte del 700">{{ old('description') }}</textarea>
             </div>
             {{-- Descrizione --}}
 
@@ -94,7 +94,7 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <input value="{{ old('p_iva') }}" type="number" name="p_iva"
+                <input value="{{ old('p_iva') }}" type="number" name="p_iva" placeholder="es. 12345678901 -> 11 numeri"
                     class="form-control  @error('p_iva') is-invalid @enderror" id="p_iva" aria-describedby="p_iva" required>
             </div>
             {{-- /Partita_Iva --}}

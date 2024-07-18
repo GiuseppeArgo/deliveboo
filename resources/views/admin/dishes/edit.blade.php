@@ -23,7 +23,8 @@
                 @endif
                 {{-- gestiamo errore nome del piatto gia esistente --}}
             </label>
-            <input type="text" id="name" name="name" class="form-control mb-3" value="{{ old('name', $dish->name) }}" required>
+            <input type="text" id="name" name="name" class="form-control mb-3"
+                value="{{ old('name', $dish->name) }}" placeholder="es. Carbonara" required>
             {{-- /name --}}
 
             {{-- description  --}}
@@ -33,7 +34,8 @@
                     <span class="text-danger"> {{ $errors->first('description') }} </span>
                 @enderror
             </label>
-            <textarea name="description" id="description" class="form-control" cols="30" rows="10" required>{{ old('description', $dish->description) }}</textarea>
+            <textarea name="description" id="description" class="form-control" cols="30" rows="10"
+                placeholder="es. breve descrizione e ingredienti..." required>{{ old('description', $dish->description) }}</textarea>
             {{-- /description  --}}
 
             {{-- price --}}
@@ -43,24 +45,48 @@
                     <span class="text-danger"> {{ $errors->first('price') }} </span>
                 @enderror
             </label>
-            <input type="text" pattern="\d*(\.\d{1,2})?" name="price"
-                value="{{ old('price', $dish->price) }}" required>
+            <input class="form-control" type="text" pattern="\d*(\.\d{1,2})?" name="price"
+                value="{{ old('price', $dish->price) }}" placeholder="es. 10.00" required>
             {{-- /price --}}
 
             {{-- visibility --}}
-            <label for="visibility">
+            {{-- <label for="visibility">
                 <strong>Disponibilità:</strong>
                 <span class="text-danger"> {{ $errors->first('visibility') }} </span>
             </label>
-            <select name="visibility" id="visibility" class="form-control">
+            <select name="visibility" id="visibility" class="">
                 <option @selected($dish->visibility === 1) value="1">
                     Attivo
                 </option>
                 <option @selected($dish->visibility === 0) value="0">
                     Non Attivo
                 </option>
-            </select>
+            </select> --}}
             {{-- /visibility --}}
+
+            {{-- visibility --}}
+            {{-- <label for="visibility">
+                <strong>Disponibilità:</strong>
+                <span class="text-danger">{{ $errors->first('visibility') }}</span>
+            </label>
+            <div class="form-check">
+                <input type="radio" name="visibility" id="active" value="1"
+                    {{ $dish->visibility == 1 ? 'checked' : '' }}>
+                <label for="active">Attivo</label>
+            </div>
+            <div class="form-check">
+                <input type="radio" name="visibility" id="inactive" value="0"
+                    {{ $dish->visibility == 0 ? 'checked' : '' }}>
+                <label for="inactive">Non Attivo</label>
+            </div> --}}
+            {{-- /visibility --}}
+
+            <div class="btn-group" role="group" aria-label="Disponibilità">
+                <input type="radio" name="visibility" id="active" value="1" class="btn-check" {{ $dish->visibility == 1 ? 'checked' : '' }}>
+                <label class="btn btn-outline-primary" for="active">Disponibile</label>
+                <input type="radio" name="visibility" id="inactive" value="0" class="btn-check" {{ $dish->visibility == 0 ? 'checked' : '' }}>
+                <label class="btn btn-outline-primary" for="inactive">Non disponibile</label>
+            </div>
 
             {{-- file image --}}
 
