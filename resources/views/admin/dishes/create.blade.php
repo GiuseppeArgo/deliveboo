@@ -7,8 +7,9 @@
             <div>
                 <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
                     <i class="fa-solid fa-circle-arrow-left"></i>
-                    Torna indietro</a>
+                    Torna al menu</a>
                 <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
+                    <i class="fa-solid fa-circle-arrow-left"></i>
                     Torna alla home
                 </a>
             </div>
