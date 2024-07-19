@@ -37,7 +37,7 @@
                 @endif
                 {{-- gestiamo errore nome del piatto gia esistente --}}
             </label>
-            <input type="text" id="name" name="name" class="form-control mb-3"
+            <input type="text" id="name" name="name" class="form-control mb-3" minlength="3" maxlength="20"
                 value="{{ old('name', $dish->name) }}" placeholder="es. Carbonara" required>
             {{-- /name --}}
 
@@ -48,7 +48,7 @@
                     <span class="text-danger"> {{ $errors->first('description') }} </span>
                 @enderror
             </label>
-            <textarea name="description" id="description" class="form-control" cols="30" rows="10"
+            <textarea name="description" id="description" class="form-control" minlength="5" maxlength="200" cols="30" rows="10"
                 placeholder="es. breve descrizione e ingredienti..." required>{{ old('description', $dish->description) }}</textarea>
             {{-- /description  --}}
 
@@ -59,42 +59,13 @@
                     <span class="text-danger"> {{ $errors->first('price') }} </span>
                 @enderror
             </label>
-            <input class="form-control" type="text" pattern="\d*(\.\d{1,2})?" name="price"
-                value="{{ old('price', $dish->price) }}" placeholder="es. 10.00" required>
+            <input value="{{ old('price') }}" type="number" name="price"
+                       class="form-control @error('price') is-invalid @enderror"
+                       placeholder="es. 10.00" id="price" aria-describedby="price" required
+                       min="3" max="30" step="0.01">
             {{-- /price --}}
 
             {{-- visibility --}}
-            {{-- <label for="visibility">
-                <strong>Disponibilità:</strong>
-                <span class="text-danger"> {{ $errors->first('visibility') }} </span>
-            </label>
-            <select name="visibility" id="visibility" class="">
-                <option @selected($dish->visibility === 1) value="1">
-                    Attivo
-                </option>
-                <option @selected($dish->visibility === 0) value="0">
-                    Non Attivo
-                </option>
-            </select> --}}
-            {{-- /visibility --}}
-
-            {{-- visibility --}}
-            {{-- <label for="visibility">
-                <strong>Disponibilità:</strong>
-                <span class="text-danger">{{ $errors->first('visibility') }}</span>
-            </label>
-            <div class="form-check">
-                <input type="radio" name="visibility" id="active" value="1"
-                    {{ $dish->visibility == 1 ? 'checked' : '' }}>
-                <label for="active">Attivo</label>
-            </div>
-            <div class="form-check">
-                <input type="radio" name="visibility" id="inactive" value="0"
-                    {{ $dish->visibility == 0 ? 'checked' : '' }}>
-                <label for="inactive">Non Attivo</label>
-            </div> --}}
-            {{-- /visibility --}}
-
             <div class="btn-group" role="group" aria-label="Disponibilità">
                 <input type="radio" name="visibility" id="active" value="1" class="btn-check"
                     {{ $dish->visibility == 1 ? 'checked' : '' }}>
@@ -109,6 +80,7 @@
             <label for="image">
                 <strong>Immagine:</strong>
             </label>
+            <span id="errorImage" class="text-danger"></span>
             <input class="form-control" type="file" name="image" id="image" {{-- dynamic class with red border --}}
                 @error('image') is-invalid @enderror {{-- /dynamic class with red border --}} value="{{ old('image', $dish->image) }}">
 
@@ -147,4 +119,59 @@
         </form>
 
     </div>
+
+    <script>
+        function validateImage(file) {
+            return new Promise((resolve, reject) => {
+                // Verifica dell'estensione del file
+                const allowedExtensions = ['jpg', 'jpeg', 'png'];
+                const extension = file.name.split('.').pop().toLowerCase();
+                if (!allowedExtensions.includes(extension)) {
+                    alert('Tipo di file non valido.');
+                    return resolve(false);
+                }
+                
+                // Verifica del tipo MIME
+                const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const mimeType = event.target.result.match(/:(.*?);/)[1];
+                    if (!allowedMimeTypes.includes(mimeType)) {
+                        alert('Tipo di file non valido.');
+                        return resolve(false);
+                    }
+                    
+                    // Verifica delle dimensioni del file
+                    const maxSize = 1024 * 1024; // 1 MB
+                    if (file.size > maxSize) {
+                        // alert('Il file è troppo grande. Dimensione massima consentita: 1 MB.');
+                        return resolve(false);
+                    } 
+
+                    return resolve(true);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // Utilizzo
+        document.querySelector('#image').addEventListener('change', async function() {
+            const isValid = await validateImage(this.files[0]);
+            const imgElem = document.getElementById("imagePreview");
+            const errImg = document.getElementById("errorImage");
+            const removeImg = document.getElementById("btnDelete");
+            if (!isValid) {
+                console.log(imgElem);
+                imgElem.src = "";
+                imgElem.classList.add('hide');
+                removeImg.classList.add('hide');
+                errImg.innerHTML = "Immagine troppo grande";
+                this.value = ''; // Ripristina il valore dell'input per rimuovere il file selezionato
+            } else {
+                imgElem.classList.remove('hide');
+                removeImg.classList.remove('hide');
+                errImg.innerHTML = "";
+            }
+        });
+    </script>
 @endsection

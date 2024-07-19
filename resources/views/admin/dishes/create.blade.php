@@ -36,8 +36,8 @@
                     @endif
                     {{-- gestiamo errore nome del piatto gia esistente --}}
                 </label>
-                <input value="{{ old('name') }}" type="text" name="name"
-                    class="form-control
+                <input value="{{ old('name') }}" type="text" minlength="5" maxlength="20" name="name"
+                    class="form-control 
                     {{-- dynamic class with red border --}}
                     @error('name') is-invalid @enderror"
                     placeholder="es. Lasagna" required {{-- /dynamic class with red border --}} id="name" aria-describedby="name">
@@ -55,7 +55,7 @@
                     {{-- /error message --}}
                 </label>
                 <textarea for="description @error('description') is-invalid @enderror"
-                    class="form-control   @error('description') is-invalid @enderror" name="description" id="description" rows="3"
+                    class="form-control   @error('description') is-invalid @enderror" name="description" minlength="5" maxlength="200" id="description" rows="3"
                     placeholder="es. breve descrizione e ingredienti..." required>{{ old('description') }}</textarea>
             </div>
             {{-- Descrizione --}}
@@ -69,11 +69,10 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <input value="{{ old('price') }}" type="text" pattern="\d*(\.\d{1,2})?" name="price"
-                    class="form-control
-                    {{-- dynamic class with red border --}}
-                    @error('price') is-invalid @enderror"
-                    placeholder="es. 10.00" {{-- /dynamic class with red border --}} id="price" aria-describedby="price" required>
+                <input value="{{ old('price') }}" type="number" name="price"
+                       class="form-control @error('price') is-invalid @enderror"
+                       placeholder="es. 10.00" id="price" aria-describedby="price" required
+                       min="3" max="30" step="0.01">
             </div>
             {{-- Prezzo --}}
 
@@ -89,6 +88,7 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
+                <span id="errorImage" class="text-danger"></span>
                 <input value="{{ old('image') }}" type="file" name="image" id="image" aria-describedby="image"
                     class="form-control @error('image') is-invalid @enderror" required>
             </div>
@@ -100,7 +100,6 @@
                 <div class="container-preview m-auto mt-3">
                     <div class="mt-2 card-img">
                         <img id="imagePreview" class="hide mb-3" src="" alt="new-image">
-                        <a id="btnDelete" class="btn btn-danger col hide w-100">Rimuovi immagine</a>
                     </div>
                 </div>
                 {{-- /img preview --}}
@@ -118,4 +117,56 @@
         </form>
 
     </div>
+
+    <script>
+        function validateImage(file) {
+            return new Promise((resolve, reject) => {
+                // Verifica dell'estensione del file
+                const allowedExtensions = ['jpg', 'jpeg', 'png'];
+                const extension = file.name.split('.').pop().toLowerCase();
+                if (!allowedExtensions.includes(extension)) {
+                    alert('Tipo di file non valido.');
+                    return resolve(false);
+                }
+                
+                // Verifica del tipo MIME
+                const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const mimeType = event.target.result.match(/:(.*?);/)[1];
+                    if (!allowedMimeTypes.includes(mimeType)) {
+                        alert('Tipo di file non valido.');
+                        return resolve(false);
+                    }
+                    
+                    // Verifica delle dimensioni del file
+                    const maxSize = 1024 * 1024; // 1 MB
+                    if (file.size > maxSize) {
+                        // alert('Il file è troppo grande. Dimensione massima consentita: 1 MB.');
+                        return resolve(false);
+                    } 
+
+                    return resolve(true);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // Utilizzo
+        document.querySelector('#image').addEventListener('change', async function() {
+            const isValid = await validateImage(this.files[0]);
+            const imgElem = document.getElementById("imagePreview");
+            const errImg = document.getElementById("errorImage");
+            if (!isValid) {
+                console.log(imgElem);
+                imgElem.src = "";
+                imgElem.classList.add('hide');
+                errImg.innerHTML = "Immagine troppo grande";
+                this.value = ''; // Ripristina il valore dell'input per rimuovere il file selezionato
+            } else {
+                imgElem.classList.remove('hide');
+                errImg.innerHTML = "";
+            }
+        });
+    </script>
 @endsection

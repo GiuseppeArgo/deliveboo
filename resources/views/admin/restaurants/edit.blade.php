@@ -29,7 +29,7 @@
                     class="form-control
             {{-- dynamic class with red border --}}
                 @error('name') is-invalid @enderror"
-                    {{-- /dynamic class with red border --}} type="text" id="name" name="name"
+                    {{-- /dynamic class with red border --}} type="text" id="name" name="name" minlength="3" maxlength="20"
                     value="{{ old('name', $restaurant->name) }}" placeholder="es. Bar Portici" required>
             </div>
             {{-- /title --}}
@@ -49,7 +49,7 @@
                     class="form-control
             {{-- dynamic class with red border --}}
             @error('address') is-invalid @enderror"
-                    {{-- /dynamic class with red border --}} type="text" id="address" name="address"
+                    {{-- /dynamic class with red border --}} type="text" id="address" name="address" minlength="3" maxlength="20"
                     value="{{ old('address', $restaurant->address) }}" placeholder="es. Via Ugo Foscolo" required>
             </div>
             {{-- /address --}}
@@ -66,7 +66,7 @@
                     {{-- /error message --}}
                 </label>
 
-                <textarea class="form-control @error('description') is-invalid @enderror" type="text" id="description"
+                <textarea class="form-control @error('description') is-invalid @enderror" type="text" minlength="5" maxlength="200" id="description"
                     name="description" required placeholder="es. Situati vicino alle stalle dei cavalli di San Siro">{{ old('description', $restaurant->description) }}</textarea>
             </div>
             {{-- /description --}}
@@ -116,6 +116,7 @@
             <div class="mb-3">
 
                 <label for="image"> Immagine *</label>
+                <span id="errorImage" class="text-danger"></span>
                 <input class="form-control
                 @error('image') is-invalid @enderror" type="file"
                     name="image" id="image"
@@ -154,4 +155,58 @@
 
         </form>
     </div>
+
+    <script>
+        function validateImage(file) {
+            return new Promise((resolve, reject) => {
+                // Verifica dell'estensione del file
+                const allowedExtensions = ['jpg', 'jpeg', 'png'];
+                const extension = file.name.split('.').pop().toLowerCase();
+                if (!allowedExtensions.includes(extension)) {
+                    alert('Tipo di file non valido.');
+                    return resolve(false);
+                }
+                
+                // Verifica del tipo MIME
+                const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const mimeType = event.target.result.match(/:(.*?);/)[1];
+                    if (!allowedMimeTypes.includes(mimeType)) {
+                        alert('Tipo di file non valido.');
+                        return resolve(false);
+                    }
+                    
+                    // Verifica delle dimensioni del file
+                    const maxSize = 1024 * 1024; // 1 MB
+                    if (file.size > maxSize) {
+                        // alert('Il file è troppo grande. Dimensione massima consentita: 1 MB.');
+                        return resolve(false);
+                    } 
+
+                    return resolve(true);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        // Utilizzo
+        document.querySelector('#image').addEventListener('change', async function() {
+            const isValid = await validateImage(this.files[0]);
+            const imgElem = document.getElementById("imagePreview");
+            const errImg = document.getElementById("errorImage");
+            const removeImg = document.getElementById("btnDelete");
+            if (!isValid) {
+                imgElem.src = "";
+                imgElem.classList.add('hide');
+                removeImg.classList.add('hide');
+                errImg.innerHTML = "Immagine troppo grande";
+                this.value = ''; // Ripristina il valore dell'input per rimuovere il file selezionato
+            } else {
+                imgElem.classList.remove('hide');
+                removeImg.classList.remove('hide');
+                errImg.innerHTML = "";
+            }
+        });
+    </script>
 @endsection

@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" minlength="3" maxlength="20" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Cognome *') }}</label>
 
                             <div class="col-md-6">
-                                <input  id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus required>
+                                <input  id="lastname" type="text" minlength="3" maxlength="20" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus required>
 
                                 @error('lastname')
                                 <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" required>
+                                <input id="password" type="password" minlength="3" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" required>
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                             <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Conferma Password *') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password_confirmation" minlength="3" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                 {{-- password_confirmation --}}
                             </div>
                         </div>
