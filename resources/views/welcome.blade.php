@@ -10,7 +10,7 @@
            Benvenuto nel Back-Office di DeliveBoo
         </h1>
 
-        <p class="col-md-8 fs-4">Qui potrai visualizzare iL tuo ristorante, gestire il tuo menu e visualizzare i tuoi ordini</p>
+        <p class="col-md-8 fs-4">Qui potrai visualizzare il tuo ristorante, gestire il tuo menu e visualizzare i tuoi ordini</p>
         <a href="{{ route('admin.dashboard') }}" class="btn btn-primary btn-lg" type="button">Entra nella dashboard</a>
     </div>
 </div>
