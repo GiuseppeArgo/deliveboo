@@ -4,9 +4,13 @@
     <div class="form-container p-5">
         <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
             <h1 class="text-center">Aggiungi un piatto</h1>
-            <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
-                <i class="fa-solid fa-user"></i> Home
-            </a>
+            <div>
+                <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">Visualizza menu</a>
+                <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
+                    Torna alla home
+                </a>
+            </div>
+
         </div>
         {{-- @include('partials.errors') --}}
 
@@ -32,9 +36,8 @@
                 <input value="{{ old('name') }}" type="text" name="name"
                     class="form-control
                     {{-- dynamic class with red border --}}
-                    @error('name') is-invalid @enderror" placeholder="es. Lasagna"
-                    required
-                    {{-- /dynamic class with red border --}} id="name" aria-describedby="name">
+                    @error('name') is-invalid @enderror"
+                    placeholder="es. Lasagna" required {{-- /dynamic class with red border --}} id="name" aria-describedby="name">
             </div>
             {{-- /Nome --}}
 
@@ -48,7 +51,9 @@
                     @enderror
                     {{-- /error message --}}
                 </label>
-                <textarea for="description @error('description') is-invalid @enderror" class="form-control   @error('description') is-invalid @enderror" name="description" id="description" rows="3" placeholder="es. breve descrizione e ingredienti..." required>{{ old('description') }}</textarea>
+                <textarea for="description @error('description') is-invalid @enderror"
+                    class="form-control   @error('description') is-invalid @enderror" name="description" id="description" rows="3"
+                    placeholder="es. breve descrizione e ingredienti..." required>{{ old('description') }}</textarea>
             </div>
             {{-- Descrizione --}}
 
@@ -64,9 +69,8 @@
                 <input value="{{ old('price') }}" type="text" pattern="\d*(\.\d{1,2})?" name="price"
                     class="form-control
                     {{-- dynamic class with red border --}}
-                    @error('price') is-invalid @enderror" placeholder="es. 10.00"
-                    {{-- /dynamic class with red border --}} id="price" aria-describedby="price"
-                    required>
+                    @error('price') is-invalid @enderror"
+                    placeholder="es. 10.00" {{-- /dynamic class with red border --}} id="price" aria-describedby="price" required>
             </div>
             {{-- Prezzo --}}
 

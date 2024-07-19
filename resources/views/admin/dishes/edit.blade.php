@@ -1,7 +1,12 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-center mt-5">Modifica Piatto: </h1>
+
+    <div class="d-flex flex-column gap-2 align-items-center justify-content-center mt-5">
+        <h1 class="text-center">Modifica Piatto: </h1>
+        <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">Torna al menu</a>
+    </div>
+
     {{-- @include('partials.errors') --}}
     <div class="form-container p-5">
 
@@ -82,9 +87,11 @@
             {{-- /visibility --}}
 
             <div class="btn-group" role="group" aria-label="Disponibilità">
-                <input type="radio" name="visibility" id="active" value="1" class="btn-check" {{ $dish->visibility == 1 ? 'checked' : '' }}>
+                <input type="radio" name="visibility" id="active" value="1" class="btn-check"
+                    {{ $dish->visibility == 1 ? 'checked' : '' }}>
                 <label class="btn btn-outline-primary" for="active">Disponibile</label>
-                <input type="radio" name="visibility" id="inactive" value="0" class="btn-check" {{ $dish->visibility == 0 ? 'checked' : '' }}>
+                <input type="radio" name="visibility" id="inactive" value="0" class="btn-check"
+                    {{ $dish->visibility == 0 ? 'checked' : '' }}>
                 <label class="btn btn-outline-primary" for="inactive">Non disponibile</label>
             </div>
 
