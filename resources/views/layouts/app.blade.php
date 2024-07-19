@@ -49,17 +49,25 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav nav-header ml-auto d-flex gap-5 fw-bold">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li class="nav-item text-center">
+                                <a class="nav-link" href="http://localhost:5174/">
+                                        {{ __('Home') }}
+                                        {{ __('Deliveboo') }}
+                                </a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
+
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -88,6 +96,22 @@
             @yield('content')
         </main>
     </div>
+
+    {{--  classe active nav-link --}}
+    
+    {{-- <script>
+document.addEventListener("DOMContentLoaded", function() {
+    var path = window.location.pathname;
+    console.log("Path:", path); // Stampa il percorso corrente
+    var links = document.querySelectorAll('.nav-header li a');
+    links.forEach(link => {
+        console.log("Link HREF:", link.getAttribute('href')); // Stampa l'HREF di ciascun link
+        if (path === link.getAttribute('href')) {
+            link.closest('li').classList.add('active');
+        }
+    });
+});
+        </script> --}}
 </body>
 
 </html>

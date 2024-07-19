@@ -24,7 +24,6 @@ return new class extends Migration
             $table->boolean('visibility');
             // ->default(true);    possiamo togliere il data visibility = 1 nello store e inserirlo di default qui
             $table->string('slug');
-            // $table->unique(['restaurant_id','name']);
             $table->timestamps();
         });
 
