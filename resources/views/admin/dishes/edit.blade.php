@@ -4,7 +4,16 @@
 
     <div class="d-flex flex-column gap-2 align-items-center justify-content-center mt-5">
         <h1 class="text-center">Modifica Piatto: </h1>
-        <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">Torna al menu</a>
+        <div class="d-flex gap-2">
+            <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
+                <i class="fa-solid fa-circle-arrow-left"></i>
+                Torna indietro</a>
+                {{-- btn home --}}
+                <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
+                    <i class="fa-solid fa-user"></i> Torna alla home
+                </a>
+                {{-- btn home --}}
+        </div>
     </div>
 
     {{-- @include('partials.errors') --}}

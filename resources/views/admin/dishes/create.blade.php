@@ -5,7 +5,9 @@
         <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
             <h1 class="text-center">Aggiungi un piatto</h1>
             <div>
-                <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">Visualizza menu</a>
+                <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
+                    <i class="fa-solid fa-circle-arrow-left"></i>
+                    Torna indietro</a>
                 <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
                     Torna alla home
                 </a>

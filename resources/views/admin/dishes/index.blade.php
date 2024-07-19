@@ -10,7 +10,8 @@
             <div class="d-flex gap-2">
                 {{-- btn home --}}
                 <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
-                    <i class="fa-solid fa-user"></i> Home
+                    <i class="fa-solid fa-circle-arrow-left"></i>
+                    Torna alla home
                 </a>
                 {{-- btn home --}}
 
