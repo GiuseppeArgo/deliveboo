@@ -42,28 +42,28 @@ form{
 }
 
 // nav header
-.navbar{
-    margin: 0;
-    padding: 0;
-}
+// .navbar{
+//     margin: 0;
+//     padding: 0;
+// }
 
-.nav-bar,.container,.navbar-collapse.ul{
-    height: 50px;
-}
-.nav-header li,.nav-bar .nav-item a
-{
-    height: 50px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    border-bottom: 3px solid transparent;
-}
+// .nav-bar,.container,.navbar-collapse.ul{
+//     height: 50px;
+// }
+// .nav-header li,.nav-bar .nav-item a
+// {
+//     height: 50px;
+//     padding-bottom: 10px;
+//     padding-top: 10px;
+//     border-bottom: 3px solid transparent;
+// }
 
 
 
-.nav-header li:hover{
-    height: 50px;
-    border-bottom: 3px solid $blue !important;
-}
+// .nav-header li:hover{
+//     height: 50px;
+//     border-bottom: 3px solid $blue !important;
+// }
 
 // .nav-header li.active{
 //     height: 50px;
