@@ -10,7 +10,7 @@
 
     <title>{{ config('app.name', 'Deliveboo') }}</title>
 
-
+    <link rel="icon" type="image/png" href="{{ asset('logoetichettachiaro.png') }}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -98,7 +98,7 @@
     </div>
 
     {{--  classe active nav-link --}}
-    
+
     {{-- <script>
 document.addEventListener("DOMContentLoaded", function() {
     var path = window.location.pathname;
