@@ -13,7 +13,8 @@
         </a>
         {{-- btn home --}}
         <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
-            <i class="fa-solid fa-user"></i> Torna alla home
+            <i class="fa-solid fa-circle-arrow-left"></i>
+             Torna alla home
         </a>
         {{-- btn home --}}
     </div>
