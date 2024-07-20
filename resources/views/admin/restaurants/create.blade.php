@@ -4,55 +4,76 @@ creTE RESTAURANTS
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="text-center mt-5">Crea Il tuo Ristorante</h1>
+
+    {{-- container  --}}
     <div class="form-container p-5">
+
+        {{-- title --}}
+        <h1 class="text-center">Crea Il tuo Ristorante</h1>
+        {{-- /title --}}
+
+        {{-- form --}}
         <form action="{{ route('admin.restaurants.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
+            {{-- name --}}
             <div class="mb-3">
                 <label for="name" class="form-label">Nome Ristorante *
+
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger"> {{ $errors->first('name') }} </span>
                     @enderror
                     {{-- /error message --}}
+
                 </label>
                 <input value="{{ old('name') }}" type="text" minlength="3" maxlength="20" name="name"
-                    class="form-control @error('name') is-invalid @enderror" placeholder="es. Da Mario" id="name" aria-describedby="name_restaurant" required>
+                    class="form-control @error('name') is-invalid @enderror" placeholder="es. Da Mario" id="name"
+                    aria-describedby="name_restaurant" required>
             </div>
+            {{-- /name --}}
 
+            {{-- address --}}
             <div class="mb-3">
                 <label for="address" class="form-label">Indirizzo *
+
                     {{-- error message --}}
                     @error('address')
                         <span class="text-danger"> {{ $errors->first('address') }} </span>
                     @enderror
                     {{-- /error message --}}
+
                 </label>
                 <input value="{{ old('address') }}" type="text" name="address" minlength="3" maxlength="20"
-                    class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address" required placeholder="es. Via Delle Alpi 15">
+                    class="form-control @error('address') is-invalid @enderror" id="address" aria-describedby="address"
+                    required placeholder="es. Via Delle Alpi 15">
             </div>
+            {{-- address --}}
 
-            {{-- Descrizione --}}
+
+            {{-- Description --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione *
+
                     {{-- error message --}}
                     @error('description')
                         <span class="text-danger"> {{ $errors->first('description') }} </span>
                     @enderror
                     {{-- /error message --}}
-                </label>
-                <textarea minlength="5" maxlength="200" class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3"
-                    required placeholder="es. ristorante accogliente in una corte del 700">{{ old('description') }}</textarea>
-            </div>
-            {{-- Descrizione --}}
 
-            {{-- Tipologia --}}
+                </label>
+                <textarea minlength="5" maxlength="200" class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3" required placeholder="es. ristorante accogliente in una corte del 700">{{ old('description') }}</textarea>
+            </div>
+            {{-- Description --}}
+
+
+            {{-- Typologies --}}
             <span>Tipologie * </span>
-                        {{-- errors typologies --}}
+
+            {{-- errors typologies --}}
             @if (!$errors->first('tipologies'))
                 <span id="error-message" class="text-danger" style="display:none;">
-                    {{-- non puoi avere 0 tipologie e Non puoi inserire piu di 2 tipologie. --}}
+                    {{-- dynamic message not 0 and not more 2 typologies. --}}
                 </span>
             @else
                 @error('tipologies')
@@ -60,45 +81,55 @@ creTE RESTAURANTS
                 @enderror
             @endif
             {{-- errors typologies --}}
+
             <div class="container mb-4">
                 <div class="row" role="group" aria-label="Basic checkbox toggle button group">
                     @foreach ($listTypes as $curType)
                         <div class="col-4 btn-group flex flex-wrap mt-3">
                             <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
                                 value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', [])))>
-                            <label class="btn btn-outline-secondary" for="tech-{{ $curType->id }}">{{ $curType->name }}</label>
+                            <label class="btn btn-outline-secondary"
+                                for="tech-{{ $curType->id }}">{{ $curType->name }}</label>
                         </div>
                     @endforeach
                 </div>
             </div>
-            {{-- /Tipologia --}}
+            {{-- Typologies --}}
 
-            {{-- Partita_Iva --}}
+
+            {{-- P.Iva --}}
             <div class="mb-3">
                 <label for="p_iva" class="form-label">Partita Iva *
+
                     {{-- error message --}}
                     @error('p_iva')
                         <span class="text-danger"> {{ $errors->first('p_iva') }} </span>
                     @enderror
                     {{-- /error message --}}
-                </label>
-                <input value="{{ old('p_iva') }}" type="text" name="p_iva" pattern="^\d{11}$" maxlength="11"
-                    placeholder="es. 12345678901 -> 11 numeri" class="form-control @error('p_iva') is-invalid @enderror"
-                    id="p_iva" aria-describedby="p_iva" required>
-            </div>
-            {{-- /Partita_Iva --}}
 
-            {{-- Immagine --}}
+                </label>
+                <input value="{{ old('p_iva') }}" type="text" name="p_iva"
+                pattern="^\d{11}$" maxlength="11" placeholder="es. 12345678901 -> 11 numeri" class="form-control @error('p_iva') is-invalid @enderror" id="p_iva" aria-describedby="p_iva" required>
+            </div>
+            {{-- P.Iva --}}
+
+            {{-- input file image --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine *
+
+                    {{-- error image --}}
                     @error('image')
                         <span class="text-danger">{{ $errors->first('image') }}</span>
                     @enderror
+                    {{-- /error image --}}
+
                 </label>
                 <span id="errorImage" class="text-danger"></span>
-                <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="image" aria-describedby="image" required>
+                <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
+                    id="image" aria-describedby="image" required>
             </div>
-            {{-- /Immagine --}}
+            {{-- /input file image --}}
+
 
             <div class="container-preview m-auto mt-3">
                 {{-- img preview --}}
@@ -116,53 +147,71 @@ creTE RESTAURANTS
                 </div>
                 {{-- /button add and remove --}}
             </div>
-        </form>
-    </div>
 
+        </form>
+        {{-- /form --}}
+
+    </div>
+    {{-- /container  --}}
+
+    {{-- javascript validation image --}}
     <script>
         function validateImage(file) {
             return new Promise((resolve) => {
-                // Verifica dell'estensione del file
+                // control extension image
                 const allowedExtensions = ['jpg', 'jpeg', 'png'];
                 const extension = file.name.split('.').pop().toLowerCase();
                 if (!allowedExtensions.includes(extension)) {
-                    resolve({ valid: false, error: 'Tipo di file non valido.' });
+                    resolve({
+                        valid: false,
+                        error: 'Tipo di file non valido.'
+                    });
                     return;
                 }
 
-                // Verifica delle dimensioni del file
-                const maxSize = 1024 * 1024; // 1 MB
+                // control size image
+                const maxSize = 1024 * 1024 * 2; // max 2 MB
                 if (file.size > maxSize) {
-                    resolve({ valid: false, error: 'Il file è troppo grande. Dimensione massima consentita: 1 MB.' });
+                    resolve({
+                        valid: false,
+                        error: 'Il file è troppo grande. Dimensione massima consentita: 2 MB.'
+                    });
                     return;
                 }
 
-                resolve({ valid: true });
+                resolve({
+                    valid: true
+                });
             });
         }
 
         document.querySelector('#image').addEventListener('change', async function() {
             const file = this.files[0];
             if (file) {
-                const { valid, error } = await validateImage(file);
+                const {
+                    valid,
+                    error
+                } = await validateImage(file);
                 const imgElem = document.getElementById("imagePreview");
                 const errImg = document.getElementById("errorImage");
-
+                //if big image o invalid format reset input and hide image
                 if (!valid) {
                     imgElem.src = "";
                     imgElem.classList.add('hide');
                     errImg.textContent = error;
-                    this.value = ''; // Ripristina il valore dell'input per rimuovere il file selezionato
+                    this.value = ''; 
                 } else {
-                    errImg.textContent = "";
 
-                    // Mostra l'anteprima dell'immagine
+                    // show img preview
                     const reader = new FileReader();
                     reader.onload = function(event) {
                         imgElem.src = event.target.result;
                         imgElem.classList.remove('hide');
                     };
                     reader.readAsDataURL(file);
+
+                    // reset value error
+                    errImg.textContent = "";
                 }
             }
         });

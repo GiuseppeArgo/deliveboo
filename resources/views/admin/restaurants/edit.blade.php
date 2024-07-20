@@ -1,13 +1,19 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="d-flex flex-column justify-content-center align-items-center gap-2 mt-5">
-        <h1 class="text-center">Modifica i tuoi dati</h1>
-        <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
-            Torna Alla Home
-        </a>
-    </div>
+
+    {{-- container  --}}
     <div class="form-container p-5">
+
+        {{-- header --}}
+        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mt-5">
+            <h1 class="text-center">Modifica i tuoi dati</h1>
+            <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
+                Torna Alla Home
+            </a>
+        </div>
+        {{-- header --}}
+
         {{-- form --}}
         <form class="d-flex flex-column" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->slug]) }}"
             method="POST" enctype="multipart/form-data">
@@ -17,11 +23,13 @@
             {{-- title --}}
             <div class="mb-3">
                 <label for="name">Nome Attività *
+
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger"> {{ $errors->first('name') }} </span>
                     @enderror
                     {{-- /error message --}}
+
                 </label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" id="name" name="name"
                     minlength="3" maxlength="20" value="{{ old('name', $restaurant->name) }}" placeholder="es. Bar Portici"
@@ -32,11 +40,13 @@
             {{-- address --}}
             <div class="mb-3">
                 <label for="address">Indirizzo *
+
                     {{-- error message --}}
                     @error('address')
                         <span class="text-danger"> {{ $errors->first('address') }} </span>
                     @enderror
                     {{-- /error message --}}
+
                 </label>
                 <input class="form-control @error('address') is-invalid @enderror" type="text" id="address"
                     name="address" minlength="3" maxlength="20" value="{{ old('address', $restaurant->address) }}"
@@ -47,19 +57,20 @@
             {{-- description --}}
             <div class="mb-3">
                 <label for="description">Descrizione *
+
                     {{-- error message --}}
                     @error('description')
                         <span class="text-danger"> {{ $errors->first('description') }} </span>
                     @enderror
                     {{-- /error message --}}
+
                 </label>
                 <textarea class="form-control @error('description') is-invalid @enderror" minlength="5" maxlength="200"
                     id="description" name="description" required placeholder="es. Situati vicino alle stalle dei cavalli di San Siro">{{ old('description', $restaurant->description) }}</textarea>
             </div>
             {{-- /description --}}
 
-            {{-- Tipologia --}}
-
+            {{-- Tiypologies --}}
             <span>Tipologie * </span>
 
             {{-- errors typologies --}}
@@ -73,6 +84,7 @@
                 </span>
             @endif
             {{-- errors typologies --}}
+
             <div class="container mb-4">
                 <div class="row" role="group" aria-label="Basic checkbox toggle button group">
                     @foreach ($listTypes as $curType)
@@ -85,9 +97,10 @@
                     @endforeach
                 </div>
             </div>
-            {{-- Tipologia --}}
+            {{-- /Tiypologies --}}
 
-            {{-- file image --}}
+
+            {{-- input file image --}}
             <div class="mb-3">
                 <label for="image"> Immagine *</label>
                 <span id="errorImage" class="text-danger"></span>
@@ -101,19 +114,26 @@
                     @enderror
                 @endif
                 {{-- /error message --}}
+
             </div>
-            {{-- /file image --}}
+            {{-- /input file image --}}
 
             {{-- old and new img --}}
             <div class="container-preview m-auto mt-3">
                 <div class="mt-2 card-img">
-                    {{-- Immagine esistente --}}
+                    {{-- old image --}}
                     @if ($restaurant->image)
                         <img id="oldImg" src="{{ asset('storage/' . $restaurant->image) }}" alt="old-image"
                             class="img-fluid mb-2">
                     @endif
-                    {{-- Immagine nuova --}}
+                    {{-- /old image --}}
+
+                    {{-- new image --}}
                     <img id="imagePreview" class="hide" src="" alt="new-image">
+                    <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
+                    onclick="removeImage(event)">Rimuovi immagine</a>
+                    {{-- /new image --}}
+
                 </div>
                 {{-- /old and new img --}}
 
@@ -121,18 +141,19 @@
                 <div class="container">
                     <div class="row gap-2 mt-3 align-items-center justify-content-center">
                         <button class="btn btn-success col" type="submit">Conferma</button>
-                        <a id="btnDelete" class="btn btn-danger col hide">Rimuovi</a>
                     </div>
                 </div>
                 {{-- /button add and remove --}}
             </div>
         </form>
     </div>
+    {{-- /container  --}}
 
+    {{-- javascript validation image --}}
     <script>
         function validateImage(file) {
             return new Promise((resolve) => {
-                // Verifica dell'estensione del file
+                // control extension image
                 const allowedExtensions = ['jpg', 'jpeg', 'png'];
                 const extension = file.name.split('.').pop().toLowerCase();
                 if (!allowedExtensions.includes(extension)) {
@@ -143,12 +164,12 @@
                     return;
                 }
 
-                // Verifica delle dimensioni del file
-                const maxSize = 1024 * 1024; // 1 MB
+                // control size image
+                const maxSize = 1024 * 1024 * 2; // 2 MB
                 if (file.size > maxSize) {
                     resolve({
                         valid: false,
-                        error: 'Il file è troppo grande. Dimensione massima consentita: 1 MB.'
+                        error: 'Il file è troppo grande. Dimensione massima consentita: 2 MB.'
                     });
                     return;
                 }
@@ -170,16 +191,15 @@
                     valid,
                     error
                 } = await validateImage(file);
+                //if big image o invalid format reset input and hide image
                 if (!valid) {
                     imgElem.src = "";
                     imgElem.classList.add('hide');
                     removeImg.classList.add('hide');
                     errImg.textContent = error;
-                    this.value = ''; // Ripristina il valore dell'input per rimuovere il file selezionato
+                    this.value = '';
                 } else {
-                    errImg.textContent = "";
-
-                    // Mostra l'anteprima dell'immagine
+                    // show img preview
                     const reader = new FileReader();
                     reader.onload = function(event) {
                         imgElem.src = event.target.result;
@@ -187,22 +207,32 @@
                     };
                     reader.readAsDataURL(file);
 
-                    // Mostra il pulsante di rimozione
+                    // show button remove image
                     removeImg.classList.remove('hide');
+                    errImg.textContent = "";
                 }
+            } else {
+                // hide preview if file dosn't exist
+                imgElem.classList.add('hide');
+                removeImg.classList.add('hide');
             }
         });
 
-        // Nascondere l'anteprima e il pulsante di rimozione se non ci sono immagini
+        // hide image to start
         document.addEventListener('DOMContentLoaded', function() {
             const oldImg = document.getElementById("oldImg");
             const imagePreview = document.getElementById("imagePreview");
             const btnDelete = document.getElementById("btnDelete");
 
-            if (!oldImg || oldImg.src === '') {
+            // if (!oldImg || oldImg.src === '') {
+            //     imagePreview.classList.add('hide');
+            //     btnDelete.classList.add('hide');
+            // }
+            if (!imagePreview.src) {
                 imagePreview.classList.add('hide');
-                btnDelete.classList.add('hide');
             }
+
         });
     </script>
+    {{-- /javascript validation image --}}
 @endsection

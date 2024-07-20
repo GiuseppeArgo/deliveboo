@@ -1,9 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
+
+    {{-- container --}}
     <div class="form-container p-5">
+
         <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
+            {{-- title --}}
             <h1 class="text-center">Aggiungi un piatto</h1>
+            {{-- /title --}}
+
+            {{-- button --}}
             <div>
                 <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
                     <i class="fa-solid fa-circle-arrow-left"></i>
@@ -14,78 +21,86 @@
                     Torna alla home
                 </a>
             </div>
+            {{-- /button --}}
+
         </div>
 
         <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            {{-- Nome --}}
+            {{-- Name --}}    {{-- C'è un controllo di piu --}}
             <div class="mb-3">
                 <label for="name" class="form-label">Nome Piatto *
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger">{{ $errors->first('name') }}</span>
                     @enderror
-                    {{-- /error message --}}
-                    {{-- errore nome piatto esistente --}}
+                    {{-- errore unique name --}}
                     @if (session('error'))
-                        <span class="text-danger">{{ session('error') }}</span>
+                    <span class="text-danger">{{ session('error') }}</span>
                     @endif
+                    {{-- /error message --}}
+
+
                 </label>
                 <input value="{{ old('name') }}" type="text" minlength="5" maxlength="20" name="name"
                     class="form-control @error('name') is-invalid @enderror"
                     placeholder="es. Lasagna" required id="name" aria-describedby="name">
             </div>
-            {{-- /Nome --}}
+            {{-- /name --}}
 
-            {{-- Descrizione --}}
+            {{-- Description --}}
             <div class="mb-3">
                 <label for="description" class="form-label">Descrizione *
+
                     {{-- error message --}}
                     @error('description')
                         <span class="text-danger">{{ $errors->first('description') }}</span>
                     @enderror
                     {{-- /error message --}}
-                </label>
-                <textarea class="form-control @error('description') is-invalid @enderror" name="description"
-                    minlength="5" maxlength="200" id="description" rows="3"
-                    placeholder="es. breve descrizione e ingredienti..." required>{{ old('description') }}</textarea>
-            </div>
-            {{-- /Descrizione --}}
 
-            {{-- Prezzo --}}
+                </label>
+
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" minlength="5" maxlength="200" id="description" rows="3" placeholder="es. breve descrizione e ingredienti..." required>{{ old('description') }}</textarea>
+            </div>
+            {{-- /Description --}}
+
+            {{-- Price --}}
             <div class="mb-3">
                 <label for="price" class="form-label">Prezzo *
+
                     {{-- error message --}}
                     @error('price')
                         <span class="text-danger">{{ $errors->first('price') }}</span>
                     @enderror
                     {{-- /error message --}}
+
                 </label>
+
                 <input value="{{ old('price') }}" type="number" name="price"
                        class="form-control @error('price') is-invalid @enderror"
                        placeholder="es. 10.00" id="price" aria-describedby="price" required
                        min="3" max="30" step="0.01">
             </div>
-            {{-- /Prezzo --}}
+            {{-- /Price --}}
 
-            {{-- Restaurant ID --}}
-            <input type="text" name="restaurant_id" class="hide" value="{{ $restaurant_id }}" required>
-
-            {{-- Immagine --}}
+            {{-- input file image --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine *
+
                     {{-- error message --}}
                     @error('image')
                         <span class="text-danger">{{ $errors->first('image') }}</span>
                     @enderror
                     {{-- /error message --}}
+
                 </label>
+
                 <span id="errorImage" class="text-danger"></span>
                 <input type="file" name="image" id="image" aria-describedby="image"
                     class="form-control @error('image') is-invalid @enderror" required>
             </div>
-            {{-- /Immagine --}}
+            {{-- /input file image --}}
 
             <div class="container-preview m-auto mt-3">
                 {{-- img preview --}}
@@ -102,13 +117,20 @@
                 </div>
                 {{-- /button add and remove --}}
             </div>
+
+            {{-- hide input --}}
+            <input type="text" name="restaurant_id" class="hide" value="{{ $restaurant_id }}" required>
+            {{-- hide input --}}
+
         </form>
     </div>
+    {{-- /container --}}
 
+    {{-- javascript validation image --}}
     <script>
         function validateImage(file) {
             return new Promise((resolve) => {
-                // Verifica dell'estensione del file
+                // control extension image
                 const allowedExtensions = ['jpg', 'jpeg', 'png'];
                 const extension = file.name.split('.').pop().toLowerCase();
                 if (!allowedExtensions.includes(extension)) {
@@ -116,10 +138,10 @@
                     return;
                 }
 
-                // Verifica delle dimensioni del file
-                const maxSize = 1024 * 1024; // 1 MB
+                // control size image
+                const maxSize = 1024 * 1024 * 2; // max 2 mm
                 if (file.size > maxSize) {
-                    resolve({ valid: false, error: 'Il file è troppo grande. Dimensione massima consentita: 1 MB.' });
+                    resolve({ valid: false, error: 'Il file è troppo grande. Dimensione massima consentita: 2 MB.' });
                     return;
                 }
 
@@ -134,13 +156,14 @@
 
             if (file) {
                 const { valid, error } = await validateImage(file);
+                //if big image o invalid format reset input and hide image
                 if (!valid) {
                     imgElem.src = "";
                     imgElem.classList.add('hide');
                     errImg.textContent = error;
-                    this.value = ''; // Ripristina il valore dell'input per rimuovere il file selezionato
+                    this.value = '';
                 } else {
-                    // Mostra l'anteprima dell'immagine
+                    // show img preview
                     const reader = new FileReader();
                     reader.onload = function(event) {
                         imgElem.src = event.target.result;
@@ -148,13 +171,13 @@
                     };
                     reader.readAsDataURL(file);
 
-                    // Rimuovi il messaggio di errore
+                    // reset value error
                     errImg.textContent = "";
                 }
             }
         });
 
-        // Nascondere l'anteprima se non è presente alcuna immagine
+        // hide image to start
         document.addEventListener('DOMContentLoaded', function() {
             const imagePreview = document.getElementById("imagePreview");
             if (!imagePreview.src) {
@@ -162,4 +185,6 @@
             }
         });
     </script>
+    {{-- /javascript validation image --}}
+
 @endsection
