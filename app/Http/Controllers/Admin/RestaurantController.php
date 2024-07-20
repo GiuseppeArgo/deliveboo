@@ -23,24 +23,26 @@ class RestaurantController extends Controller
      */
     public function index()
     {
+        // Get the authenticated user ID
         $user_id = Auth::id();
 
+        // all restaurant with types
         $query = Restaurant::with('types');
 
-
+        // if you don't admin show only your restaurant
         if(Auth::user()->id != 1){
             $query->where('user_id', $user_id);
         }
 
         $restaurant = $query->get();
 
-
+        // if you don't have restaurants create an empty collection
         if ($restaurant->isEmpty()) {
             $restaurant = collect([]);
         }
-
+        // I check the existence of the restaurant for the buttons in the dashboard
         $userHasRestaurant = Restaurant::where('user_id', $user_id)->exists();
-        
+
         return view('admin.restaurants.index', compact('restaurant'));
     }
 
@@ -49,17 +51,17 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        // Ottieni l'ID dell'utente autenticato
+        // Get the authenticated user ID
         $userId = Auth::id();
 
-        // Controlla se l'utente ha già un ristorante
+        // Check if the user already has a restaurant
         $existingRestaurant = Restaurant::where('user_id', $userId)->first();
 
-        // Se l'utente ha già un ristorante, reindirizzalo alla pagina index con un messaggio
+        // If the user already has a restaurant, redirect them to the index page with a message
         if ($existingRestaurant) {
         return redirect()->route('admin.restaurants.index')->with('error', 'Hai già un ristorante registrato.');
         }
-        // fare controllo se l'utente ha gia un ristorante e riportarlo all index.
+
         $listTypes = Type::all();
         return view("admin.restaurants.create", compact("listTypes"));
     }
@@ -69,28 +71,26 @@ class RestaurantController extends Controller
      */
     public function store(StoreRestaurantRequest $request)
     {
+        // Validate the request data through the StoreRestaurantRequest form request
         $data = $request->validated();
         $data['user_id'] = Auth::id();
         $data['city'] = 'Milano';
+        // Save the uploaded image to storage and get the path of the new image
         $data['image'] = Storage::put('img', $data['image']);
+        // Create a unique slug based on the restaurant name and user ID
         $data['slug'] = Str::slug($data['name'] . '-' . $data['user_id']);
+
         $newRestaurant = new Restaurant();
         $newRestaurant->Fill($data);
         $newRestaurant->save();
+
+        // Sync the selected type_id with the Restaurant model
         $newRestaurant->types()->sync($request->tipologies);
 
         return redirect()->route("admin.restaurants.index", ["restaurant" => $newRestaurant->slug]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Restaurant $restaurant)
-    {
 
-        // fare easyloading della lista dei piatti
-        return view("admin.restaurants.index", compact("restaurant"));
-    }
 
     /**
      * Show the form for editing the specified resource.
