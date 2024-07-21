@@ -38,7 +38,7 @@
                 </button>
             </div>
             <div class="navbar-nav">
-                <div class="nav-item text-nowrap ms-2">
+                <div class="nav-item text-nowrap ms-2 d-none d-md-block">
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
@@ -74,6 +74,7 @@
                             </li>
                             {{-- /home --}}
 
+
                             {{-- modifica anagrafica --}}
                             {{-- <li>
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
@@ -96,37 +97,50 @@
 
 
                             @if (isset($userHasRestaurant) && $userHasRestaurant)
-                            {{-- Visualizza menu --}}
-                            <li>
-                                <a class="nav-link text-white"
-                                    {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
-                                    href="{{ route('admin.dishes.index') }}">
-                                    <i class="fa-solid fa-utensils"></i> Menu
-                                </a>
-                            </li>
-                            {{-- /Visualizza menu --}}
+                                {{-- Visualizza menu --}}
+                                <li>
+                                    <a class="nav-link text-white"
+                                        {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
+                                        href="{{ route('admin.dishes.index') }}">
+                                        <i class="fa-solid fa-utensils"></i> Menu
+                                    </a>
+                                </li>
+                                {{-- /Visualizza menu --}}
 
-                            {{-- visualizza ordini --}}
-                            <li>
-                                <a class="nav-link text-white"
-                                    {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
-                                    href="{{ route('admin.orders.index') }}">
-                                    <i class="fa-solid fa-list-ul"></i> Ordini
-                                </a>
-                            </li>
-                            {{-- visualizza ordini --}}
+                                {{-- visualizza ordini --}}
+                                <li>
+                                    <a class="nav-link text-white"
+                                        {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
+                                        href="{{ route('admin.orders.index') }}">
+                                        <i class="fa-solid fa-list-ul"></i> Ordini
+                                    </a>
+                                </li>
+                                {{-- visualizza ordini --}}
 
-                            {{-- aggiungi piatto --}}
-                            <li>
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                                    href="{{ route('admin.dishes.create') }}">
-                                    <i class="fa-solid fa-plus"></i> Agg. Piatto
-                                </a>
-                            </li>
-                            {{-- /aggiungi piatto --}}
-                            {{-- @else --}}
-
+                                {{-- aggiungi piatto --}}
+                                <li>
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.dishes.create') }}">
+                                        <i class="fa-solid fa-plus"></i> Agg. Piatto
+                                    </a>
+                                </li>
+                                {{-- /aggiungi piatto --}}
+                                {{-- @else --}}
                             @endif
+
+                            {{-- logout --}}
+                            <li class="d-lg-none d-md-none d-sm-block">
+                                <a class="nav-link  text-white" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                                document.getElementById('logout-form').submit();">
+                                    <i class="fa-solid fa-left-long"></i>
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                            {{-- logout --}}
                         </ul>
 
                     </div>
