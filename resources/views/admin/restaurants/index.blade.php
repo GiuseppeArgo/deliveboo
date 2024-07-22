@@ -2,17 +2,25 @@
 
 @section('content')
 
+    {{-- control list restaurant  --}}
     @if ($restaurant->isNotEmpty())
 
+    {{-- error message --}}
     <div class="mt-5">
         @if (session('error'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger form-container border-0 text-center">
                 {{ session('error') }}
             </div>
         @endif
     </div>
+    {{-- /error message --}}
+
         @foreach ($restaurant as $curRestaurant)
+
+            {{-- container --}}
             <div class="form-container p-5">
+
+                {{-- header --}}
                 <div class="container d-flex align-itenms-center justify-content-center gap-2 mb-2">
                     {{-- btn edit --}}
                     <div>
@@ -21,6 +29,8 @@
                             <i class="fa-solid fa-pen"></i> Mod. Ristorante
                         </a>
                     </div>
+                    {{-- /btn edit --}}
+
 
                     {{-- Btn orders --}}
                     <form action="{{ route('admin.orders.index') }}" method="GET">
@@ -51,34 +61,48 @@
                     {{-- /Visualizza menu --}}
 
                 </div>
+                {{-- /header --}}
+
+                {{-- container main --}}
                 <div class="row justify content-center align-items-center">
+
                     {{-- restaurant-img --}}
                     <div class="col-lg-6 col-md-12">
                         <img class="img-fluid" src="{{ asset('storage/' . $curRestaurant->image) }}" alt="img-restaurant">
                     </div>
                     {{-- /restaurant-img --}}
 
+
                     {{-- restaurant text --}}
                     <div class="col-lg-6 col-md-8 mb-3 text-lg-start ">
 
+                        {{-- name --}}
                         <div class="p-0 m-0">
                             <span>
                                 <strong>Nome Ristorante: </strong>
                             </span>
                             <span class=" mt-5 mb-5">{{ $curRestaurant->name }}</span>
                         </div>
+                        {{-- /name --}}
+
+                        {{-- city --}}
                         <div class="p-0 m-0">
                             <span>
                                 <strong>Città: </strong>
                             </span>
                             <span class=" mt-5 mb-5">{{ $curRestaurant->city }}</span>
                         </div>
+                        {{-- /city --}}
+
+                        {{-- address --}}
                         <div class="p-0 m-0">
                             <span>
                                 <strong>Indirizzo: </strong>
                             </span>
                             <span class=" mt-5 mb-5">{{ $curRestaurant->address }}</span>
                         </div>
+                        {{-- /address --}}
+
                         {{-- types --}}
                         <div class="p-0 m-0">
                             <span>
@@ -104,9 +128,12 @@
 
 
                 </div>
+                {{-- /container main --}}
 
 
             </div>
+            {{-- /container --}}
+
         @endforeach
         </div>
     @else
@@ -119,10 +146,3 @@
     @endif
 
 @endsection
-{{-- <a href="{{ route('admin.restaurants.show', ['restaurant' => $restaurant->slug]) }}" class="btn btn-info">
-                        <i class="fa-solid fa-eye"></i>
-                    </a>
-                    <a href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}"
-                        class="btn btn-success">
-                        <i class="fa-solid fa-pen"></i>
-                    </a> --}}

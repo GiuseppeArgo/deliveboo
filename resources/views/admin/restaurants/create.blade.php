@@ -33,6 +33,7 @@ creTE RESTAURANTS
             </div>
             {{-- /name --}}
 
+
             {{-- address --}}
             <div class="mb-3">
                 <label for="address" class="form-label">Indirizzo *
@@ -113,6 +114,7 @@ creTE RESTAURANTS
             </div>
             {{-- P.Iva --}}
 
+
             {{-- input file image --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine *
@@ -131,6 +133,7 @@ creTE RESTAURANTS
             {{-- /input file image --}}
 
 
+            {{-- image --}}
             <div class="container-preview m-auto mt-3">
                 {{-- img preview --}}
                 <div class="mt-2 card-img">
@@ -146,7 +149,9 @@ creTE RESTAURANTS
                     </div>
                 </div>
                 {{-- /button add and remove --}}
+
             </div>
+            {{-- /image --}}
 
         </form>
         {{-- /form --}}
@@ -191,6 +196,7 @@ creTE RESTAURANTS
                 const {
                     valid,
                     error
+                //wait return of the function
                 } = await validateImage(file);
                 const imgElem = document.getElementById("imagePreview");
                 const errImg = document.getElementById("errorImage");
@@ -199,7 +205,7 @@ creTE RESTAURANTS
                     imgElem.src = "";
                     imgElem.classList.add('hide');
                     errImg.textContent = error;
-                    this.value = ''; 
+                    this.value = '';
                 } else {
 
                     // show img preview

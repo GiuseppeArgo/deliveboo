@@ -15,6 +15,7 @@
                 </a>
                 {{-- btn home --}}
 
+
                 {{-- Aggiungi piatto --}}
                 <form action="{{ route('admin.dishes.create') }}" method="GET">
                     <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant_id }}">
@@ -29,6 +30,7 @@
         </div>
     </div>
     {{-- /header --}}
+
 
     @if (count($dishesList) > 0)
         {{-- table --}}
@@ -48,12 +50,17 @@
                 </thead>
                 {{-- /thead --}}
 
+
                 {{-- tbody --}}
                 <tbody>
                     @foreach ($dishesList as $dish)
                         <tr>
+                            {{-- name --}}
                             <td class="align-middle">{{ $dish->name }}</td>
+
+                            {{-- price --}}
                             <td class="align-middle">{{ $dish->price }} €</td>
+
 
                             {{-- statuts --}}
                             <td class="align-middle">
@@ -64,6 +71,7 @@
                                 </div>
                             </td>
                             {{-- /status --}}
+
 
                             {{-- change status --}}
                             <td>
@@ -79,7 +87,6 @@
                                 </form>
                             </td>
                             {{-- change status --}}
-
 
 
                             {{-- button --}}
@@ -103,9 +110,8 @@
                 {{-- /tbody --}}
 
             </table>
-            {{-- /table --}}
-
         </div>
+        {{-- /table --}}
     @else
         <div class="form-container p-5 text-center">
             <p class="fs-3"> Non ci sono ancora piatti nel tuo menu</p>

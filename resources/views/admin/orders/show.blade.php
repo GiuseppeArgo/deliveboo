@@ -1,7 +1,11 @@
 @extends('layouts.admin')
 
 @section('content')
+
+    {{-- container --}}
     <div class="form-container p-2">
+
+        {{-- header --}}
         <div class="d-flex justify-content-center flex-column align-items-center mb-4">
             <h1 class="m-2 text-center">Ordini</h1>
             {{-- Btn orders --}}
@@ -14,8 +18,12 @@
             </form>
             {{-- /Btn orders --}}
         </div>
+        {{-- /header --}}
 
+        {{-- table --}}
         <table class="table table-responsive striped">
+
+            {{-- thead --}}
             <thead>
                 <tr>
                     <th>Piatto</th>
@@ -23,6 +31,10 @@
                     <th>Prezzo</th>
                 </tr>
             </thead>
+            {{-- /thead --}}
+
+            
+            {{-- tbody --}}
             @foreach ($orders['dishes'] as $order)
                 <tbody>
                     <tr>
@@ -38,6 +50,12 @@
                     </tr>
                 </tbody>
             @endforeach
+            {{-- /tbody --}}
+
         </table>
+        {{-- /table --}}
+
     </div>
+    {{-- /container --}}
+
 @endsection

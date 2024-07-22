@@ -14,11 +14,13 @@
         </div>
         {{-- header --}}
 
+
         {{-- form --}}
         <form class="d-flex flex-column" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->slug]) }}"
             method="POST" enctype="multipart/form-data">
             @csrf
             @method('put')
+
 
             {{-- title --}}
             <div class="mb-3">
@@ -37,6 +39,7 @@
             </div>
             {{-- /title --}}
 
+
             {{-- address --}}
             <div class="mb-3">
                 <label for="address">Indirizzo *
@@ -54,6 +57,7 @@
             </div>
             {{-- /address --}}
 
+
             {{-- description --}}
             <div class="mb-3">
                 <label for="description">Descrizione *
@@ -69,6 +73,7 @@
                     id="description" name="description" required placeholder="es. Situati vicino alle stalle dei cavalli di San Siro">{{ old('description', $restaurant->description) }}</textarea>
             </div>
             {{-- /description --}}
+
 
             {{-- Tiypologies --}}
             <span>Tipologie * </span>
@@ -118,7 +123,8 @@
             </div>
             {{-- /input file image --}}
 
-            {{-- old and new img --}}
+
+            {{-- image --}}
             <div class="container-preview m-auto mt-3">
                 <div class="mt-2 card-img">
                     {{-- old image --}}
@@ -135,15 +141,16 @@
                     {{-- /new image --}}
 
                 </div>
-                {{-- /old and new img --}}
+                {{-- /image --}}
 
-                {{-- button add and remove --}}
+
+                {{-- button submit --}}
                 <div class="container">
                     <div class="row gap-2 mt-3 align-items-center justify-content-center">
                         <button class="btn btn-success col" type="submit">Conferma</button>
                     </div>
                 </div>
-                {{-- /button add and remove --}}
+                {{-- /button submit --}}
             </div>
         </form>
     </div>

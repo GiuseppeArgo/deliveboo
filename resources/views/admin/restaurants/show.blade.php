@@ -5,6 +5,7 @@
     {{-- restaurant details --}}
     <div class="form-container p-2">
 
+        {{-- header --}}
         <div class="d-flex justify-content-center align-items-center gap-2">
 
             {{-- title --}}
@@ -14,6 +15,8 @@
             <a class="btn btn-success" href="{{ route('admin.restaurants.edit', ['restaurant' => $restaurant->slug]) }}">
                 <i class="fa-solid fa-pen"></i>
             </a>
+            {{-- /btn edit --}}
+
 
             {{-- Btn orders --}}
             <form action="{{ route('admin.orders.index') }}" method="GET">
@@ -24,7 +27,9 @@
                 </button>
             </form>
             {{-- /Btn orders --}}
+
         </div>
+        {{-- /header --}}
 
 
         <div class="mt-3 mb-3">
@@ -37,6 +42,7 @@
                     <img src="{{ asset('storage/' . $restaurant->image) }}" alt="img-restaurant">
                 </div>
             </div>
+
         </div>
     </div>
     {{-- /restaurant details --}}

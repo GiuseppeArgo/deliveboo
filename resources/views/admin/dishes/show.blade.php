@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="d-flex  flex-column align-items-center justify-content-center mt-5 gap-3">
+<div class="d-flex  flex-column align-items-center justify-content-center mt-5 gap-3 mb-4">
     <h1 class="text-center">Dettagli Piatto</h1>
     <div class="d-flex gap-2">
         <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
@@ -19,12 +19,9 @@
         {{-- btn home --}}
     </div>
 </div>
+
     {{-- success message --}}
-    @if (session('message'))
-        <div class="alert alert-success">
-            <span class="info-info-success">{{ session('message') }}</span>
-        </div>
-    @endif
+    @include('partials.session_message')
     {{-- /success message --}}
 
     {{-- container --}}
@@ -36,6 +33,7 @@
                     <img src="{{ asset('storage/' . $dish->image) }}" alt="">
             </div>
             {{-- /img --}}
+
 
             {{-- details dish --}}
             <div class="col-lg-6 d-flex flex-column justify-content-center">
@@ -62,7 +60,6 @@
             {{-- /details dish --}}
 
         </div>
-
     </div>
     {{-- /container --}}
 

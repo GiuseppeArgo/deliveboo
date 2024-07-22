@@ -148,13 +148,14 @@
                 resolve({ valid: true });
             });
         }
-
+        //listen change tu imput file
         document.querySelector('#image').addEventListener('change', async function() {
             const file = this.files[0];
             const imgElem = document.getElementById("imagePreview");
             const errImg = document.getElementById("errorImage");
 
             if (file) {
+                // wait return of function
                 const { valid, error } = await validateImage(file);
                 //if big image o invalid format reset input and hide image
                 if (!valid) {

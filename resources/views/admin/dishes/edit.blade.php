@@ -23,6 +23,7 @@
 
         {{-- @include('partials.errors') --}}
 
+        {{-- form --}}
         <form action="{{ route('admin.dishes.update', ['dish' => $dish->slug]) }}" method="POST"
             class="d-flex flex-column gap-2" enctype="multipart/form-data">
             @csrf
@@ -36,7 +37,7 @@
                         <span class="text-danger"> {{ $errors->first('name') }} </span>
                     @enderror
 
-                    {{-- Errore name unique --}}
+                    {{-- Error name unique --}}
                     @if (session('error'))
                         <span class="text-danger">{{ session('error') }}</span>
                     @endif
@@ -49,6 +50,7 @@
                     required>
             </div>
             {{-- /Name --}}
+
 
             {{-- Description --}}
             <div class="mb-3">
@@ -82,6 +84,7 @@
                     placeholder="es. 10.00" required min="3" max="30" step="0.01">
             </div>
             {{-- /Price --}}
+
 
             {{-- Availability --}}
             <div class="mb-3">
@@ -137,12 +140,14 @@
             </div>
             {{-- /button add --}}
 
+
             {{-- hide input --}}
             <input type="text" name="restaurant_id" class="hide" value="{{ $restaurant_id }}">
             <input type="text" name="oldname" class="hide" value="{{ $dish->name }}">
             {{-- hide input --}}
 
         </form>
+        {{-- /form --}}
 
     </div>
 
@@ -170,13 +175,13 @@
                     });
                     return;
                 }
-
                 resolve({
                     valid: true
                 });
             });
         }
 
+        // listen change to input file
         document.querySelector('#image').addEventListener('change', async function() {
             const file = this.files[0];
             const imgElem = document.getElementById("imagePreview");
@@ -188,6 +193,7 @@
                 const {
                     valid,
                     error
+                // wait return of function
                 } = await validateImage(file);
                 //if big image o invalid format reset input and hide image
                 if (!valid) {

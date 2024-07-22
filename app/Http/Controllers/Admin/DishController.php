@@ -108,9 +108,10 @@ class DishController extends Controller
             }
             //formatting price
             $data['price'] = number_format($data['price'], 2, '.', '');
-            
+
             $dish->update($data);
-            return view('admin.dishes.show', compact('dish'));
+            return redirect()->route('admin.dishes.show', ['dish' => $dish->slug])->with('message', 'Le tue modifiche sono state apportate correttamente');
+            // return view('admin.dishes.show', compact('dish'))->with('message', 'Le tue modifiche sono state apportate correttamente');
         } else{
             return redirect()->route('admin.dishes.edit',compact('dish'))->with('error', 'Nel tuo menu hai già un piatto con quel nome.')->withInput();
         }
