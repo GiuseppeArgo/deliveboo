@@ -3,12 +3,13 @@ import "~resources/scss/app.scss";
 import.meta.glob(["../img/**"]);
 import * as bootstrap from "bootstrap";
 
-// section preview image new old and button
+// image preview section in multiple forms
 const oldImgElem = document.getElementById('oldImg')
 const imgElem = document.getElementById('imagePreview');
 const btnDeleteElem = document.getElementById('btnDelete');
 const inputElem = document.getElementById('image');
 
+// listen change input
 if(inputElem){
     inputElem.addEventListener('change', function(e) {
 
@@ -26,8 +27,9 @@ if(inputElem){
         reader.readAsDataURL(e.target.files[0]);
     });
 }
+// listen change input
 
-// btn remove
+// listen click btn delete
 btnDeleteElem.addEventListener('click', function(e){
     e.preventDefault();
     btnDeleteElem.classList.add('hide');
@@ -35,9 +37,9 @@ btnDeleteElem.addEventListener('click', function(e){
     oldImgElem.classList.remove('hide');
     inputElem.value="";
 });
-// / btn remove
+// listen click btn delete
 
-// /section preview image new old and button
+// image preview section in multiple forms
 
 
 // control typologies for create and edit restaurants. max 2 not 0
@@ -64,7 +66,7 @@ checkboxes.forEach(function(checkbox) {
 // control typologies for create and edit restaurants. max 2 not 0
 
 
-// modal soft deletes pronto
+// modal soft deletes pronto  da usare per un eventuale eliminazione di qualcosa.
 const deleteBtns = document.querySelectorAll('.delete button');
 
 if(deleteBtns.length>0){
@@ -90,7 +92,7 @@ if(deleteBtns.length>0){
         });
 });
 }
-//modal soft deletes pronto
+// modal soft deletes pronto  da usare per un eventuale eliminazione di qualcosa.
 
 
 

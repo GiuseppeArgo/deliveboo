@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// route api Restaurants
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 
 Route::get('/restaurants/{slug}', [RestaurantController::class, 'show']);
 
+// route api Types
 Route::get('/types', [TypeController::class, 'index']);
 
 

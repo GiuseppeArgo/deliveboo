@@ -21,8 +21,8 @@ class DishController extends Controller
      */             //Request $request
     public function index()
     {
+        //search all dishes of restaurant
         $restaurant_id = Auth::id();
-        // dd($restaurant_id);
         $dishesList = Dish::where('restaurant_id',$restaurant_id)->get();
         return view("admin.dishes.index", compact("dishesList",'restaurant_id'));
     }
@@ -33,9 +33,6 @@ class DishController extends Controller
     public function create()
     {
         $restaurant_id = Auth::id();
-        // dd($restaurant_id);
-
-        // $restaurant_id = $data['restaurant_id'];
 
         return view("admin.dishes.create",compact('restaurant_id'));
     }
@@ -45,27 +42,33 @@ class DishController extends Controller
      */
     public function store(StoreDishRequest $request, Dish $dish)
     {
+        // save validated request
         $data = $request->validated();
-        $id = Auth::id();
-        $name= Dish::where('name',$data['name'])->where('restaurant_id', $id)->get();
-        $data['restaurant_id'] = $request->restaurant_id;
-        //se price è scritto 12.5 deve diventare 12.50 se price è scritto 10 deve diventare 10.00
-        $data['price'] = number_format($data['price'], 2, '.', '');
-        $data['visibility'] = 1;
-        $data['image'] = Storage::put('img', $data['image']);
-        $newDish = new Dish();
-        $newDish->fill($data);
-        $newDish->name = $data['name'];
-        $newDish['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
 
-        // corrispondenza nome del piatto esistente lo riportiamo indietro
+        // save id
+        $data['restaurant_id'] = Auth::id();
+
+        // look for the name in the list of restaurant dishes
+        $name= Dish::where('name',$data['name'])->where('restaurant_id', $data['restaurant_id'])->get();
+
+        // if it has found a match we return to create with an error message
         if (!$name->isEmpty()) {
             return redirect()->route('admin.dishes.create')->with('error', 'Nel tuo menu hai già un piatto con quel nome.')->withInput();
+        } else{
+            // standardizes the price with 2 decimal places
+            $data['price'] = number_format($data['price'], 2, '.', '');
+
+            $data['visibility'] = 1;
+            $data['image'] = Storage::put('img', $data['image']);
+            $newDish = new Dish();
+            $newDish->fill($data);
+            $newDish->name = $data['name'];
+            $newDish['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
+
+            $newDish->save();
+
+            return redirect()->route("admin.dishes.show", ["dish" => $newDish->slug])->with('message', 'Piatto inserito correttamente');
         }
-
-        $newDish->save();
-
-        return redirect()->route("admin.dishes.show", ["dish" => $newDish->slug])->with('message', 'Piatto inserito correttamente');
 
     }
 
@@ -97,22 +100,26 @@ class DishController extends Controller
         $data = $request->validated();
         $id = Auth::id();
         $name = Dish::where('restaurant_id', $id)->where('name',$data['name'])->first();
+
+        // if there is no match, update the record
         if (!$name || $name->name == $data['oldname']) {
             $data['restaurant_id'] = $request->restaurant_id;
             $data['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
+            // if a new image arrives I will replace it
             if (isset($data['image'])) {
                 if ($dish->image) {
                     Storage::delete($dish->image);
                 }
                 $data['image'] = Storage::put('img', $data['image']);
             }
-            //formatting price
+            // standardizes the price with 2 decimal places
             $data['price'] = number_format($data['price'], 2, '.', '');
 
             $dish->update($data);
+
             return redirect()->route('admin.dishes.show', ['dish' => $dish->slug])->with('message', 'Le tue modifiche sono state apportate correttamente');
-            // return view('admin.dishes.show', compact('dish'))->with('message', 'Le tue modifiche sono state apportate correttamente');
         } else{
+
             return redirect()->route('admin.dishes.edit',compact('dish'))->with('error', 'Nel tuo menu hai già un piatto con quel nome.')->withInput();
         }
 
@@ -126,6 +133,9 @@ class DishController extends Controller
 
     }
 
+    /**
+     * changes the status from true to false
+     */
     public function toggle(Request $request, string $id)
     {
         $data = $request->all();

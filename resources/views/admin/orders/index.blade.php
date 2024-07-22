@@ -2,6 +2,17 @@
 
 @section('content')
 
+<div class="mt-5">
+    <div class="w-50 text-center m-auto">
+        @if(isset($error))
+        <div class="alert alert-danger">
+            <span class="text-danger">
+                <strong>{{ $error }}</strong>
+            </span>
+        </div>
+        @endif
+    </div>
+</div>
     {{-- container  --}}
     <div class="form-container w-100 p-5 mt-5">
         @if (count($orders) > 0)
@@ -56,7 +67,7 @@
                 </tbody>
                 {{-- /tbody --}}
 
-                
+
             </table>
             {{-- /table --}}
         @else

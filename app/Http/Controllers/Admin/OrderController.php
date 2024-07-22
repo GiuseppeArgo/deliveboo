@@ -12,18 +12,16 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * shows all the restaurateur's orders
      */
     public function index(Request $request)
     {
-        $data = $request->all();
-        $restaurantId = Auth::id(); // L'ID del ristorante che stiamo cercando
+        $restaurantId = Auth::id();
         $dishesForRestaurant = Dish::where('restaurant_id', $restaurantId)->pluck('id');
-        // Passaggio 2: Trova gli ordini che includono quei piatti
+        // Find orders that include those dishes
         $orders = Order::whereHas('dishes', function ($query) use ($dishesForRestaurant) {
             $query->whereIn('dish_id', $dishesForRestaurant);
         })->get();
-        // dd($dishesForRestaurant);
 
         return view("admin.orders.index", compact('orders'));
     }
@@ -33,7 +31,14 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $restaurantId = Auth::id();
+        $dishesForRestaurant = Dish::where('restaurant_id', $restaurantId)->pluck('id');
+        // Find orders that include those dishes
+        $orders = Order::whereHas('dishes', function ($query) use ($dishesForRestaurant) {
+            $query->whereIn('dish_id', $dishesForRestaurant);
+        })->get();
+
+        return view("admin.orders.index", compact('orders'));
     }
 
     /**
@@ -41,27 +46,56 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-    
-    public function show(string $id)
-{
-    $data = Auth::id();
-    $order = Order::with('dishes')->find($id); // Trova l'ordine specificato
-    $orders = [
-        'restaurant_id' => $order->dishes[0]->restaurant_id, // Ottieni il restaurant_id del primo piatto
-        'dishes' => $order->dishes // Salva tutta la collezione di piatti
-    ];
-    return view('admin.orders.show', compact('orders')); // Passa i dati all'view
-}
+        $restaurantId = Auth::id();
+        $dishesForRestaurant = Dish::where('restaurant_id', $restaurantId)->pluck('id');
+        // Find orders that include those dishes
+        $orders = Order::whereHas('dishes', function ($query) use ($dishesForRestaurant) {
+            $query->whereIn('dish_id', $dishesForRestaurant);
+        })->get();
 
+        return view("admin.orders.index", compact('orders'));
+    }
+
+    public function show(string $id)
+    {
+        $data = Auth::id();
+        // find order details by id
+        $order = Order::with('dishes')->findOrFail($id);
+        // if the user_id does not match the restaurant id it takes you back to the index
+        if($data != $order->dishes[0]->restaurant_id){
+
+            $restaurantId = Auth::id();
+            $dishesForRestaurant = Dish::where('restaurant_id', $restaurantId)->pluck('id');
+            // Find orders that include those dishes
+            $orders = Order::whereHas('dishes', function ($query) use ($dishesForRestaurant) {
+                $query->whereIn('dish_id', $dishesForRestaurant);
+            })->get();
+            return view("admin.orders.index", compact('orders'))->with('error','Puoi accedere solo ai tuoi ordini!');
+        } else {
+            $orders = [
+                'restaurant_id' => $order->dishes[0]->restaurant_id,
+                'dishes' => $order->dishes
+            ];
+            return view('admin.orders.show', compact('orders'));
+        }
+    }
+
+    // is index method...
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $restaurantId = Auth::id();
+        $dish_id = Dish::where('restaurant_id', $restaurantId)->pluck('id');
+        // Find orders that include those dishes
+        $orders = Order::whereHas('dishes', function ($query) use ($dish_id) {
+            $query->whereIn('dish_id', $dish_id);
+        })->get();
+
+        return view("admin.orders.index", compact('orders'));
     }
+    //id index method
 
     /**
      * Update the specified resource in storage.

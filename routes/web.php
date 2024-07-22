@@ -23,20 +23,27 @@ Route::get('/', function () {
 });
 
 
+//route with auth
 Route::middleware('auth')
     ->prefix('admin')
     ->name('admin.')
     ->group(function () {
+
+        //DASHBOARD INDEX
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+        //RESTAURANTS RESOURCE
         Route::resource('restaurants', RestaurantController::class)->except(['show'])->parameters(['restaurants' => 'restaurant:slug']);
+
+        // DISHES RESOURCE
         Route::resource('dishes', DishController::class)->parameters(['dishes' => 'dish:slug']);
 
-        // Route::put('/dishes/{id}/toggle', 'DishController@toggle')->name('admin.dishes.toggle');
+        //DISHES TOOGLE
         Route::put('/dishes/{id}/toggle', [DishController::class, 'toggle'])->name('dishes.toggle');
 
+        //ORDERS RESOURCE
         Route::resource('orders', OrderController::class);
-
-        //  pagina not found per rotte che non esistono.
+        // NOT FOUND PAGE
         Route::fallback(function () {
             abort(404, 'Pagina non trovata');
         });

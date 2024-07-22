@@ -28,15 +28,26 @@
 <body>
     <div id="app">
 
+        {{-- header --}}
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap ps-4 pe-4 shadow">
+
+            {{-- logo --}}
             <div class="row justify-content-between">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Deliveboo</a>
+
+                {{-- menu hamburger --}}
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"
                     data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                {{-- /menu hamburger --}}
+
             </div>
+            {{-- /logo --}}
+
+
+            {{-- /nav bar --}}
             <div class="navbar-nav">
                 <div class="nav-item text-nowrap ms-2 d-none d-md-block">
                     <a class="nav-link" href="{{ route('logout') }}"
@@ -49,21 +60,28 @@
                     </form>
                 </div>
             </div>
+            {{-- /nav bar --}}
+
         </header>
+        {{-- /header --}}
+
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
+
+                {{-- sidebar --}}
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
                     <div class="position-sticky pt-3">
                         <ul class="d-flex flex-column fs-5 gap-2">
+
+                            {{-- user --}}
                             <li class="nav-item">
                                 <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.dashboard') }}">
                                     <i class="fa-solid fa-user"></i> Profilo
                             </li>
+                            {{-- /user --}}
+
 
                             {{-- home --}}
                             <li>
@@ -74,29 +92,9 @@
                             </li>
                             {{-- /home --}}
 
-
-                            {{-- modifica anagrafica --}}
-                            {{-- <li>
-                                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                                   href="{{ route('admin.restaurants.edit', ['restaurant' => 'ciao']) }}">>
-                                   <i class="fa-solid fa-pen"></i> Mod. Ristorante
-                                </a>
-                            </li> --}}
-                            {{-- /modifica anagrafica --}}
-
-                            {{-- agg ristorante --}}
-                            {{-- @if (!isset($restaurant) || empty($restaurant))
-                                <li>
-                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                                        href="{{ route('admin.restaurants.create') }}">
-                                        <i class="fa-solid fa-plus"></i> Agg. Ristorante
-                                    </a>
-                                </li>
-                            @endif --}}
-                            {{-- /agg ristorante --}}
-
-
+                            {{-- hide and show link --}}
                             @if (isset($userHasRestaurant) && $userHasRestaurant)
+
                                 {{-- Visualizza menu --}}
                                 <li>
                                     <a class="nav-link text-white"
@@ -106,6 +104,7 @@
                                     </a>
                                 </li>
                                 {{-- /Visualizza menu --}}
+
 
                                 {{-- visualizza ordini --}}
                                 <li>
@@ -117,6 +116,7 @@
                                 </li>
                                 {{-- visualizza ordini --}}
 
+
                                 {{-- aggiungi piatto --}}
                                 <li>
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
@@ -125,8 +125,11 @@
                                     </a>
                                 </li>
                                 {{-- /aggiungi piatto --}}
-                                {{-- @else --}}
+
+
                             @endif
+                            {{-- hide and show link --}}
+
 
                             {{-- logout --}}
                             <li class="d-lg-none d-md-none d-sm-block">
@@ -141,10 +144,13 @@
                                 </form>
                             </li>
                             {{-- logout --}}
+
                         </ul>
 
                     </div>
                 </nav>
+                {{-- /sidebar --}}
+
 
                 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                     @yield('content')
