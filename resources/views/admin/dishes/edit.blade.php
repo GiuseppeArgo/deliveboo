@@ -31,7 +31,7 @@
 
             {{-- Name --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Nome Piatto *
+                <label for="name" class="form-label">Nome Piatto <span class="asterisco">*</span>
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger"> {{ $errors->first('name') }} </span>
@@ -54,7 +54,7 @@
 
             {{-- Description --}}
             <div class="mb-3">
-                <label for="description" class="form-label">Descrizione *
+                <label for="description" class="form-label">Descrizione <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('description')
@@ -70,7 +70,7 @@
 
             {{-- Price --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Prezzo *
+                <label for="price" class="form-label">Prezzo <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('price')
@@ -88,7 +88,7 @@
 
             {{-- Availability --}}
             <div class="mb-3">
-                <label class="form-label">Disponibilità *
+                <label class="form-label">Disponibilità <span class="asterisco">*</span>
 
                     {{-- errors --}}
                     <span class="text-danger"> {{ $errors->first('visibility') }} </span>
@@ -109,7 +109,7 @@
 
             {{-- input file image --}}
             <div class="mb-3">
-                <label for="image" class="form-label">Immagine *</label>
+                <label for="image" class="form-label">Immagine <span class="asterisco">*</span></label>
                 <input type="file" name="image" id="image"
                     class="form-control @error('image') is-invalid @enderror">
                 <span id="errorImage" class="text-danger"></span>
@@ -148,7 +148,9 @@
 
         </form>
         {{-- /form --}}
-        * ⁠questi campi sono obbligatori
+        <div class="mt-5">
+            <span class="asterisco">*</span> ⁠questi campi sono obbligatori
+        </div>
     </div>
 
     {{-- javascript validation image --}}

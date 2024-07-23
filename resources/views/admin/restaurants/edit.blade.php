@@ -24,7 +24,7 @@
 
             {{-- title --}}
             <div class="mb-3">
-                <label for="name">Nome Attività *
+                <label for="name">Nome Attività <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('name')
@@ -42,7 +42,7 @@
 
             {{-- address --}}
             <div class="mb-3">
-                <label for="address">Indirizzo *
+                <label for="address">Indirizzo <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('address')
@@ -60,7 +60,7 @@
 
             {{-- description --}}
             <div class="mb-3">
-                <label for="description">Descrizione *
+                <label for="description">Descrizione <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('description')
@@ -76,7 +76,7 @@
 
 
             {{-- Tiypologies --}}
-            <span>Tipologie * </span>
+            <span>Tipologie <span class="asterisco">*</span> </span>
 
             {{-- errors typologies --}}
             @if ($errors->first('tipologies'))
@@ -107,7 +107,7 @@
 
             {{-- input file image --}}
             <div class="mb-3">
-                <label for="image"> Immagine *</label>
+                <label for="image"> Immagine <span class="asterisco">*</span></label>
                 <span id="errorImage" class="text-danger"></span>
                 <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
                     id="image">
@@ -153,7 +153,9 @@
                 {{-- /button submit --}}
             </div>
         </form>
-        * ⁠questi campi sono obbligatori
+        <div class="mt-5"> 
+            <span class="asterisco">*</span> ⁠questi campi sono obbligatori
+        </div>
     </div>
     {{-- /container  --}}
 

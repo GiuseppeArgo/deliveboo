@@ -30,7 +30,7 @@
 
             {{-- Name --}}    {{-- C'è un controllo di piu --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Nome Piatto *
+                <label for="name" class="form-label">Nome Piatto <span class="asterisco">*</span>
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger">{{ $errors->first('name') }}</span>
@@ -51,7 +51,7 @@
 
             {{-- Description --}}
             <div class="mb-3">
-                <label for="description" class="form-label">Descrizione *
+                <label for="description" class="form-label">Descrizione <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('description')
@@ -67,7 +67,7 @@
 
             {{-- Price --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Prezzo *
+                <label for="price" class="form-label">Prezzo <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('price')
@@ -86,7 +86,7 @@
 
             {{-- input file image --}}
             <div class="mb-3">
-                <label for="image" class="form-label">Immagine *
+                <label for="image" class="form-label">Immagine <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('image')
@@ -123,7 +123,9 @@
             {{-- hide input --}}
 
         </form>
-        * ⁠questi campi sono obbligatori
+        <div class="mt-5">
+            <span class="asterisco">*</span> ⁠questi campi sono obbligatori
+        </div>
     </div>
     {{-- /container --}}
 

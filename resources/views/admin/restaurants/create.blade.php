@@ -18,7 +18,7 @@ creTE RESTAURANTS
 
             {{-- name --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Nome Ristorante *
+                <label for="name" class="form-label">Nome Ristorante <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('name')
@@ -36,7 +36,7 @@ creTE RESTAURANTS
 
             {{-- address --}}
             <div class="mb-3">
-                <label for="address" class="form-label">Indirizzo *
+                <label for="address" class="form-label">Indirizzo <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('address')
@@ -54,7 +54,7 @@ creTE RESTAURANTS
 
             {{-- Description --}}
             <div class="mb-3">
-                <label for="description" class="form-label">Descrizione *
+                <label for="description" class="form-label">Descrizione <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('description')
@@ -69,7 +69,7 @@ creTE RESTAURANTS
 
 
             {{-- Typologies --}}
-            <span>Tipologie * </span>
+            <span>Tipologie <span class="asterisco">*</span> </span>
 
             {{-- errors typologies --}}
             @if (!$errors->first('tipologies'))
@@ -100,7 +100,7 @@ creTE RESTAURANTS
 
             {{-- P.Iva --}}
             <div class="mb-3">
-                <label for="p_iva" class="form-label">Partita Iva *
+                <label for="p_iva" class="form-label">Partita Iva <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('p_iva')
@@ -117,7 +117,7 @@ creTE RESTAURANTS
 
             {{-- input file image --}}
             <div class="mb-3">
-                <label for="image" class="form-label">Immagine *
+                <label for="image" class="form-label">Immagine <span class="asterisco">*</span>
 
                     {{-- error image --}}
                     @error('image')
@@ -155,7 +155,9 @@ creTE RESTAURANTS
 
         </form>
         {{-- /form --}}
-        * ⁠questi campi sono obbligatori
+        <div class="mt-5">
+            <span class="asterisco">*</span> ⁠questi campi sono obbligatori
+        </div>
     </div>
     {{-- /container  --}}
 
