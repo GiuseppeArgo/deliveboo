@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('phone_number');
             $table->string('email');
             $table->string('address');
-            $table->dateTime('data');
             $table->decimal('total_price',5,2);
             $table->timestamps();
         });

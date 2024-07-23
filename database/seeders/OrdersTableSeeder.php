@@ -24,7 +24,6 @@ class OrdersTableSeeder extends Seeder
             $newOrder->phone_number = $order['phone_number'];
             $newOrder->email = $order['email'];
             $newOrder->address = $order['address'];
-            $newOrder->data = $order['data'];
             $newOrder->total_price = $order['total_price'];
             $newOrder->save();
 

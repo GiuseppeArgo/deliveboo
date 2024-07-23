@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\Dish;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -22,6 +23,11 @@ class OrderController extends Controller
         $orders = Order::whereHas('dishes', function ($query) use ($dishesForRestaurant) {
             $query->whereIn('dish_id', $dishesForRestaurant);
         })->get();
+        foreach ($orders as $curOrder){
+            $curOrder['date'] = Carbon::parse($curOrder['created_at'])->format('d-m-Y H:i');
+            // dd($curOrder['date']);
+
+        }
 
         return view("admin.orders.index", compact('orders'));
     }

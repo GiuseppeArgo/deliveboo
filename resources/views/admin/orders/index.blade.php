@@ -54,7 +54,7 @@
                             <td class="align-middle">{{ $order->phone_number }}</td>
                             <td class="align-middle">{{ $order->email }}</td>
                             <td class="align-middle">{{ $order->address }}</td>
-                            <td class="align-middle">{{ $order->data }}</td>
+                            <td class="align-middle">{{ $order->date }}</td>
                             <td class="align-middle">{{ $order->total_price }}€</td>
                             <td class="text-center">
                                 <a href="{{ route('admin.orders.show', ['order' => $order->id]) }}" class="btn btn-outline-primary">
