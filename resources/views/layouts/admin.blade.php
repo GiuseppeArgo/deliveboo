@@ -53,7 +53,7 @@
                     <a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
+                        {{ __('Esci') }}
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -137,7 +137,7 @@
                                     onclick="event.preventDefault();
                                                                 document.getElementById('logout-form').submit();">
                                     <i class="fa-solid fa-left-long"></i>
-                                    {{ __('Logout') }}
+                                    {{ __('Esci') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf

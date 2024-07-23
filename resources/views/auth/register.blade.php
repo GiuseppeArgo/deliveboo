@@ -110,6 +110,7 @@
                                 </button>
                             </div>
                         </div>
+                        * ⁠questi campi sono obbligatori
                         {{-- btn submit --}}
 
 

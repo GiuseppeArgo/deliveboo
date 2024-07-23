@@ -62,7 +62,7 @@
 
                             {{-- login --}}
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Accedi') }}</a>
                             </li>
                             {{-- /login --}}
 
@@ -95,7 +95,7 @@
 
                                     {{-- logout --}}
                                     <a class="dropdown-item" onclick="document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Esci') }}
                                     </a>
 
                                     <form id="logout-form" action="/logout" method="POST" class="d-none">

@@ -155,7 +155,7 @@ creTE RESTAURANTS
 
         </form>
         {{-- /form --}}
-
+        * ⁠questi campi sono obbligatori
     </div>
     {{-- /container  --}}
 

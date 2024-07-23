@@ -153,6 +153,7 @@
                 {{-- /button submit --}}
             </div>
         </form>
+        * ⁠questi campi sono obbligatori
     </div>
     {{-- /container  --}}
 

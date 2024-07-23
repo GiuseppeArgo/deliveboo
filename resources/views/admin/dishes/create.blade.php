@@ -123,6 +123,7 @@
             {{-- hide input --}}
 
         </form>
+        * ⁠questi campi sono obbligatori
     </div>
     {{-- /container --}}
 

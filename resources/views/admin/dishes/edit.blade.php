@@ -148,7 +148,7 @@
 
         </form>
         {{-- /form --}}
-
+        * ⁠questi campi sono obbligatori
     </div>
 
     {{-- javascript validation image --}}
