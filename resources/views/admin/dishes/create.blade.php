@@ -11,15 +11,21 @@
             {{-- /title --}}
 
             {{-- button --}}
-            <div>
-                <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
-                    <i class="fa-solid fa-circle-arrow-left"></i>
-                    Torna al menu
-                </a>
-                <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
-                    <i class="fa-solid fa-circle-arrow-left"></i>
-                    Torna alla home
-                </a>
+            <div class="container">
+                <div class="row justify-content-center align-items-center gap-2">
+                    <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-items-center gap-1" href="{{ route('admin.dishes.index') }}">
+                        <i class="fa-solid fa-circle-arrow-left"></i>
+                        <span>
+                            menu
+                        </span>
+                    </a>
+                    <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-items-center gap-1" href="{{ route('admin.restaurants.index') }}">
+                        <i class="fa-solid fa-circle-arrow-left"></i>
+                        <span>
+                            home
+                        </span>
+                    </a>
+                </div>
             </div>
             {{-- /button --}}
 

@@ -95,7 +95,7 @@
             <div class="container mb-4">
                 <div class="row" role="group" aria-label="Basic checkbox toggle button group">
                     @foreach ($listTypes as $curType)
-                        <div class="col-4 btn-group flex flex-wrap mt-3">
+                        <div class="col-lg-4 col-md-6 btn-group flex flex-wrap justify-content-center align-items-center mt-3">
                             <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
                                 value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', $restaurant->types->pluck('id')->toArray())))>
                             <label class="btn btn-outline-secondary"

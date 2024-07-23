@@ -10,11 +10,11 @@
             <div class="d-flex gap-2">
                 <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
                     <i class="fa-solid fa-circle-arrow-left"></i>
-                    Torna indietro
+                    indietro
                 </a>
                 {{-- btn home --}}
                 <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
-                    <i class="fa-solid fa-user"></i> Torna alla home
+                    <i class="fa-solid fa-circle-arrow-left"></i> home
                 </a>
                 {{-- btn home --}}
             </div>
@@ -126,7 +126,7 @@
                     @endif
                     <img id="imagePreview" class="hide mb-3" src="" alt="New Image Preview">
                     <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
-                        onclick="removeImage(event)">Rimuovi immagine</a>
+                        onclick="removeImage(event)">Rimuovi</a>
                 </div>
             </div>
             {{-- old and new preview image --}}
@@ -135,7 +135,7 @@
             {{-- button add --}}
             <div class="container mt-3 mb-3 text-center">
                 <div class="row gap-2 justify-content-center">
-                    <button class="btn btn-success col-3" type="submit">Aggiorna dettagli</button>
+                    <button class="btn btn-success col-8 col-sm-7 col-md-6 col-lg-3" type="submit">Aggiorna</button>
                 </div>
             </div>
             {{-- /button add --}}

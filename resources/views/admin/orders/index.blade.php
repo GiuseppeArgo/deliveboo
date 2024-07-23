@@ -27,7 +27,8 @@
             {{-- /header  --}}
 
             {{-- table --}}
-            <table class="table table-responsive order">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover text-center">
 
                 {{-- thead --}}
                 <thead>
@@ -50,7 +51,7 @@
                     @foreach ($orders as $order)
                         <tr>
                             <td class="align-middle">{{ $order->id }}</td>
-                            <td>{{ $order->name }} <br> {{ $order->lastname }}</td>
+                            <td class="align.middle">{{ $order->name }} {{ $order->lastname }}</td>
                             <td class="align-middle">{{ $order->phone_number }}</td>
                             <td class="align-middle">{{ $order->email }}</td>
                             <td class="align-middle">{{ $order->address }}</td>
@@ -69,6 +70,7 @@
 
 
             </table>
+            </div>
             {{-- /table --}}
         @else
             <div class="d-flex flex-column justify-content-center align-items-center gap-2">
