@@ -28,7 +28,7 @@
         <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-            {{-- Name --}}    {{-- C'è un controllo di piu --}}
+            {{-- Name --}}
             <div class="mb-3">
                 <label for="name" class="form-label">Nome Piatto <span class="asterisco">*</span>
                     {{-- error message --}}

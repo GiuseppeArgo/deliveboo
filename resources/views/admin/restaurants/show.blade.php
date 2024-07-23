@@ -54,26 +54,26 @@
         {{-- menu btn --}}
         <div class="d-flex gap-2">
 
-            {{-- btn Aggiungi piatto --}}
+            {{-- btn add dish --}}
             <form action="{{ route('admin.dishes.create') }}" method="GET">
                 <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
                 <button type="submit" class="btn btn-primary mb-4">
                     <i class="fa-solid fa-plus"></i> Piatto
                 </button>
             </form>
-            {{-- /btn Aggiungi piatto --}}
+            {{-- /btn add dish --}}
 
-            {{-- btn modifica visibilità --}}
+            {{-- btn edit visibility --}}
             <form action="{{ route('admin.dishes.index') }}" method="GET">
                 <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant->id }}">
                 <button type="submit" class="btn btn-success mb-4">
                     <i class="fa-solid fa-pen"></i> Visibilità
                 </button>
             </form>
-            {{-- /btn modifica visibilità --}}
+            {{-- /btn edit visibility --}}
 
         </div>
-        {{-- menu btn --}}
+        {{-- /menu btn --}}
 
         {{-- menu dish --}}
         @if (count($restaurant->dishes) > 0)

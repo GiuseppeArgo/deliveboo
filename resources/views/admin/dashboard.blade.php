@@ -4,26 +4,24 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8 mt-4">
-
-                {{-- card- container --}}
-                <div class="card ">
-                    {{-- title --}}
-                    <div class="card-header alert alert-primary p-2 m-0">
-                        {{ __('Deliveboo Dashboard') }}
+                {{-- success message --}}
+                @if (session('message'))
+                    <div class="alert alert-success form-container text-center border-0">
+                        {{ session('message') }}
                     </div>
-                    {{-- /title --}}
+                @endif
+                {{-- /success message --}}
 
-                    {{-- hello user --}}
-                    <div class="card-body border-0 rounded-0 text-center alert alert-primary d-flex justify-content-center align-items-center gap-2"
-                        role="alert">
-                        <span class="fs-1">
-                            {{ __('Benvenuto') }} {{ $user->name }}
-                        </span>
+                {{-- card-container --}}
+                <div class="card mt-5">
+                    {{-- title --}}
+                    <div class="card-header alert alert-primary p-2 m-0 d-flex justify-content-center align-items-center gap-2">
+                        <span>{{ __('Deliveboo Dashboard') }}</span>
                         <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
                             Pagina Ristorante
                         </a>
                     </div>
-                    {{-- /hello user --}}
+                    {{-- /title --}}
 
                     {{-- user details --}}
                     <div class="card-body">

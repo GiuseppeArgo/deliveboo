@@ -12,9 +12,7 @@ use App\Models\Type;
 use App\Models\Dish;
 use App\Http\Requests\UpdateRestaurantRequest;
 use App\Http\Requests\StoreRestaurantRequest;
-
-
-
+use Illuminate\Support\Facades\Log;
 
 class RestaurantController extends Controller
 {
@@ -158,7 +156,7 @@ class RestaurantController extends Controller
             } else{
                 $restaurant = Restaurant::with('types')->get();
             }
-            return view('admin.restaurants.index', compact('restaurant'));
+            return redirect()->route('admin.restaurants.index')->with('message', 'Ristorante aggiornato con successo!');
     }
 
     /**

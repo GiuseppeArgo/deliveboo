@@ -5,6 +5,8 @@
     {{-- container  --}}
     <div class="form-container p-5">
 
+
+
         {{-- header --}}
         <div class="d-flex flex-column justify-content-center align-items-center gap-2 mt-5">
             <h1 class="text-center">Modifica i tuoi dati</h1>
@@ -153,7 +155,7 @@
                 {{-- /button submit --}}
             </div>
         </form>
-        <div class="mt-5"> 
+        <div class="mt-5">
             <span class="asterisco">*</span> ⁠questi campi sono obbligatori
         </div>
     </div>

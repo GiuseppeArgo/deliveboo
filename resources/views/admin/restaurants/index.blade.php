@@ -2,6 +2,8 @@
 
 @section('content')
 
+    @include('partials.session_message')
+
     {{-- control list restaurant  --}}
     @if ($restaurant->isNotEmpty())
 
@@ -18,15 +20,21 @@
         @foreach ($restaurant as $curRestaurant)
 
             {{-- container --}}
-            <div class="form-container p-5">
+            <div class="form-container p-5 index-restaurant">
 
+                <h1 class="text-center mb-4">Dettagli ristorante</h1>
                 {{-- header --}}
                 <div class="container d-flex align-itenms-center justify-content-center gap-2 mb-2">
+
+
                     {{-- btn edit --}}
                     <div>
-                        <a class="btn btn-primary"
+                        <a class="btn btn-primary d-flex justify-content-center align-items-center gap-1"
                             href="{{ route('admin.restaurants.edit', ['restaurant' => $curRestaurant->slug]) }}">
-                            <i class="fa-solid fa-pen"></i> Mod. Ristorante
+                            <i class="fa-solid fa-pen"></i>
+                            <span class="text-start">
+                            Mod. Ristorante
+                            </span>
                         </a>
                     </div>
                     {{-- /btn edit --}}
@@ -36,29 +44,38 @@
                     <form action="{{ route('admin.orders.index') }}" method="GET">
                         @csrf
                         <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fa-solid fa-list-ul"></i> Visualizza Ordini
+                        <button type="submit" class="btn btn-primary d-flex justify-content-center align-items-center gap-1">
+                            <i class="fa-solid fa-list-ul"></i>
+                            <span>
+                                Visualizza Ordini
+                            </span>
                         </button>
                     </form>
                     {{-- /Btn orders --}}
 
-                    {{-- btn Aggiungi piatto --}}
+                    {{-- btn add dish --}}
                     <form action="{{ route('admin.dishes.create') }}" method="GET">
                         <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
-                        <button type="submit" class="btn btn-primary mb-4">
-                            <i class="fa-solid fa-plus"></i> Aggiungi Piatto
+                        <button type="submit" class="btn btn-primary d-flex justify-content-center align-items-center gap-1">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>
+                                Aggiungi Piatto
+                            </span>
                         </button>
                     </form>
-                    {{-- /btn Aggiungi piatto --}}
+                    {{-- /btn add dish --}}
 
-                    {{-- Visualizza menu --}}
+                    {{-- Show menu --}}
                     <form action="{{ route('admin.dishes.index') }}" method="GET">
                         <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
-                        <button type="submit" class="btn btn-primary mb-4">
-                            <i class="fa-solid fa-list"></i> Visualizza Menu
+                        <button type="submit" class="btn btn-primary d-flex justify-content-center align-items-center gap-1">
+                            <i class="fa-solid fa-list"></i>
+                            <span>
+                                Visualizza Menu
+                            </span>
                         </button>
                     </form>
-                    {{-- /Visualizza menu --}}
+                    {{-- /Show menu --}}
 
                 </div>
                 {{-- /header --}}
