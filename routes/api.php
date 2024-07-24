@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Api\CheckoutController;
 use App\Http\Controllers\Api\RestaurantController;
 use App\Http\Controllers\Api\TypeController;
 use Illuminate\Http\Request;
@@ -31,4 +33,11 @@ Route::post('/dishorders',[DishOrderController::class, 'store']);
 //route api Order
 Route::post('/orders',[OrderController::class, 'store']);
 
+//route for braintree token
 
+Route::get('/generatetoken', [CheckoutController::class, 'generateToken']);
+
+
+//route for braintree make payment
+
+Route::post('/makepayment', [CheckoutController::class, 'makePayment']);
