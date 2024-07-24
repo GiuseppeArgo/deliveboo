@@ -1,6 +1,30 @@
 @extends('layouts.admin')
 
 @section('content')
+    {{-- button --}}
+    <div class="form-container border-white ">
+        <div class="row ">
+            <div class="col-6 d-flex justify-content-end">
+                <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-items-center gap-1"
+                    href="{{ route('admin.dishes.index') }}">
+                    <i class="fa-solid fa-circle-arrow-left"></i>
+                    <span>
+                        Indietro
+                    </span>
+                </a>
+            </div>
+            <div class="col-6 d-flex justify-content-start">
+                <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-items-center gap-1"
+                    href="{{ route('admin.restaurants.index') }}">
+                    <i class="fa-solid fa-circle-arrow-left"></i>
+                    <span>
+                        Home
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+    {{-- /button --}}
 
     {{-- container --}}
     <div class="form-container p-5">
@@ -10,24 +34,7 @@
             <h1 class="text-center">Aggiungi un piatto</h1>
             {{-- /title --}}
 
-            {{-- button --}}
-            <div class="container">
-                <div class="row justify-content-center align-items-center gap-2">
-                    <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-items-center gap-1" href="{{ route('admin.dishes.index') }}">
-                        <i class="fa-solid fa-circle-arrow-left"></i>
-                        <span>
-                            menu
-                        </span>
-                    </a>
-                    <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-items-center gap-1" href="{{ route('admin.restaurants.index') }}">
-                        <i class="fa-solid fa-circle-arrow-left"></i>
-                        <span>
-                            home
-                        </span>
-                    </a>
-                </div>
-            </div>
-            {{-- /button --}}
+
 
         </div>
 
@@ -43,15 +50,15 @@
                     @enderror
                     {{-- errore unique name --}}
                     @if (session('error'))
-                    <span class="text-danger">{{ session('error') }}</span>
+                        <span class="text-danger">{{ session('error') }}</span>
                     @endif
                     {{-- /error message --}}
 
 
                 </label>
                 <input value="{{ old('name') }}" type="text" minlength="5" maxlength="20" name="name"
-                    class="form-control @error('name') is-invalid @enderror"
-                    placeholder="es. Lasagna" required id="name" aria-describedby="name">
+                    class="form-control @error('name') is-invalid @enderror" placeholder="es. Lasagna" required
+                    id="name" aria-describedby="name">
             </div>
             {{-- /name --}}
 
@@ -67,7 +74,8 @@
 
                 </label>
 
-                <textarea class="form-control @error('description') is-invalid @enderror" name="description" minlength="5" maxlength="200" id="description" rows="3" placeholder="es. breve descrizione e ingredienti..." required>{{ old('description') }}</textarea>
+                <textarea class="form-control @error('description') is-invalid @enderror" name="description" minlength="5"
+                    maxlength="200" id="description" rows="3" placeholder="es. breve descrizione e ingredienti..." required>{{ old('description') }}</textarea>
             </div>
             {{-- /Description --}}
 
@@ -84,9 +92,8 @@
                 </label>
 
                 <input value="{{ old('price') }}" type="number" name="price"
-                       class="form-control @error('price') is-invalid @enderror"
-                       placeholder="es. 10.00" id="price" aria-describedby="price" required
-                       min="3" max="30" step="0.01">
+                    class="form-control @error('price') is-invalid @enderror" placeholder="es. 10.00" id="price"
+                    aria-describedby="price" required min="3" max="30" step="0.01">
             </div>
             {{-- /Price --}}
 
@@ -143,18 +150,26 @@
                 const allowedExtensions = ['jpg', 'jpeg', 'png'];
                 const extension = file.name.split('.').pop().toLowerCase();
                 if (!allowedExtensions.includes(extension)) {
-                    resolve({ valid: false, error: 'Tipo di file non valido.' });
+                    resolve({
+                        valid: false,
+                        error: 'Tipo di file non valido.'
+                    });
                     return;
                 }
 
                 // control size image
                 const maxSize = 1024 * 1024 * 2; // max 2 mm
                 if (file.size > maxSize) {
-                    resolve({ valid: false, error: 'Il file è troppo grande. Dimensione massima consentita: 2 MB.' });
+                    resolve({
+                        valid: false,
+                        error: 'Il file è troppo grande. Dimensione massima consentita: 2 MB.'
+                    });
                     return;
                 }
 
-                resolve({ valid: true });
+                resolve({
+                    valid: true
+                });
             });
         }
         //listen change tu imput file
@@ -165,7 +180,10 @@
 
             if (file) {
                 // wait return of function
-                const { valid, error } = await validateImage(file);
+                const {
+                    valid,
+                    error
+                } = await validateImage(file);
                 //if big image o invalid format reset input and hide image
                 if (!valid) {
                     imgElem.src = "";
@@ -196,5 +214,4 @@
         });
     </script>
     {{-- /javascript validation image --}}
-
 @endsection

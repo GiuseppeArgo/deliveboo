@@ -13,6 +13,16 @@
         @endif
     </div>
 </div>
+
+    {{-- container btn --}}
+    <div class="text-center">
+        <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+            Indietro
+        </a>
+    </div>
+    {{-- /container btn --}}
+    
     {{-- container  --}}
     <div class="form-container w-100 p-5 mt-5">
         @if (count($orders) > 0)
@@ -20,9 +30,7 @@
             {{-- header  --}}
             <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-4">
                 <h1 class="text-center">Lista Ordini</h1>
-                <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
-                    Torna Alla Home
-                </a>
+                
             </div>
             {{-- /header  --}}
 

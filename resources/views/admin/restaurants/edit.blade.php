@@ -3,16 +3,17 @@
 @section('content')
 
     {{-- container  --}}
+    <div class="text-center mt-5">
+        <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+            Indietro
+        </a>
+    </div>
     <div class="form-container p-5">
 
-
-
         {{-- header --}}
-        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mt-5">
-            <h1 class="text-center">Modifica i tuoi dati</h1>
-            <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
-                Torna Alla Home
-            </a>
+        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mt-2">
+            <h1 class="text-center">Modifica i tuoi dati</h1>   
         </div>
         {{-- header --}}
 
@@ -98,7 +99,7 @@
                         <div class="col-lg-4 col-md-6 btn-group flex flex-wrap justify-content-center align-items-center mt-3">
                             <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
                                 value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', $restaurant->types->pluck('id')->toArray())))>
-                            <label class="btn btn-outline-secondary"
+                            <label class="btn btn-outline-primary"
                                 for="tech-{{ $curType->id }}">{{ $curType->name }}</label>
                         </div>
                     @endforeach
