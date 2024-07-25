@@ -25,10 +25,11 @@ class OrderController extends Controller
         $orderId = $newOrder->id;
 
         $lead = new Lead();
-        $lead->name = $data['name'];
-        $lead->lastname = $data['lastname'];
+        $lead->name = ucfirst(strtolower($data['name']));
+        $lead->lastname = ucfirst(strtolower($data['lastname']));
         $lead->email = $data['email'];
         $lead->price = $data['total_price'];
+        $lead->order = $orderId;
         $lead->save();
         Mail::to($data['email'])->send(new NewContact($lead));
 

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('email');
+            $table->decimal('price',5,2);
+            $table->unsignedBigInteger('order');
             $table->timestamps();
         });
     }

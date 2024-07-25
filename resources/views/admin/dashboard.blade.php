@@ -38,13 +38,13 @@
                                 Nome utente:
                             </dt>
                             <dd>
-                                {{ $user->name }}
+                                {{ ucfirst(strtolower($user->name)) }}
                             </dd>
                             <dt>
                                 Cognome utente:
                             </dt>
                             <dd>
-                                {{ $user->lastname }}
+                                {{ ucfirst(strtolower($user->lastname)) }}
                             </dd>
                             <dt>
                                 Email:

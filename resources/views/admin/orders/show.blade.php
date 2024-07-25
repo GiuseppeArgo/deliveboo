@@ -22,7 +22,7 @@
         {{-- header --}}
         <div class="d-flex justify-content-center flex-column align-items-center mb-4">
             <h1 class="m-2 text-center">Ordini</h1>
-            
+
         </div>
         {{-- /header --}}
 
@@ -39,13 +39,13 @@
             </thead>
             {{-- /thead --}}
 
-            
+
             {{-- tbody --}}
             @foreach ($orders['dishes'] as $order)
                 <tbody>
                     <tr>
                         <td>
-                            {{ $order->name }}
+                            {{ ucfirst(strtolower($order->name)) }}
                         </td>
                         <td>
                             {{ $order->pivot->quantity }}
