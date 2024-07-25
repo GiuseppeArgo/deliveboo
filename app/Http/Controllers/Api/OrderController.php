@@ -28,6 +28,7 @@ class OrderController extends Controller
         $lead->name = $data['name'];
         $lead->lastname = $data['lastname'];
         $lead->email = $data['email'];
+        $lead->price = $data['total_price'];
         $lead->save();
         Mail::to($data['email'])->send(new NewContact($lead));
 
