@@ -13,25 +13,29 @@ use Illuminate\Support\Facades\Mail;
 class OrderController extends Controller
 {
     public function store(Request $request){
+        //new order
         $data = $request->all();
         $newOrder = new Order();
-        $newOrder->name = $data['name'];
-        $newOrder->lastname = $data['lastname'];
+        $newOrder->name = ucwords(strtolower($data['name']));
+        $newOrder->lastname = ucwords(strtolower($data['lastname']));
         $newOrder->phone_number = $data['phone_number'];
-        $newOrder->email = $data['email'];
-        $newOrder->address = $data['address'];
+        $newOrder->email = strtolower($data['email']);
+        $newOrder->address = ucwords(strtolower($data['address']));
         $newOrder->total_price = $data['total_price'];
         $newOrder->save();
         $orderId = $newOrder->id;
 
+        //new lead for user email
         $lead = new Lead();
-        $lead->name = $data['name'];
-        $lead->lastname = $data['lastname'];
-        $lead->email = $data['email'];
+        $lead->name = ucwords(strtolower($data['name']));
+        $lead->lastname = ucwords(strtolower($data['lastname']));
+        $lead->email = strtolower($data['email']);
         $lead->price = $data['total_price'];
+        $lead->order = $orderId;
         $lead->save();
-        Mail::to($data['email'])->send(new NewContact($lead));
+        Mail::to($newOrder->email)->send(new NewContact($lead));
 
+        // send result frontoffice
         $data = [
             'response' => 'success',
             'result'   =>  $orderId

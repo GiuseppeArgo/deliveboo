@@ -41,13 +41,13 @@
                     Nome del Piatto:
                 </dt>
                 <dd>
-                    {{ $dish->name }}
+                    {{ ucfirst(strtolower($dish->name)) }}
                 </dd>
                 <dt>
                     Descrizione:
                 </dt>
                 <dd>
-                    {{ $dish->description }}
+                    {{ ucfirst(strtolower($dish->description)) }}
                 </dd>
                 <dt>
                     Prezzo:

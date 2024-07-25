@@ -20,7 +20,7 @@
             {{-- container-btn --}}
             <div class="form-container border border-white">
                 <div class="row">
-                    
+
                     {{-- btn edit --}}
                     <div class=" col-sm-6 col-lg-3 py-2 d-flex justify-content-center justify-content-sm-end justify-content-lg-center ">
                         <form action="" class="d-flex justify-content-center">
@@ -63,7 +63,7 @@
                                 </span>
                             </button>
                         </form>
-                        
+
                     </div>
                     {{-- /btn add dish --}}
 
@@ -78,7 +78,7 @@
                                     Visualizza Menu
                                 </span>
                             </button>
-                        </form>    
+                        </form>
                     </div>
                     {{-- /Show menu --}}
 
@@ -105,21 +105,21 @@
                 <div class="row justify content-center align-items-center">
 
                     {{-- restaurant-img --}}
-                    <div class="col-lg-6 col-md-12">
-                        <img class="img-fluid" src="{{ asset('storage/' . $curRestaurant->image) }}" alt="img-restaurant">
+                    <div class="col-lg-6 col-md-12 square-image-container">
+                        <img class="img-fluid square-image" src="{{ asset('storage/' . $curRestaurant->image) }}" alt="img-restaurant">
                     </div>
                     {{-- /restaurant-img --}}
 
 
                     {{-- restaurant text --}}
-                    <div class="col-lg-6 col-md-8 mb-3 text-lg-start ">
+                    <div class="col-lg-6 col-md-8 mb-3 text-lg-start square-text-container">
 
                         {{-- name --}}
                         <div class="p-0 m-0">
                             <span>
                                 <strong>Nome Ristorante: </strong>
                             </span>
-                            <span class=" mt-5 mb-5">{{ $curRestaurant->name }}</span>
+                            <span class=" mt-5 mb-5">{{ ucwords(strtolower($curRestaurant->name)) }}</span>
                         </div>
                         {{-- /name --}}
 
@@ -137,7 +137,7 @@
                             <span>
                                 <strong>Indirizzo: </strong>
                             </span>
-                            <span class=" mt-5 mb-5">{{ $curRestaurant->address }}</span>
+                            <span class=" mt-5 mb-5">{{ ucwords(strtolower($curRestaurant->address)) }}</span>
                         </div>
                         {{-- /address --}}
 
