@@ -98,7 +98,7 @@
                                     <td class="align-middle text-center">
                                         <a class="btn btn-outline-primary"
                                             href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
-                                            <i class="fa-solid fa-eye"></i>
+                                            <i class="fa-solid fa-eye d-block d-sm-block d-md-block d-lg-none"></i>
                                             <span class="d-none d-sm-none d-md-none d-lg-block">
                                                 Dettagli
                                             </span>
@@ -107,7 +107,7 @@
                                     <td class="align-middle text-center">
                                         <a class="btn btn-outline-primary "
                                             href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
-                                            <i class="fa-solid fa-pen"></i>
+                                            <i class="fa-solid fa-pen d-block d-sm-block d-md-block d-lg-none"></i>
                                             <span class="d-none d-sm-none d-md-none d-lg-block">
                                                 Modifica
                                             </span>

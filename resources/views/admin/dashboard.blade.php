@@ -18,7 +18,7 @@
                     <div class="card-header alert alert-primary p-2 m-0 d-flex justify-content-center align-items-center gap-2">
                         <span>{{ __('Deliveboo Dashboard') }}</span>
                         <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
-                            Pagina Ristorante
+                            Il tuo Ristorante
                         </a>
                     </div>
                     {{-- /title --}}
