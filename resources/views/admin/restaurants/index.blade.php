@@ -105,14 +105,14 @@
                 <div class="row justify content-center align-items-center">
 
                     {{-- restaurant-img --}}
-                    <div class="col-lg-6 col-md-12">
-                        <img class="img-fluid" src="{{ asset('storage/' . $curRestaurant->image) }}" alt="img-restaurant">
+                    <div class="col-lg-6 col-md-12 square-image-container">
+                        <img class="img-fluid square-image" src="{{ asset('storage/' . $curRestaurant->image) }}" alt="img-restaurant">
                     </div>
                     {{-- /restaurant-img --}}
 
 
                     {{-- restaurant text --}}
-                    <div class="col-lg-6 col-md-8 mb-3 text-lg-start ">
+                    <div class="col-lg-6 col-md-8 mb-3 text-lg-start square-text-container">
 
                         {{-- name --}}
                         <div class="p-0 m-0">

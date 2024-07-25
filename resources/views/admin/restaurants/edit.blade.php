@@ -13,14 +13,14 @@
 
         {{-- header --}}
         <div class="d-flex flex-column justify-content-center align-items-center gap-2 mt-2">
-            <h1 class="text-center">Modifica i tuoi dati</h1>   
+            <h1 class="text-center">Modifica i tuoi dati</h1>
         </div>
         {{-- header --}}
 
 
         {{-- form --}}
         <form class="d-flex flex-column" action="{{ route('admin.restaurants.update', ['restaurant' => $restaurant->slug]) }}"
-            method="POST" enctype="multipart/form-data">
+            method="POST" enctype="multipart/form-data" class="w-100">
             @csrf
             @method('put')
 
@@ -128,17 +128,17 @@
 
 
             {{-- image --}}
-            <div class="container-preview m-auto mt-3">
-                <div class="mt-2 card-img">
+            <div class="container-preview m-auto mt-3 square-image-container">
+                <div class="mt-2 card-img border">
                     {{-- old image --}}
                     @if ($restaurant->image)
                         <img id="oldImg" src="{{ asset('storage/' . $restaurant->image) }}" alt="old-image"
-                            class="img-fluid mb-2">
+                            class="img-fluid mb-2 square-image">
                     @endif
                     {{-- /old image --}}
 
                     {{-- new image --}}
-                    <img id="imagePreview" class="hide" src="" alt="new-image">
+                    <img id="imagePreview" class="hide square-image" src="" alt="new-image">
                     <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
                     onclick="removeImage(event)">Rimuovi immagine</a>
                     {{-- /new image --}}
