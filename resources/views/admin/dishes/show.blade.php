@@ -26,35 +26,42 @@
 
     {{-- container --}}
     <div class="form-container container p-5">
-        <div class="row">
+        <div class="row justify-content-center align-items-center ">
 
             {{-- img --}}
-            <div class="col-lg-6">
-                    <img src="{{ asset('storage/' . $dish->image) }}" alt="">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="square-image-container">
+                    <img src="{{ asset('storage/' . $dish->image) }}" alt="" class="square-image">
+                </div>
             </div>
             {{-- /img --}}
 
 
             {{-- details dish --}}
-            <div class="col-lg-6 d-flex flex-column justify-content-center">
-                <dt>
-                    Nome del Piatto:
-                </dt>
-                <dd>
-                    {{ ucfirst(strtolower($dish->name)) }}
-                </dd>
-                <dt>
-                    Descrizione:
-                </dt>
-                <dd>
-                    {{ ucfirst(strtolower($dish->description)) }}
-                </dd>
-                <dt>
-                    Prezzo:
-                </dt>
-                <dd>
-                    {{ $dish->price }} €
-                </dd>
+            <div class="col-lg-6 col-md-6 col-sm-12 square-text-container">
+                <div class="container">
+                    <div class="row align-items-center justify-content-center">
+                        <dt>
+                            Nome del Piatto:
+                        </dt>
+                        <dd>
+                            {{ ucfirst(strtolower($dish->name)) }}
+                        </dd>
+                        <dt>
+                            Descrizione:
+                        </dt>
+                        <dd>
+                            {{ ucfirst(strtolower($dish->description)) }}
+                        </dd>
+                        <dt>
+                            Prezzo:
+                        </dt>
+                        <dd>
+                            {{ $dish->price }} €
+                        </dd>
+                    </div>
+
+                </div>
 
             </div>
             {{-- /details dish --}}

@@ -115,10 +115,10 @@
             </div>
             {{-- /input file image --}}
 
-            <div class="container-preview m-auto mt-3">
+            <div class="container-preview m-auto mt-3 square-image-container">
                 {{-- img preview --}}
-                <div class="mt-2 card-img">
-                    <img id="imagePreview" class="hide mb-3" src="" alt="new-image">
+                <div class="mt-2 card-img ">
+                    <img id="imagePreview" class="from-control hide mb-3 square-image" src="" alt="new-image">
                 </div>
                 {{-- /img preview --}}
 

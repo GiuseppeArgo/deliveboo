@@ -129,7 +129,7 @@
 
             {{-- image --}}
             <div class="container-preview m-auto mt-3 square-image-container">
-                <div class="mt-2 card-img border">
+                <div class="mt-2 card-img">
                     {{-- old image --}}
                     @if ($restaurant->image)
                         <img id="oldImg" src="{{ asset('storage/' . $restaurant->image) }}" alt="old-image"
