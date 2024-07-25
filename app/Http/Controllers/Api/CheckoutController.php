@@ -35,10 +35,11 @@ class CheckoutController extends Controller
         // ]);
     public function makePayment(Request $request) {
         $nonce = $request->payment_method_nonce;
-        
+        $amount = $request->amount;
+
         $result = $this->braintree->gateway()->transaction()->sale([
             // dati della transazione
-            'amount' => '10',
+            'amount' => $amount, //Usiamo l'importo del carrello passato nella richiesta
             'paymentMethodNonce' => $nonce,
             
             'options' => [
