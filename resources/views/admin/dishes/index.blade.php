@@ -1,6 +1,26 @@
 @extends('layouts.admin')
 
 @section('content')
+    {{-- btn --}}
+    <div class="d-flex justify-content-center mt-5 gap-2">
+        {{-- btn home --}}
+        <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
+            <i class="fa-solid fa-circle-arrow-left"></i>
+            Indietro
+        </a>
+        {{-- btn home --}}
+
+        {{-- Aggiungi piatto --}}
+        <form action="{{ route('admin.dishes.create') }}" method="GET">
+            <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant_id }}">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> Piatto
+            </button>
+        </form>
+        {{-- /Aggiungi piatto --}}
+    </div>
+    {{-- /btn --}}
+
     <div class="container-fluid">
         <div class="row justify-content-center">
             {{-- header --}}
@@ -8,27 +28,7 @@
                 <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
                     <h1 class="text-center p-0">Menu del ristorante<br>( {{ count($dishesList) }} Piatti )</h1>
 
-                    {{-- btn --}}
 
-                    <div class="d-flex gap-2">
-                        {{-- btn home --}}
-                        <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
-                            <i class="fa-solid fa-circle-arrow-left"></i>
-                            home
-                        </a>
-                        {{-- btn home --}}
-
-
-                        {{-- Aggiungi piatto --}}
-                        <form action="{{ route('admin.dishes.create') }}" method="GET">
-                            <input type="text" class="hide" name="restaurant_id" value="{{ $restaurant_id }}">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fa-solid fa-plus"></i> Piatto
-                            </button>
-                        </form>
-                        {{-- /Aggiungi piatto --}}
-                    </div>
-                    {{-- /btn --}}
 
                 </div>
             </div>
@@ -77,7 +77,7 @@
 
 
                                     {{-- change status --}}
-                                    <td>
+                                    <td class="align-middle" >
                                         <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}"
                                             method="POST" class="d-flex gap-1 justify-content-center">
                                             @csrf
@@ -95,7 +95,7 @@
 
 
                                     {{-- button --}}
-                                    <td class="d-flex gap-1 justify-content-center">
+                                    <td class="align-middle text-center">
                                         <a class="btn btn-outline-primary"
                                             href="{{ route('admin.dishes.show', ['dish' => $dish->slug]) }}">
                                             <i class="fa-solid fa-eye"></i>
@@ -104,8 +104,8 @@
                                             </span>
                                         </a>
                                     </td>
-                                    <td>
-                                        <a class="btn btn-outline-primary"
+                                    <td class="align-middle text-center">
+                                        <a class="btn btn-outline-primary "
                                             href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
                                             <i class="fa-solid fa-pen"></i>
                                             <span class="d-none d-sm-none d-md-none d-lg-block">

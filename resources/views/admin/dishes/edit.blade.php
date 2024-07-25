@@ -1,23 +1,30 @@
 @extends('layouts.admin')
 
 @section('content')
+    
+    {{-- container btn --}}
+    <div class="text-center">
+        <div class="d-flex justify-content-center gap-2 mt-5">
+            <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
+                <i class="fa-solid fa-circle-arrow-left"></i>
+                indietro
+            </a>
+            {{-- btn home --}}
+            <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
+                <i class="fa-solid fa-circle-arrow-left"></i> home
+            </a>
+            {{-- btn home --}}
+        </div>
+    </div>
+    {{-- /container btn --}}
+    
     {{-- container --}}
     <div class="form-container p-5">
 
         {{-- header container --}}
         <div class="d-flex flex-column gap-2 align-items-center justify-content-center">
             <h1 class="text-center">Modifica Piatto</h1>
-            <div class="d-flex gap-2">
-                <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
-                    <i class="fa-solid fa-circle-arrow-left"></i>
-                    indietro
-                </a>
-                {{-- btn home --}}
-                <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
-                    <i class="fa-solid fa-circle-arrow-left"></i> home
-                </a>
-                {{-- btn home --}}
-            </div>
+           
         </div>
         {{-- /header container --}}
 

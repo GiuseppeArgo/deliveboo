@@ -2,11 +2,10 @@
 
 @section('content')
 <div class="d-flex  flex-column align-items-center justify-content-center mt-5 gap-3 mb-4">
-    <h1 class="text-center">Dettagli Piatto</h1>
     <div class="d-flex gap-2">
         <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
             <i class="fa-solid fa-circle-arrow-left"></i>
-            Torna indietro
+             Indietro
         </a>
         <a class="btn btn-primary" href="{{ route('admin.dishes.edit', ['dish' => $dish->slug]) }}">
             <i class="fa-solid fa-pen"></i> Modifica
@@ -14,10 +13,11 @@
         {{-- btn home --}}
         <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
             <i class="fa-solid fa-circle-arrow-left"></i>
-             Torna alla home
+             Home
         </a>
         {{-- btn home --}}
     </div>
+    <h1 class="text-center">Dettagli Piatto</h1>
 </div>
 
     {{-- success message --}}
