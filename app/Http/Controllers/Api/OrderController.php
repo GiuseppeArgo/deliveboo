@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Models\Lead;
+use App\Mail\NewContact;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -20,7 +23,14 @@ class OrderController extends Controller
         $newOrder->total_price = $data['total_price'];
         $newOrder->save();
         $orderId = $newOrder->id;
-        Log::info($orderId);
+
+        $lead = new Lead();
+        $lead->name = $data['name'];
+        $lead->lastname = $data['lastname'];
+        $lead->email = $data['email'];
+        $lead->save();
+        Mail::to($data['email'])->send(new NewContact($lead));
+
         $data = [
             'response' => 'success',
             'result'   =>  $orderId
