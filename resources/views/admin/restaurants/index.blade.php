@@ -20,7 +20,7 @@
             {{-- container-btn --}}
             <div class="form-container border border-white">
                 <div class="row">
-                    
+
                     {{-- btn edit --}}
                     <div class=" col-sm-6 col-lg-3 py-2 d-flex justify-content-center justify-content-sm-end justify-content-lg-center ">
                         <form action="" class="d-flex justify-content-center">
@@ -63,7 +63,7 @@
                                 </span>
                             </button>
                         </form>
-                        
+
                     </div>
                     {{-- /btn add dish --}}
 
@@ -78,7 +78,7 @@
                                     Visualizza Menu
                                 </span>
                             </button>
-                        </form>    
+                        </form>
                     </div>
                     {{-- /Show menu --}}
 
@@ -119,7 +119,7 @@
                             <span>
                                 <strong>Nome Ristorante: </strong>
                             </span>
-                            <span class=" mt-5 mb-5">{{ $curRestaurant->name }}</span>
+                            <span class=" mt-5 mb-5">{{ ucwords(strtolower($curRestaurant->name)) }}</span>
                         </div>
                         {{-- /name --}}
 
@@ -137,7 +137,7 @@
                             <span>
                                 <strong>Indirizzo: </strong>
                             </span>
-                            <span class=" mt-5 mb-5">{{ $curRestaurant->address }}</span>
+                            <span class=" mt-5 mb-5">{{ ucwords(strtolower($curRestaurant->address)) }}</span>
                         </div>
                         {{-- /address --}}
 

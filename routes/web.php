@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\LeadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::middleware('auth')
 
         //ORDERS RESOURCE
         Route::resource('orders', OrderController::class);
+
+        //LEAD RESOURCE
+        // route::post('/leads', [LeadController::class, 'store']);
+
         // NOT FOUND PAGE
         Route::fallback(function () {
             abort(404, 'Pagina non trovata');

@@ -59,7 +59,7 @@
                             @foreach ($dishesList as $dish)
                                 <tr>
                                     {{-- name --}}
-                                    <td class="align-middle">{{ $dish->name }}</td>
+                                    <td class="align-middle">{{ ucfirst(strtolower($dish->name)) }}</td>
 
                                     {{-- price --}}
                                     <td class="align-middle">{{ $dish->price }} €</td>
