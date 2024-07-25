@@ -22,26 +22,24 @@
                 <div class="row">
 
                     {{-- btn edit --}}
-                    <div class=" col-sm-6 col-lg-3 py-2 d-flex justify-content-center justify-content-sm-end justify-content-lg-center ">
-                        <form action="" class="d-flex justify-content-center">
-                            <a class="btn btn-primary d-flex justify-content-center align-items-center gap-1"
+                    <div class=" col-sm-6 col-lg-3 py-2 flex-center justify-content-sm-end justify-content-lg-center ">
+                            <a class="btn btn-primary flex-center gap-1"
                                 href="{{ route('admin.restaurants.edit', ['restaurant' => $curRestaurant->slug]) }}">
                                 <i class="fa-solid fa-pen"></i>
                                 <span>
                                     Mod. Ristorante
                                 </span>
                             </a>
-                        </form>
                     </div>
                     {{-- /btn edit --}}
 
                     {{-- Btn orders --}}
-                    <div class=" col-sm-6 col-lg-3 d-flex justify-content-center  justify-content-sm-start justify-content-lg-center py-2">
+                    <div class=" col-sm-6 col-lg-3 flex-center justify-content-sm-start justify-content-lg-center py-2">
                         <form action="{{ route('admin.orders.index') }}" method="GET">
                             @csrf
                             <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
                             <button type="submit"
-                                class="btn btn-primary d-flex justify-content-center align-items-center gap-1">
+                                class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-list-ul"></i>
                                 <span>
                                     Visualizza Ordini
@@ -52,11 +50,11 @@
                     {{-- /Btn orders --}}
 
                     {{-- btn add dish --}}
-                    <div class=" col-sm-6  col-lg-3 d-flex justify-content-center  justify-content-sm-end justify-content-lg-center py-2">
+                    <div class=" col-sm-6  col-lg-3 flex-center justify-content-sm-end justify-content-lg-center py-2">
                         <form action="{{ route('admin.dishes.create') }}" method="GET" class="md_index-btn">
                             <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
                             <button type="submit"
-                                class="btn btn-primary d-flex justify-content-center align-items-center gap-1">
+                                class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-plus"></i>
                                 <span>
                                     Aggiungi Piatto
@@ -68,11 +66,11 @@
                     {{-- /btn add dish --}}
 
                     {{-- Show menu --}}
-                    <div class="col col-sm-6 col-lg-3 d-flex justify-content-center justify-content-sm-start justify-content-lg-center py-2">
+                    <div class="col col-sm-6 col-lg-3 flex-center justify-content-sm-start justify-content-lg-center py-2">
                         <form action="{{ route('admin.dishes.index') }}" method="GET" class="md_index-btn">
                             <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
                             <button type="submit"
-                                class="btn btn-primary d-flex justify-content-center align-items-center gap-1">
+                                class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-list"></i>
                                 <span>
                                     Visualizza Menu
@@ -91,12 +89,9 @@
             {{-- container --}}
             <div class="form-container p-5 index-restaurant">
 
-                <h1 class="text-center mb-4">Dettagli ristorante</h1>
                 {{-- header --}}
-                <div class="container d-flex flex-wrap align-itenms-center justify-content-center gap-2 mb-2">
-
-
-
+                <div class="mb-2">
+                    <h1 class="text-center mb-4">Dettagli ristorante</h1>
                 </div>
                 {{-- /header --}}
 
@@ -174,7 +169,7 @@
         @endforeach
         </div>
     @else
-        <div class="form-container d-flex justify-content-center align-items-center p-5 gap-5">
+        <div class="form-container flex-center flex-column p-5">
             <p class="fs-3">Nessun ristorante aggiunto. Aggiungine uno</p>
             <a class="btn btn-primary" href="{{ route('admin.restaurants.create') }}">
                 <i class="fa-solid fa-plus"></i> Nuovo ristorante

@@ -2,7 +2,7 @@
 
 @section('content')
     {{-- btn --}}
-    <div class="d-flex justify-content-center mt-5 gap-2">
+    <div class="flex-center mt-5 gap-2">
         {{-- btn home --}}
         <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
             <i class="fa-solid fa-circle-arrow-left"></i>
@@ -24,8 +24,8 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             {{-- header --}}
-            <div class="d-flex gap-2 justify-content-center align-items-center mt-5">
-                <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
+            <div class="flex-center gap-2 mt-5">
+                <div class="flex-center flex-column gap-2 mb-2">
                     <h1 class="text-center p-0">Menu del ristorante<br>( {{ count($dishesList) }} Piatti )</h1>
 
 
@@ -79,7 +79,7 @@
                                     {{-- change status --}}
                                     <td class="align-middle" >
                                         <form action="{{ route('admin.dishes.toggle', ['id' => $dish->id]) }}"
-                                            method="POST" class="d-flex gap-1 justify-content-center">
+                                            method="POST" class="flex-center gap-1">
                                             @csrf
                                             @method('PUT')
                                             <input type="text" class="hide" name="restaurant_id"

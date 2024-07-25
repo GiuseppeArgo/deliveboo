@@ -62,7 +62,7 @@ class DishController extends Controller
             $data['image'] = Storage::put('img', $data['image']);
             $newDish = new Dish();
             $newDish->fill($data);
-            $newDish->name = $data['name'];
+            $newDish->name = ucwords(strtolower($data['name']));
             $newDish['slug'] = Str::slug($data['name'] . '-' . $data['restaurant_id']);
 
             $newDish->save();

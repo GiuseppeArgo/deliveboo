@@ -15,7 +15,7 @@
                 {{-- card-container --}}
                 <div class="card mt-5">
                     {{-- title --}}
-                    <div class="card-header alert alert-primary p-2 m-0 d-flex justify-content-center align-items-center gap-2">
+                    <div class="card-header alert alert-primary p-2 m-0 flex-center gap-2">
                         <span>{{ __('Deliveboo Dashboard') }}</span>
                         <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
                             Il tuo Ristorante

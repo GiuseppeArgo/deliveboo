@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="d-flex  flex-column align-items-center justify-content-center mt-5 gap-3 mb-4">
-    <div class="d-flex gap-2">
+<div class="flex-center gap-3 mt-5 mb-4">
         <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
             <i class="fa-solid fa-circle-arrow-left"></i>
              Indietro
@@ -16,9 +15,8 @@
              Home
         </a>
         {{-- btn home --}}
-    </div>
-    <h1 class="text-center">Dettagli Piatto</h1>
 </div>
+<h1 class="text-center">Dettagli Piatto</h1>
 
     {{-- success message --}}
     @include('partials.session_message')
@@ -29,39 +27,45 @@
         <div class="row justify-content-center align-items-center ">
 
             {{-- img --}}
-            <div class="col-lg-6 col-md-6 col-sm-12">
-                <div class="square-image-container">
+            <div class="col-lg-6 col-md-6 col-sm-12 square-image-container">
+                {{-- <div class="square-image-container border"> --}}
                     <img src="{{ asset('storage/' . $dish->image) }}" alt="" class="square-image">
-                </div>
+                {{-- </div> --}}
             </div>
             {{-- /img --}}
 
 
             {{-- details dish --}}
-            <div class="col-lg-6 col-md-6 col-sm-12 square-text-container">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <dt>
-                            Nome del Piatto:
-                        </dt>
-                        <dd>
+            <div class="col-lg-6 col-md-6 col-sm-12 square-text-container d-flex flex-column justify-content-lg-center mt-3">
+                {{-- <div class="container"> --}}
+                    {{-- <div class="row align-items-center justify-content-center"> --}}
+                        <span>
+                            <strong>
+                                Nome del Piatto:
+                            </strong>
+                        </span>
+                        <span>
                             {{ ucfirst(strtolower($dish->name)) }}
-                        </dd>
-                        <dt>
-                            Descrizione:
-                        </dt>
-                        <dd>
+                        </span>
+                        <span>
+                            <strong>
+                                Descrizione:
+                            </strong>
+                        </span>
+                        <span>
                             {{ ucfirst(strtolower($dish->description)) }}
-                        </dd>
-                        <dt>
-                            Prezzo:
-                        </dt>
-                        <dd>
+                        </span>
+                        <span>
+                            <strong>
+                                Prezzo:
+                            </strong>
+                        </span>
+                        <span>
                             {{ $dish->price }} €
-                        </dd>
-                    </div>
+                        </span>
+                    {{-- </div> --}}
 
-                </div>
+                {{-- </div> --}}
 
             </div>
             {{-- /details dish --}}

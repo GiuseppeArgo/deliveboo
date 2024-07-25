@@ -20,9 +20,8 @@
     <div class="form-container p-2">
 
         {{-- header --}}
-        <div class="d-flex justify-content-center flex-column align-items-center mb-4">
+        <div class="mb-4">
             <h1 class="m-2 text-center">Ordini</h1>
-
         </div>
         {{-- /header --}}
 

@@ -27,9 +27,8 @@
     <div class="form-container w-100 p-5 mt-5">
         @if (count($orders) > 0)
             {{-- header  --}}
-            <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-4">
+            <div class="mb-4">
                 <h1 class="text-center">Lista Ordini</h1>
-
             </div>
             {{-- /header  --}}
 
@@ -81,7 +80,7 @@
             </div>
             {{-- /table --}}
         @else
-            <div class="d-flex flex-column justify-content-center align-items-center gap-2">
+            <div class="flex-center flex-column gap-2">
                 <p class="fs-3 p-0 m-0 text-center"><strong>Non ci sono ordini</strong></p>
                 <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
                     <i class="fa-solid fa-circle-arrow-left"></i>

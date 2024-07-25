@@ -5,7 +5,7 @@
     <div class="form-container border-white ">
         <div class="row ">
             <div class="col-6 d-flex justify-content-end">
-                <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-items-center gap-1"
+                <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 flex-center gap-1"
                     href="{{ route('admin.dishes.index') }}">
                     <i class="fa-solid fa-circle-arrow-left"></i>
                     <span>
@@ -14,7 +14,7 @@
                 </a>
             </div>
             <div class="col-6 d-flex justify-content-start">
-                <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 d-flex justify-content-center align-items-center gap-1"
+                <a class="btn btn-primary col-lg-3 col-md-6 col-sm-6 flex-center gap-1"
                     href="{{ route('admin.restaurants.index') }}">
                     <i class="fa-solid fa-circle-arrow-left"></i>
                     <span>
@@ -29,13 +29,10 @@
     {{-- container --}}
     <div class="form-container p-5">
 
-        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mb-2">
+        <div class="mb-4">
             {{-- title --}}
             <h1 class="text-center">Aggiungi un piatto</h1>
             {{-- /title --}}
-
-
-
         </div>
 
         <form action="{{ route('admin.dishes.store') }}" method="POST" enctype="multipart/form-data">

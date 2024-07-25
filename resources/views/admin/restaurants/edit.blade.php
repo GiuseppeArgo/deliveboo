@@ -12,7 +12,7 @@
     <div class="form-container p-5">
 
         {{-- header --}}
-        <div class="d-flex flex-column justify-content-center align-items-center gap-2 mt-2">
+        <div class="mb-4">
             <h1 class="text-center">Modifica i tuoi dati</h1>
         </div>
         {{-- header --}}

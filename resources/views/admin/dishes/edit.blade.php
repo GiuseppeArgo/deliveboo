@@ -4,7 +4,7 @@
 
     {{-- container btn --}}
     <div class="text-center">
-        <div class="d-flex justify-content-center gap-2 mt-5">
+        <div class="flex-center gap-2 mt-5">
             <a href="{{ route('admin.dishes.index') }}" class="btn btn-primary">
                 <i class="fa-solid fa-circle-arrow-left"></i>
                 Indietro
@@ -22,9 +22,8 @@
     <div class="form-container p-5">
 
         {{-- header container --}}
-        <div class="d-flex flex-column gap-2 align-items-center justify-content-center">
+        <div class="mb-4">
             <h1 class="text-center">Modifica Piatto</h1>
-
         </div>
         {{-- /header container --}}
 
