@@ -33,13 +33,13 @@
             {{-- /header  --}}
 
             {{-- table --}}
-            <div class="table-responsive">
-                <table class="table table-bordered table-hover text-center">
+            <div class="table-responsive ">
+                <table class="table table-bordered table-hover text-center ">
 
                     {{-- thead --}}
                     <thead>
                         <tr>
-                            <th scope="col">N.ordine</th>
+                            <th scope="col ">N.ordine</th>
                             <th scope="col">Nome</th>
                             <th scope="col">Telefono</th>
                             <th scope="col">Mail</th>
@@ -55,9 +55,9 @@
                     {{-- tbody --}}
                     <tbody>
                         @foreach ($orders as $order)
-                            <tr>
+                            <tr class="text-truncate">
                                 <td class="align-middle">{{ $order->id }}</td>
-                                <td class="align.middle">{{ ucwords(strtolower($order->name)) }} {{ $order->lastname }}</td>
+                                <td class="align-middle">{{ ucwords(strtolower($order->name)) }} {{ $order->lastname }}</td>
                                 <td class="align-middle">{{ $order->phone_number }}</td>
                                 <td class="align-middle">{{ $order->email }}</td>
                                 <td class="align-middle">{{ ucwords(strtolower($order->address)) }}</td>

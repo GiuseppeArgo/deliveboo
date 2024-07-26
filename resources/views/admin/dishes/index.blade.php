@@ -37,7 +37,7 @@
 
             @if (count($dishesList) > 0)
                 {{-- table --}}
-                <div class="table-responsive">
+                <div class="table-responsive text-center">
                     <table class="table table-bordered table-hover">
 
                         {{-- thead --}}

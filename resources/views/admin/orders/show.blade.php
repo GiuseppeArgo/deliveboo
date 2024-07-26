@@ -26,13 +26,13 @@
         {{-- /header --}}
 
         {{-- table --}}
-        <table class="table table-responsive striped">
+        <table class="table table-responsive striped text-center ">
 
             {{-- thead --}}
             <thead>
                 <tr>
                     <th>Piatto</th>
-                    <th>Quantity</th>
+                    <th>Quantità</th>
                     <th>Prezzo</th>
                 </tr>
             </thead>
