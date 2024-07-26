@@ -32,7 +32,7 @@
         <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap shadow container-fluid p-2">
 
             {{-- logo --}}
-            <div class="row justify-content-between">
+            <div class="row justify-content-between ps-1">
                 <a class="navbar-brand col-md-3 col-lg-2" href="/">Deliveboo</a>
 
                 {{-- menu hamburger --}}
