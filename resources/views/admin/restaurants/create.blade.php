@@ -24,7 +24,7 @@
                     {{-- /error message --}}
 
                 </label>
-                <input value="{{ old('name') }}" type="text"  minlength="3" maxlength="20"  name="name"
+                <input value="{{ old('name') }}" type="text"  minlength="3" maxlength="20" name="name"
                     class="form-control @error('name') is-invalid @enderror" placeholder="es. Da Mario" id="name"
                     aria-describedby="name_restaurant" required>
             </div>
