@@ -29,11 +29,11 @@
     <div id="app">
 
         {{-- header --}}
-        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap ps-4 pe-4 shadow">
+        <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap shadow container-fluid p-2">
 
             {{-- logo --}}
             <div class="row justify-content-between">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">Deliveboo</a>
+                <a class="navbar-brand col-md-3 col-lg-2" href="/">Deliveboo</a>
 
                 {{-- menu hamburger --}}
                 <button class="navbar-toggler position-absolute d-md-none collapsed" type="button"

@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\RestaurantController;
 use App\Http\Controllers\Admin\DishController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\LeadController;
+use App\Http\Controllers\Admin\StatsController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +25,6 @@ use App\Http\Controllers\Admin\LeadController;
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 //route with auth
 Route::middleware('auth')
@@ -44,6 +46,9 @@ Route::middleware('auth')
 
         //ORDERS RESOURCE
         Route::resource('orders', OrderController::class);
+
+        //STATS CONTROLLER
+        Route::get('/stats', [StatsController::class, 'index'])->name('stats.index');
 
         //LEAD RESOURCE
         // route::post('/leads', [LeadController::class, 'store']);
