@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     {{-- container  --}}
     <div class="text-center mt-5">
         <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
@@ -79,7 +78,7 @@
 
 
             {{-- Tiypologies --}}
-            <span>Tipologie <span class="asterisco">*</span> </span>
+            <span class="label">Tipologie <span class="asterisco">*</span> </span>
 
             {{-- errors typologies --}}
             @if ($errors->first('tipologies'))
@@ -96,7 +95,8 @@
             <div class="container mb-4">
                 <div class="row" role="group" aria-label="Basic checkbox toggle button group">
                     @foreach ($listTypes as $curType)
-                        <div class="col-lg-4 col-md-6 btn-group flex flex-wrap justify-content-center align-items-center mt-3">
+                        <div
+                            class="col-lg-4 col-md-6 btn-group flex flex-wrap justify-content-center align-items-center mt-3">
                             <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
                                 value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', $restaurant->types->pluck('id')->toArray())))>
                             <label class="btn btn-outline-primary"
@@ -112,8 +112,15 @@
             <div class="mb-3">
                 <label for="image"> Immagine <span class="asterisco">*</span></label>
                 <span id="errorImage" class="text-danger"></span>
+                {{-- <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
+                    id="image"> --}}
+
+                <!-- customize button -->
+                <button type="button" class="custom-file-upload btn btn-primary d-block">Scegli file</button>
+
+                <!--  hide Input file -->
                 <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
-                    id="image">
+                    id="image" style="display:none;">
 
                 {{-- error message --}}
                 @if (!empty($restaurant->image))
@@ -140,7 +147,7 @@
                     {{-- new image --}}
                     <img id="imagePreview" class="hide square-image" src="" alt="new-image">
                     <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
-                    onclick="removeImage(event)">Rimuovi immagine</a>
+                        onclick="removeImage(event)">Rimuovi immagine</a>
                     {{-- /new image --}}
 
                 </div>
@@ -157,13 +164,16 @@
             </div>
         </form>
         <div class="mt-5">
-            <span class="asterisco">*</span> ⁠questi campi sono obbligatori
+            <span class="asterisco">*</span>
+            <span class="field-required">
+                ⁠questi campi sono obbligatori
+            </span>
         </div>
     </div>
     {{-- /container  --}}
 
-    {{-- javascript validation image --}}
     <script>
+        // javascript validation image
         function validateImage(file) {
             return new Promise((resolve) => {
                 // control extension image
@@ -246,6 +256,20 @@
             }
 
         });
+        //  /javascript validation image
+
+        // {{-- input file --}}
+        document.addEventListener("DOMContentLoaded", function() {
+    // Mostra l'input file quando l'utente clicca sul pulsante personalizzato
+    document.querySelector('.custom-file-upload').addEventListener('click', function() {
+        document.getElementById('image').click();
+    });
+
+    // Nasconde l'input file dopo che un file è stato selezionato
+    document.getElementById('image').addEventListener('change', function() {
+        this.style.display = 'none'; // Nasconde l'input file
+    });
+});
+        // {{-- input file --}}
     </script>
-    {{-- /javascript validation image --}}
 @endsection

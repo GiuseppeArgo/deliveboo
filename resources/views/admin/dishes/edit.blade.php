@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     {{-- container btn --}}
     <div class="text-center">
         <div class="flex-center gap-2 mt-5">
@@ -69,7 +68,8 @@
                     {{-- error message --}}
 
                 </label>
-                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror" minlength="5" maxlength="200" rows="5" placeholder="es. breve descrizione e ingredienti..." required>{{ old('description', $dish->description) }}</textarea>
+                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+                    minlength="5" maxlength="200" rows="5" placeholder="es. breve descrizione e ingredienti..." required>{{ old('description', $dish->description) }}</textarea>
             </div>
             {{-- Description --}}
 
@@ -104,10 +104,10 @@
                 <div class="btn-group d-flex" role="group" aria-label="Disponibilità">
                     <input type="radio" name="visibility" id="active" value="1" class="btn-check"
                         {{ $dish->visibility == 1 ? 'checked' : '' }}>
-                    <label class="btn btn-outline-primary" for="active">Disponibile</label>
+                    <label class="btn btn-outline-primary btn-label" for="active">Si</label>
                     <input type="radio" name="visibility" id="inactive" value="0" class="btn-check"
                         {{ $dish->visibility == 0 ? 'checked' : '' }}>
-                    <label class="btn btn-outline-primary" for="inactive">Non disponibile</label>
+                    <label class="btn btn-outline-primary btn-label truncate text-nowrap" for="inactive">No</label>
                 </div>
             </div>
             {{-- Availability --}}
@@ -116,8 +116,16 @@
             {{-- input file image --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Immagine <span class="asterisco">*</span></label>
-                <input type="file" name="image" id="image"
-                    class="form-control @error('image') is-invalid @enderror">
+                {{-- <input type="file" name="image" id="image"
+                    class="form-control @error('image') is-invalid @enderror"> --}}
+
+                <!-- customize button -->
+                <button type="button" class="custom-file-upload btn btn-primary d-block">Scegli file</button>
+
+                <!--  hide Input file -->
+                <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
+                    id="image" style="display:none;">
+
                 <span id="errorImage" class="text-danger"></span>
             </div>
             {{-- /input file image --}}
@@ -155,12 +163,15 @@
         </form>
         {{-- /form --}}
         <div class="mt-5">
-            <span class="asterisco">*</span> ⁠questi campi sono obbligatori
+            <span class="asterisco">*</span>
+            <span class="field-required">
+                ⁠questi campi sono obbligatori
+            </span>
         </div>
     </div>
 
-    {{-- javascript validation image --}}
     <script>
+        // {{-- javascript validation image --}}
         function validateImage(file) {
             return new Promise((resolve) => {
                 // control extension image
@@ -201,7 +212,7 @@
                 const {
                     valid,
                     error
-                // wait return of function
+                    // wait return of function
                 } = await validateImage(file);
                 //if big image o invalid format reset input and hide image
                 if (!valid) {
@@ -251,6 +262,20 @@
                 imagePreview.classList.add('hide');
             }
         });
+        // {{-- /javascript validation image --}}
+
+        // {{-- input file --}}
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mostra l'input file quando l'utente clicca sul pulsante personalizzato
+            document.querySelector('.custom-file-upload').addEventListener('click', function() {
+                document.getElementById('image').click();
+            });
+
+            // Nasconde l'input file dopo che un file è stato selezionato
+            document.getElementById('image').addEventListener('change', function() {
+                this.style.display = 'none'; // Nasconde l'input file
+            });
+        });
+        // {{-- input file --}}
     </script>
-    {{-- /javascript validation image --}}
 @endsection

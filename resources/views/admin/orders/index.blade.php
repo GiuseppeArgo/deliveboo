@@ -46,7 +46,7 @@
                             <th scope="col">Indirizzo</th>
                             <th scope="col">Data</th>
                             <th scope="col">Totale</th>
-                            <th scope="col" class="text-center">Mostra Ordine</th>
+                            <th scope="col" class="text-center">Dettagli</th>
                         </tr>
                     </thead>
                     {{-- /thead --}}

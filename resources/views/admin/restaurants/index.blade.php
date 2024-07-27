@@ -18,18 +18,18 @@
 
         @foreach ($restaurant as $curRestaurant)
             {{-- container-btn --}}
-            <div class="form-container border border-white">
+            <div class="form-container border-0">
                 <div class="row">
 
                     {{-- btn edit --}}
                     <div class=" col-sm-6 col-lg-3 py-2 flex-center justify-content-sm-end justify-content-lg-center ">
-                            <a class="btn btn-primary flex-center gap-1"
-                                href="{{ route('admin.restaurants.edit', ['restaurant' => $curRestaurant->slug]) }}">
-                                <i class="fa-solid fa-pen"></i>
-                                <span>
-                                    Mod. Ristorante
-                                </span>
-                            </a>
+                        <a class="btn btn-primary flex-center gap-1"
+                            href="{{ route('admin.restaurants.edit', ['restaurant' => $curRestaurant->slug]) }}">
+                            <i class="fa-solid fa-pen"></i>
+                            <span>
+                                Mod. Ristorante
+                            </span>
+                        </a>
                     </div>
                     {{-- /btn edit --}}
 
@@ -38,8 +38,7 @@
                         <form action="{{ route('admin.orders.index') }}" method="GET">
                             @csrf
                             <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
-                            <button type="submit"
-                                class="btn btn-primary flex-center gap-1">
+                            <button type="submit" class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-list-ul"></i>
                                 <span>
                                     Visualizza Ordini
@@ -53,8 +52,7 @@
                     <div class=" col-sm-6  col-lg-3 flex-center justify-content-sm-end justify-content-lg-center py-2">
                         <form action="{{ route('admin.dishes.create') }}" method="GET" class="md_index-btn">
                             <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
-                            <button type="submit"
-                                class="btn btn-primary flex-center gap-1">
+                            <button type="submit" class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-plus"></i>
                                 <span>
                                     Aggiungi Piatto
@@ -69,8 +67,7 @@
                     <div class="col col-sm-6 col-lg-3 flex-center justify-content-sm-start justify-content-lg-center py-2">
                         <form action="{{ route('admin.dishes.index') }}" method="GET" class="md_index-btn">
                             <input type="text" class="hide" name="restaurant_id" value="{{ $curRestaurant->id }}">
-                            <button type="submit"
-                                class="btn btn-primary flex-center gap-1">
+                            <button type="submit" class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-list"></i>
                                 <span>
                                     Visualizza Menu
@@ -95,73 +92,80 @@
                 </div>
                 {{-- /header --}}
 
+                <div class="container">
 
-                {{-- container main --}}
-                <div class="row justify content-center align-items-center">
+                    {{-- container main --}}
+                    <div class="row justify-content-center align-items-center">
 
-                    {{-- restaurant-img --}}
-                    <div class="col-lg-6 col-md-12 square-image-container">
-                        <img class="img-fluid square-image" src="{{ asset('storage/' . $curRestaurant->image) }}" alt="img-restaurant">
+                        {{-- restaurant-img --}}
+                        <div class="col-sm-12 col-md-12 col-lg-6 ">
+                            <img class="img-fluid square-image" src="{{ asset('storage/' . $curRestaurant->image) }}"
+                                alt="img-restaurant">
+                        </div>
+                        {{-- /restaurant-img --}}
+
+
+                        {{-- restaurant text --}}
+                        <div class="col-sm-12 col-md-12 col-lg-6 text-lg-start p-4 d-flex flex-column gap-2 restaurants-details">
+
+                            {{-- name --}}
+                            <div>
+                                <p class="p-0 m-0">
+                                    <strong>Nome Ristorante: </strong>
+                                </p>
+                                <span class="">{{ ucwords(strtolower($curRestaurant->name)) }}</span>
+                            </div>
+                            {{-- /name --}}
+
+                            {{-- city --}}
+                            <div>
+                                <p class="p-0 m-0">
+                                    <strong>Città: </strong>
+                                </p>
+                                <span class="">{{ $curRestaurant->city }}</span>
+                            </div>
+                            {{-- /city --}}
+
+                            {{-- address --}}
+                            <div>
+                                <p class="p-0 m-0">
+                                    <strong>Indirizzo: </strong>
+                                </p>
+                                <span class="">{{ ucwords(strtolower($curRestaurant->address)) }}</span>
+                            </div>
+                            {{-- /address --}}
+
+                            {{-- types --}}
+                            <div>
+                                <span>
+                                    @if (count($curRestaurant->types) === 1)
+                                        <strong>Tipologia: </strong>
+                                    @else
+                                        <strong>Tipologie: </strong>
+                                    @endif
+                                </span>
+                                <ul>
+                                    @foreach ($curRestaurant->types as $type)
+                                        <li>
+                                            <span class="">{{ $type->name }}</span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            {{-- /types --}}
+
+
+                        </div>
+                        {{-- /restaurant text --}}
+
+
+
+                        {{-- /container main --}}
                     </div>
-                    {{-- /restaurant-img --}}
-
-
-                    {{-- restaurant text --}}
-                    <div class="col-lg-6 col-md-8 mb-3 text-lg-start square-text-container">
-
-                        {{-- name --}}
-                        <div class="p-0 m-0">
-                            <span>
-                                <strong>Nome Ristorante: </strong>
-                            </span>
-                            <span class=" mt-5 mb-5">{{ ucwords(strtolower($curRestaurant->name)) }}</span>
-                        </div>
-                        {{-- /name --}}
-
-                        {{-- city --}}
-                        <div class="p-0 m-0">
-                            <span>
-                                <strong>Città: </strong>
-                            </span>
-                            <span class=" mt-5 mb-5">{{ $curRestaurant->city }}</span>
-                        </div>
-                        {{-- /city --}}
-
-                        {{-- address --}}
-                        <div class="p-0 m-0">
-                            <span>
-                                <strong>Indirizzo: </strong>
-                            </span>
-                            <span class=" mt-5 mb-5">{{ ucwords(strtolower($curRestaurant->address)) }}</span>
-                        </div>
-                        {{-- /address --}}
-
-                        {{-- types --}}
-                        <div class="p-0 m-0">
-                            <span>
-                                @if (count($curRestaurant->types) === 1)
-                                    <strong>Tipologia: </strong>
-                                @else
-                                    <strong>Tipologie: </strong>
-                                @endif
-                            </span>
-                            <ul>
-                                @foreach ($curRestaurant->types as $type)
-                                    <li>
-                                        <span class=" mt-5 mb-5">{{ $type->name }}</span>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        {{-- /types --}}
-
-
-                    </div>
-                    {{-- /restaurant text --}}
-
+                    {{-- container main --}}
 
                 </div>
-                {{-- /container main --}}
+
 
 
             </div>

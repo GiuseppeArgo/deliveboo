@@ -107,25 +107,39 @@
                 </label>
 
                 <span id="errorImage" class="text-danger"></span>
-                <input type="file" name="image" id="image" aria-describedby="image"
-                    class="form-control @error('image') is-invalid @enderror" required>
+                {{-- <input type="file" name="image" id="image" aria-describedby="image"
+                    class="form-control @error('image') is-invalid @enderror" required> --}}
+
+                <!-- customize button -->
+                <button type="button" class="custom-file-upload btn btn-primary d-block">Scegli file</button>
+
+                <!--  hide Input file -->
+                <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
+                    id="image" style="display:none;">
+
             </div>
             {{-- /input file image --}}
 
-            <div class="container-preview m-auto mt-3 square-image-container">
+            <div class="m-auto mt-3 square-image-container">
                 {{-- img preview --}}
                 <div class="mt-2 card-img ">
                     <img id="imagePreview" class="from-control hide mb-3 square-image" src="" alt="new-image">
                 </div>
                 {{-- /img preview --}}
 
-                {{-- button add and remove --}}
-                <div class="container">
-                    <div class="row gap-2 mt-3 align-items-center justify-content-center">
-                        <button class="btn btn-success col" type="submit">Crea piatto</button>
-                    </div>
-                </div>
-                {{-- /button add and remove --}}
+            </div>
+
+            {{-- button add and remove --}}
+            <div class="flex-center">
+                <button class="btn btn-success m-0" type="submit">Crea piatto</button>
+            </div>
+            {{-- /button add and remove --}}
+            
+            <div class="mt-5">
+                <span class="asterisco">*</span>
+                <span class="field-required">
+                    ⁠questi campi sono obbligatori
+                </span>
             </div>
 
             {{-- hide input --}}
@@ -133,14 +147,11 @@
             {{-- hide input --}}
 
         </form>
-        <div class="mt-5">
-            <span class="asterisco">*</span> ⁠questi campi sono obbligatori
-        </div>
     </div>
     {{-- /container --}}
 
-    {{-- javascript validation image --}}
     <script>
+        // {{-- javascript validation image --}}
         function validateImage(file) {
             return new Promise((resolve) => {
                 // control extension image
@@ -209,6 +220,20 @@
                 imagePreview.classList.add('hide');
             }
         });
+        // {{-- /javascript validation image --}}
+
+        // {{-- input file --}}
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mostra l'input file quando l'utente clicca sul pulsante personalizzato
+            document.querySelector('.custom-file-upload').addEventListener('click', function() {
+                document.getElementById('image').click();
+            });
+
+            // Nasconde l'input file dopo che un file è stato selezionato
+            document.getElementById('image').addEventListener('change', function() {
+                this.style.display = 'none'; // Nasconde l'input file
+            });
+        });
+        // {{-- input file --}}
     </script>
-    {{-- /javascript validation image --}}
 @endsection

@@ -35,7 +35,29 @@
 .asterisco{
     color: red;
 }
+.field-required,.asterisco,label,.label,.btn-label{
+    font-size: clamp(8px, 2vw, 18px);
+}
+
+h1{
+    font-size: clamp(20px, 3vw, 40px);
+}
+
+td,th{
+    font-size: clamp(8px, 0.8vw, 14px);
+}
+
+.restaurants-details{
+    font-size: clamp(14px, 2vw, 20px);
+}
+
+
+// i{
+//     font
+// }
 
 .padding-button {
     padding: 10px 12px;
 }
+
+

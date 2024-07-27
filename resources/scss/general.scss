@@ -1,5 +1,9 @@
 @import "colorpalette.scss";
 
+*{
+ box-sizing: border-box;
+}
+
 .hide{
     display: none;
 }
@@ -52,7 +56,7 @@ form{
 
 .square-text-container {
     width: 25vw;
-    min-width: 250px;
+    min-width: 150px;
     aspect-ratio: 1;
     margin: 0 auto;
 }
@@ -60,18 +64,19 @@ form{
 .square-image-container{
 
     width: 25vw;
-    min-width: 250px;
+    min-width: 150px;
     aspect-ratio: 1;
-    margin: auto;
+    // margin: auto;
 }
 
-.square-image {
-    width: 25vw;
-    min-width: 250px;
-    object-fit: cover;
-    max-width: 100%;
-    max-height: 100%;
-}
+// .square-image {
+//     width: 25vw;
+//     min-width: 150px;
+//     aspect-ratio: 1;
+//     object-fit: cover;
+//     max-width: 100%;
+//     max-height: 100%;
+// }
 
 
 td{
