@@ -135,23 +135,28 @@
 
 
             {{-- image --}}
-            <div class="container-preview m-auto mt-3 square-image-container">
+            <div class="container-preview m-auto mt-3 mb-3 square-image-container">
                 <div class="mt-2 card-img">
                     {{-- old image --}}
                     @if ($restaurant->image)
                         <img id="oldImg" src="{{ asset('storage/' . $restaurant->image) }}" alt="old-image"
-                            class="img-fluid mb-2 square-image">
+                            class="img-fluid mb-2 square-image edit-restaurant">
                     @endif
                     {{-- /old image --}}
 
                     {{-- new image --}}
-                    <img id="imagePreview" class="hide square-image" src="" alt="new-image">
-                    <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
-                        onclick="removeImage(event)">Rimuovi immagine</a>
+                    <img id="imagePreview" class="hide square-image edit-restaurant" src="" alt="new-image">
+
+                    {{-- /button remove --}}
                     {{-- /new image --}}
 
                 </div>
-                {{-- /image --}}
+            </div>
+            {{-- /image --}}
+
+            {{-- button remove --}}
+            <div class="flex-center mb-2">
+                <a id="btnDelete" class="btn btn-danger hide">Rimuovi</a>
             </div>
 
             {{-- button submit --}}
