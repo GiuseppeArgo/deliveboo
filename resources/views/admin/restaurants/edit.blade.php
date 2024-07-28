@@ -26,7 +26,7 @@
 
             {{-- title --}}
             <div class="mb-3">
-                <label for="name">Nome Attività <span class="asterisco">*</span>
+                <label for="name">Nome attività <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('name')

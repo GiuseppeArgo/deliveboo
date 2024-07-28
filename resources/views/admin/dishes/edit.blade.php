@@ -36,7 +36,7 @@
 
             {{-- Name --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Nome Piatto <span class="asterisco">*</span>
+                <label for="name" class="form-label">Nome piatto <span class="asterisco">*</span>
                     {{-- error message --}}
                     @error('name')
                         <span class="text-danger"> {{ $errors->first('name') }} </span>

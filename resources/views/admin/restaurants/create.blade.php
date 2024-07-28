@@ -6,7 +6,7 @@
     <div class="form-container p-5">
 
         {{-- title --}}
-        <h1 class="text-center">Crea Il tuo Ristorante</h1>
+        <h1 class="text-center">Crea Il tuo ristorante</h1>
         {{-- /title --}}
 
         {{-- form --}}
@@ -15,7 +15,7 @@
 
             {{-- name --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Nome Ristorante <span class="asterisco">*</span>
+                <label for="name" class="form-label">Nome ristorante <span class="asterisco">*</span>
 
                     {{-- error message --}}
                     @error('name')

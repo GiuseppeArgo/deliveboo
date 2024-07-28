@@ -27,7 +27,7 @@
                             href="{{ route('admin.restaurants.edit', ['restaurant' => $curRestaurant->slug]) }}">
                             <i class="fa-solid fa-pen"></i>
                             <span>
-                                Mod. Ristorante
+                                Mod. ristorante
                             </span>
                         </a>
                     </div>
@@ -41,7 +41,7 @@
                             <button type="submit" class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-list-ul"></i>
                                 <span>
-                                    Visualizza Ordini
+                                    Visualizza ordini
                                 </span>
                             </button>
                         </form>
@@ -55,7 +55,7 @@
                             <button type="submit" class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-plus"></i>
                                 <span>
-                                    Aggiungi Piatto
+                                    Aggiungi piatto
                                 </span>
                             </button>
                         </form>
@@ -70,7 +70,7 @@
                             <button type="submit" class="btn btn-primary flex-center gap-1">
                                 <i class="fa-solid fa-list"></i>
                                 <span>
-                                    Visualizza Menu
+                                    Visualizza menu
                                 </span>
                             </button>
                         </form>
@@ -111,7 +111,7 @@
                             {{-- name --}}
                             <div>
                                 <p class="p-0 m-0">
-                                    <strong>Nome Ristorante: </strong>
+                                    <strong>Nome ristorante: </strong>
                                 </p>
                                 <span class="">{{ ucwords(strtolower($curRestaurant->name)) }}</span>
                             {{-- /name --}}
