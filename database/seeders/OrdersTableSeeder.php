@@ -30,11 +30,30 @@ class OrdersTableSeeder extends Seeder
             $newOrder->updated_at = $randomDate;
 
             $newOrder->save();
+            $rndNumber = rand(1,9);
             for ($i = 0; $i < rand(1, 3); $i++) {
                 $dishOrder = new \App\Models\DishOrder();
-
-                $dishOrder->dish_id = rand(1, 45);
                 $dishOrder->order_id = $newOrder->id;
+
+                if($rndNumber === 1){
+                    $dishOrder->dish_id = rand(1, 5);
+                } else if ($rndNumber === 2){
+                    $dishOrder->dish_id = rand(6, 10);
+                } else if ($rndNumber === 3){
+                    $dishOrder->dish_id = rand(11, 15);
+                } else if ($rndNumber === 4){
+                    $dishOrder->dish_id = rand(16, 20);
+                } else if ($rndNumber === 5){
+                    $dishOrder->dish_id = rand(21, 25);
+                } else if ($rndNumber === 6){
+                    $dishOrder->dish_id = rand(26, 30);
+                } else if ($rndNumber === 7){
+                    $dishOrder->dish_id = rand(31, 35);
+                } else if ($rndNumber === 8){
+                    $dishOrder->dish_id = rand(36, 40);
+                } else if ($rndNumber === 9){
+                    $dishOrder->dish_id = rand(40, 45);
+                }
                 $dishOrder->quantity = rand(1, 3);
 
                 $dishOrder->save();

@@ -269,11 +269,7 @@
             border: 1px solid black;
         }
 
-        Style the select options
-        .select-container select option {
-            background-color: white; /* Background color for options */
-            color: black; /* Text color for options */
-        }
+
         form {
             display: flex;
             justify-content: center;
