@@ -98,7 +98,7 @@
                     <div class="row justify-content-center align-items-center">
 
                         {{-- restaurant-img --}}
-                        <div class="col-sm-12 col-md-12 col-lg-6 ">
+                        <div class="col-sm-12 col-md-12 col-lg-6 text-center ">
                             <img class="img-fluid square-image" src="{{ asset('storage/' . $curRestaurant->image) }}"
                                 alt="img-restaurant">
                         </div>
@@ -106,7 +106,7 @@
 
 
                         {{-- restaurant text --}}
-                        <div class="col-sm-12 col-md-12 col-lg-6 text-lg-start p-4 d-flex flex-column gap-2 restaurants-details">
+                        <div class="col-sm-12 col-md-12 col-lg-6 text-lg-start p-4 d-flex flex-column gap-2 align-items-center restaurants-details">
 
                             {{-- name --}}
                             <div>
@@ -114,36 +114,30 @@
                                     <strong>Nome Ristorante: </strong>
                                 </p>
                                 <span class="">{{ ucwords(strtolower($curRestaurant->name)) }}</span>
-                            </div>
                             {{-- /name --}}
 
                             {{-- city --}}
-                            <div>
                                 <p class="p-0 m-0">
                                     <strong>Città: </strong>
                                 </p>
                                 <span class="">{{ $curRestaurant->city }}</span>
-                            </div>
                             {{-- /city --}}
 
                             {{-- address --}}
-                            <div>
                                 <p class="p-0 m-0">
                                     <strong>Indirizzo: </strong>
                                 </p>
                                 <span class="">{{ ucwords(strtolower($curRestaurant->address)) }}</span>
-                            </div>
                             {{-- /address --}}
 
                             {{-- types --}}
-                            <div>
-                                <span>
+                                <p class="p-0 m-0">
                                     @if (count($curRestaurant->types) === 1)
                                         <strong>Tipologia: </strong>
                                     @else
                                         <strong>Tipologie: </strong>
                                     @endif
-                                </span>
+                                </p>
                                 <ul>
                                     @foreach ($curRestaurant->types as $type)
                                         <li>
