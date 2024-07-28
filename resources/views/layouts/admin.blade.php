@@ -104,7 +104,15 @@
                                     </a>
                                 </li>
                                 {{-- /Show menu --}}
-
+                                
+                                {{-- Add dish --}}
+                                <li>
+                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                        href="{{ route('admin.dishes.create') }}">
+                                        <i class="fa-solid fa-plus"></i> Agg. piatto
+                                    </a>
+                                </li>
+                                {{-- /Add dish --}}
 
                                 {{-- Show orders --}}
                                 <li>
@@ -126,14 +134,6 @@
                                 </li>
                                 {{-- /Stats graph --}}
 
-                                {{-- Add dish --}}
-                                <li>
-                                    <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                                        href="{{ route('admin.dishes.create') }}">
-                                        <i class="fa-solid fa-plus"></i> Agg. piatto
-                                    </a>
-                                </li>
-                                {{-- /Add dish --}}
 
 
                             @endif
