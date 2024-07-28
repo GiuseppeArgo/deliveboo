@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex justify-content-center mt-5 gap-2">
         {{-- btn home --}}
-        <a class="btn btn-primary" href="{{ route('admin.restaurants.index') }}">
+        <a class="btn btn-primary" href="{{ route('admin.orders.index') }}">
             <i class="fa-solid fa-circle-arrow-left"></i>
             Indietro
         </a>

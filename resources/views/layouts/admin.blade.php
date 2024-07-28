@@ -95,7 +95,7 @@
                             {{-- hide and show link --}}
                             @if (isset($userHasRestaurant) && $userHasRestaurant)
 
-                                {{-- Visualizza menu --}}
+                                {{-- Show menu --}}
                                 <li>
                                     <a class="nav-link text-white"
                                         {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
@@ -103,10 +103,10 @@
                                         <i class="fa-solid fa-utensils"></i> Menu
                                     </a>
                                 </li>
-                                {{-- /Visualizza menu --}}
+                                {{-- /Show menu --}}
 
 
-                                {{-- visualizza ordini --}}
+                                {{-- Show orders --}}
                                 <li>
                                     <a class="nav-link text-white"
                                         {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
@@ -114,17 +114,26 @@
                                         <i class="fa-solid fa-list-ul"></i> Ordini
                                     </a>
                                 </li>
-                                {{-- visualizza ordini --}}
+                                {{-- /Show orders --}}
 
+                                {{-- Stats graph --}}
+                                <li>
+                                    <a class="nav-link text-white"
+                                        {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}
+                                        href="{{ route('admin.stats.index') }}">
+                                        <i class="fa-solid fa-chart-line"></i> Statistische 
+                                    </a>
+                                </li>
+                                {{-- /Stats graph --}}
 
-                                {{-- aggiungi piatto --}}
+                                {{-- Add dish --}}
                                 <li>
                                     <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                         href="{{ route('admin.dishes.create') }}">
-                                        <i class="fa-solid fa-plus"></i> Agg. Piatto
+                                        <i class="fa-solid fa-plus"></i> Agg. piatto
                                     </a>
                                 </li>
-                                {{-- /aggiungi piatto --}}
+                                {{-- /Add dish --}}
 
 
                             @endif

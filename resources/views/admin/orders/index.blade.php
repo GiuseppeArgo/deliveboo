@@ -15,10 +15,14 @@
     </div>
 
     {{-- container btn --}}
-    <div class="text-center">
+    <div class="d-flex justify-content-center gap-2">
         <a class="btn btn-primary text-white" href="{{ route('admin.restaurants.index') }}">
             <i class="fa-solid fa-circle-arrow-left"></i>
             Indietro
+        </a>
+        <a class="btn btn-primary" href="{{ route('admin.stats.index') }}">
+            <i class="fa-solid fa-chart-line"></i>
+            Statistische 
         </a>
     </div>
     {{-- /container btn --}}
@@ -28,7 +32,7 @@
         @if (count($orders) > 0)
             {{-- header  --}}
             <div class="mb-4">
-                <h1 class="text-center">Lista Ordini</h1>
+                <h1 class="text-center">Lista ordini</h1>
             </div>
             {{-- /header  --}}
 
