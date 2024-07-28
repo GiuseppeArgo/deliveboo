@@ -2,8 +2,13 @@
 
 @section('content')
     <div class="container">
+        <div class="d-flex justify-content-center mt-5">
+            <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
+                Il tuo ristorante
+            </a>
+        </div>
         <div class="row justify-content-center">
-            <div class="col-md-8 mt-4">
+            <div class="col-md-8">
                 {{-- success message --}}
                 @if (session('message'))
                     <div class="alert alert-success form-container text-center border-0">
@@ -17,9 +22,6 @@
                     {{-- title --}}
                     <div class="card-header alert alert-primary p-2 m-0 flex-center gap-2">
                         <span>{{ __('Deliveboo Dashboard') }}</span>
-                        <a href="{{ route('admin.restaurants.index') }}" class="btn btn-primary">
-                            Il tuo ristorante
-                        </a>
                     </div>
                     {{-- /title --}}
 
@@ -61,6 +63,7 @@
                                     ', alle ore: ' .
                                     \Carbon\Carbon::parse($user->created_at)->format('H:i') }}
                             </dd>
+
                         </div>
                     </div>
                     {{-- user details --}}
