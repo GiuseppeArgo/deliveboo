@@ -22,7 +22,7 @@ class OrderController extends Controller
         // Find orders that include those dishes
         $orders = Order::whereHas('dishes', function ($query) use ($dishesForRestaurant) {
             $query->whereIn('dish_id', $dishesForRestaurant);
-        })->orderBy('created_at', 'desc')->get();
+        })->orderBy('created_at', 'desc')->paginate(10);
         foreach ($orders as $curOrder){
             $curOrder['date'] = Carbon::parse($curOrder['created_at'])->format('d-m-Y H:i');
             // dd($curOrder['date']);

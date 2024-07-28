@@ -22,7 +22,7 @@
         </a>
         <a class="btn btn-primary" href="{{ route('admin.stats.index') }}">
             <i class="fa-solid fa-chart-line"></i>
-            Statistische 
+            Statistische
         </a>
     </div>
     {{-- /container btn --}}
@@ -79,8 +79,12 @@
                     </tbody>
                     {{-- /tbody --}}
 
-
                 </table>
+
+                <!-- Collegamenti di paginazione -->
+                <div class="d-flex justify-content-center">
+                    {{ $orders->links() }}
+                </div>
             </div>
             {{-- /table --}}
         @else
