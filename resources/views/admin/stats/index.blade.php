@@ -39,6 +39,7 @@
             {{-- Orders graph --}}
             <div class="chart-section d-flex flex-column align-items-center mb-5">
                 <h3 class="text-left">Ordini per giornata</h3>
+                <p class="text-left">Totale numero ordini del mese selezionato: {{ $totalOrders }}</p>
                 <div class="select-container">
                     <select class="my_select" id="orderChartTypeSelector">
                         <option value="line">Linee</option>
@@ -55,6 +56,7 @@
             {{-- Price graph --}}
             <div class="chart-section d-flex flex-column align-items-center">
                 <h3 class="text-left">Guadagni della giornata</h3>
+                <p class="text-left">Totale guadagnato nel mese selezionato: {{ number_format($totalEarnings, 2) }} €</p>
                 <div class="select-container">
                     <select id="chartTypeSelector">
                         <option value="line">Linee</option>

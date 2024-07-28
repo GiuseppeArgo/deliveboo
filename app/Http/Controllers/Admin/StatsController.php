@@ -19,6 +19,7 @@ class StatsController extends Controller
 
         $restaurantId = Auth::id();
         $dishesForRestaurant = Dish::where('restaurant_id', $restaurantId)->pluck('id');
+        
         // Find orders that include those dishes
         $orders = Order::whereHas('dishes', function ($query) use ($dishesForRestaurant) {
             $query->whereIn('dish_id', $dishesForRestaurant);
@@ -36,14 +37,9 @@ class StatsController extends Controller
             $totalPrices[$day] = $orders->get(sprintf('%02d', $day), collect())->sum('total_price');
         }
 
-        // dd($totalPrices);
-
-        // $orders = $orders::whereYear('created_at', $year)
-        //     ->whereMonth('created_at', $month)
-        //     ->get()
-        //     ->groupBy(function($date) {
-        //         return Carbon::parse($date->created_at)->format('l'); // Gruppo per giorno della settimana
-        //     });
+        // Calculate the total number of orders and total earnings for the selected month
+        $totalOrders = $orders->flatten()->count();
+        $totalEarnings = array_sum($totalPrices);
 
         // Preparare i dati per il grafico
         $data = [];
@@ -51,6 +47,6 @@ class StatsController extends Controller
             $data[$day] = $orders->get(sprintf('%02d', $day), collect())->count();
         }
 
-        return view('admin.stats.index', compact('data', 'year', 'month', 'totalPrices'));
+        return view('admin.stats.index', compact('data', 'year', 'month', 'totalPrices', 'totalOrders', 'totalEarnings'));
     }
 }
