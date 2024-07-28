@@ -140,29 +140,28 @@
                     {{-- old image --}}
                     @if ($restaurant->image)
                         <img id="oldImg" src="{{ asset('storage/' . $restaurant->image) }}" alt="old-image"
-                            class="img-fluid mb-2 square-image">
+                            class="img-fluid mb-2 square-image-edit-restaurant">
                     @endif
                     {{-- /old image --}}
 
                     {{-- new image --}}
-                    <img id="imagePreview" class="hide square-image" src="" alt="new-image">
+                    <img id="imagePreview" class="hide square-image-edit-restaurant" src="" alt="new-image">
                     <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
                         onclick="removeImage(event)">Rimuovi immagine</a>
                     {{-- /new image --}}
 
                 </div>
                 {{-- /image --}}
-
-
-                {{-- button submit --}}
-                <div class="container">
-                    <div class="row gap-2 mt-3 align-items-center justify-content-center">
-                        <button class="btn btn-success col" type="submit">Conferma</button>
-                    </div>
-                </div>
-                {{-- /button submit --}}
             </div>
+
+            {{-- button submit --}}
+            <div class="flex-center">
+                <button class="btn btn-success m-0" type="submit">Conferma</button>
+            </div>
+            {{-- /button submit --}}
+
         </form>
+        {{-- form --}}
         <div class="mt-5">
             <span class="asterisco">*</span>
             <span class="field-required">
@@ -260,16 +259,16 @@
 
         // {{-- input file --}}
         document.addEventListener("DOMContentLoaded", function() {
-    // Mostra l'input file quando l'utente clicca sul pulsante personalizzato
-    document.querySelector('.custom-file-upload').addEventListener('click', function() {
-        document.getElementById('image').click();
-    });
+            // Mostra l'input file quando l'utente clicca sul pulsante personalizzato
+            document.querySelector('.custom-file-upload').addEventListener('click', function() {
+                document.getElementById('image').click();
+            });
 
-    // Nasconde l'input file dopo che un file è stato selezionato
-    document.getElementById('image').addEventListener('change', function() {
-        this.style.display = 'none'; // Nasconde l'input file
-    });
-});
+            // Nasconde l'input file dopo che un file è stato selezionato
+            document.getElementById('image').addEventListener('change', function() {
+                this.style.display = 'none'; // Nasconde l'input file
+            });
+        });
         // {{-- input file --}}
     </script>
 @endsection

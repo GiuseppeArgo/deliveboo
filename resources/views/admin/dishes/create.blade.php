@@ -123,7 +123,7 @@
             <div class="m-auto mt-3 square-image-container">
                 {{-- img preview --}}
                 <div class="mt-2 card-img ">
-                    <img id="imagePreview" class="from-control hide mb-3 square-image" src="" alt="new-image">
+                    <img id="imagePreview" class="from-control hide mb-3 square-image-edit-restaurant" src="" alt="new-image">
                 </div>
                 {{-- /img preview --}}
 
@@ -134,7 +134,7 @@
                 <button class="btn btn-success m-0" type="submit">Crea piatto</button>
             </div>
             {{-- /button add and remove --}}
-            
+
             <div class="mt-5">
                 <span class="asterisco">*</span>
                 <span class="field-required">

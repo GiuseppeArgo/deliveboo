@@ -22,7 +22,7 @@
 
         {{-- header container --}}
         <div class="mb-4">
-            <h1 class="text-center">Modifica Piatto</h1>
+            <h1 class="text-center">Modifica piatto</h1>
         </div>
         {{-- /header container --}}
 
@@ -136,9 +136,9 @@
                 <div class="mt-2 card-img">
                     @if (!empty($dish->image))
                         <img id="oldImg" src="{{ asset('storage/' . $dish->image) }}" alt="Old Image"
-                            class="img-fluid mb-2 square-image">
+                            class="img-fluid mb-2 square-image-edit-restaurant">
                     @endif
-                    <img id="imagePreview" class="hide mb-3 square-image" src="" alt="New Image Preview">
+                    <img id="imagePreview" class="hide mb-3 square-image-edit-restaurant" src="" alt="New Image Preview">
                     <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
                         onclick="removeImage(event)">Rimuovi</a>
                 </div>
@@ -147,11 +147,11 @@
 
 
             {{-- button add --}}
-            <div class="container mt-3 mb-3 text-center">
-                <div class="row gap-2 justify-content-center">
-                    <button class="btn btn-success col-8 col-sm-7 col-md-6 col-lg-3" type="submit">Aggiorna</button>
-                </div>
+            {{-- button add and remove --}}
+            <div class="flex-center">
+                <button class="btn btn-success m-0" type="submit">Aggiorna</button>
             </div>
+            {{-- /button add and remove --}}
             {{-- /button add --}}
 
 
