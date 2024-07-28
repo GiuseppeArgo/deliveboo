@@ -107,15 +107,6 @@
                                         </a>
                                     </td>
 
-
-
-                                    {{-- button --}}
-                                    {{-- <td class="align-middle text-center">
-                                    </td>
-                                    <td class="align-middle text-center">
-                                    </td> --}}
-                                    {{-- /button --}}
-
                                 </tr>
                             @endforeach
                         </tbody>

@@ -168,7 +168,7 @@
         </div>
     @else
         <div class="form-container flex-center flex-column p-5">
-            <p class="fs-3">Nessun ristorante aggiunto. Aggiungine uno</p>
+            <p class="fs-3">Nessun ristorante registrato. Aggiungine uno.</p>
             <a class="btn btn-primary" href="{{ route('admin.restaurants.create') }}">
                 <i class="fa-solid fa-plus"></i> Nuovo ristorante
             </a>
