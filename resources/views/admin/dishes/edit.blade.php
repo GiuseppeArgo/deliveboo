@@ -136,9 +136,9 @@
                 <div class="mt-2 card-img">
                     @if (!empty($dish->image))
                         <img id="oldImg" src="{{ asset('storage/' . $dish->image) }}" alt="Old Image"
-                            class="img-fluid mb-2 square-image-edit-restaurant">
+                            class="img-fluid mb-2 square-image">
                     @endif
-                    <img id="imagePreview" class="hide mb-3 square-image-edit-restaurant" src="" alt="New Image Preview">
+                    <img id="imagePreview" class="hide mb-3 square-image" src="" alt="New Image Preview">
                     <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
                         onclick="removeImage(event)">Rimuovi</a>
                 </div>

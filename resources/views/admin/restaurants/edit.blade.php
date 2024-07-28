@@ -140,12 +140,12 @@
                     {{-- old image --}}
                     @if ($restaurant->image)
                         <img id="oldImg" src="{{ asset('storage/' . $restaurant->image) }}" alt="old-image"
-                            class="img-fluid mb-2 square-image-edit-restaurant">
+                            class="img-fluid mb-2 square-image">
                     @endif
                     {{-- /old image --}}
 
                     {{-- new image --}}
-                    <img id="imagePreview" class="hide square-image-edit-restaurant" src="" alt="new-image">
+                    <img id="imagePreview" class="hide square-image" src="" alt="new-image">
                     <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
                         onclick="removeImage(event)">Rimuovi immagine</a>
                     {{-- /new image --}}
