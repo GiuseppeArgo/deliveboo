@@ -123,7 +123,7 @@
             <div class="m-auto mt-3 square-image-container">
                 {{-- img preview --}}
                 <div class="mt-2 card-img ">
-                    <img id="imagePreview" class="from-control hide mb-3 square-image edit-restaurant" src="" alt="new-image">
+                    <img id="imagePreview" class="from-control hide mb-3 square-image square-image-edit-restaurant" src="" alt="new-image">
                 </div>
                 {{-- /img preview --}}
 

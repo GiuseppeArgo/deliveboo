@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::disableForeignKeyConstraints();
 
         Schema::create('restaurants', function (Blueprint $table) {
-            $table->id();
+            $table->id();   // questo va cambiato per coincidere con l'id del ristorante....
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->string('name');

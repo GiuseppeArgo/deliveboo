@@ -143,7 +143,7 @@ is-invalid
             <div class="container-preview m-auto mt-3 mb-3 square-image-container">
                 {{-- img preview --}}
                 <div class="mt-2 card-img">
-                    <img id="imagePreview" class="hide square-image" src="" alt="new-image">
+                    <img id="imagePreview" class="hide square-image square-image-edit-restaurant" src="" alt="new-image">
                 </div>
                 {{-- /img preview --}}
 

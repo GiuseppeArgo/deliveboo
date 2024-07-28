@@ -140,7 +140,7 @@
                     {{-- old image --}}
                     @if ($restaurant->image)
                         <img id="oldImg" src="{{ asset('storage/' . $restaurant->image) }}" alt="old-image"
-                            class="img-fluid mb-2 square-image edit-restaurant">
+                            class="img-fluid mb-2 square-image square-image-edit-restaurant">
                     @endif
                     {{-- /old image --}}
 

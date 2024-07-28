@@ -136,9 +136,9 @@
                 <div class="mt-2 card-img">
                     @if (!empty($dish->image))
                         <img id="oldImg" src="{{ asset('storage/' . $dish->image) }}" alt="Old Image"
-                            class="img-fluid mb-2 square-image edit-restaurant">
+                            class="img-fluid mb-2 square-image square-image-edit-restaurant">
                     @endif
-                    <img id="imagePreview" class="hide mb-3 square-image edit-restaurant" src="" alt="New Image Preview">
+                    <img id="imagePreview" class="hide mb-3 square-image square-image-edit-restaurant" src="" alt="New Image Preview">
                 </div>
             </div>
             {{-- old and new preview image --}}
