@@ -39,7 +39,7 @@
             <div class="col-sm-12 col-md-12 col-lg-6 text-lg-start p-4 d-flex flex-column gap-2 align-items-center justify-content-center restaurants-details">
                         <div>
                             <p class="p-0 m-0">
-                                <strong>Nome del Piatto: </strong>
+                                <strong>Nome del piatto: </strong>
                             </p>
                             <span>
                                 {{ ucfirst(strtolower($dish->name)) }}
