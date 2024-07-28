@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
     {{-- container  --}}
     <div class="form-container p-5">
 
@@ -24,7 +23,7 @@
                     {{-- /error message --}}
 
                 </label>
-                <input value="{{ old('name') }}" type="text"  minlength="3" maxlength="20" name="name"
+                <input value="{{ old('name') }}" type="text" minlength="3" maxlength="20" name="name"
                     class="form-control @error('name') is-invalid @enderror" placeholder="es. Da Mario" id="name"
                     aria-describedby="name_restaurant" required>
             </div>
@@ -60,7 +59,9 @@
                     {{-- /error message --}}
 
                 </label>
-                <textarea minlength="5" maxlength="200" class="form-control @error('description') is-invalid @enderror" name="description" id="description" rows="3" required placeholder="es. ristorante accogliente in una corte del 700">{{ old('description') }}</textarea>
+                <textarea minlength="5" maxlength="200" class="form-control @error('description') is-invalid @enderror"
+                    name="description" id="description" rows="3" required
+                    placeholder="es. ristorante accogliente in una corte del 700">{{ old('description') }}</textarea>
             </div>
             {{-- Description --}}
 
@@ -83,7 +84,7 @@
             <div class="container mb-4">
                 <div class="row" role="group" aria-label="Basic checkbox toggle button group">
                     @foreach ($listTypes as $curType)
-                        <div class="col-4 btn-group flex flex-wrap mt-3">
+                        <div class="col-sm-12 col-md-6 col-lg-4 btn-group flex flex-wrap justify-content-center align-items-center mt-3">
                             <input type="checkbox" class="btn-check" id="tech-{{ $curType->id }}" name="tipologies[]"
                                 value="{{ $curType->id }}" @checked(in_array($curType->id, old('tipologies', [])))>
                             <label class="btn btn-outline-primary"
@@ -106,8 +107,11 @@
                     {{-- /error message --}}
 
                 </label>
-                <input value="{{ old('p_iva') }}" type="text" name="p_iva"
-                pattern="^\d{11}$" maxlength="11" placeholder="es. 12345678901 -> 11 numeri" class="form-control @error('p_iva') is-invalid @enderror" id="p_iva" aria-describedby="p_iva" required>
+                <input value="{{ old('p_iva') }}" type="text" name="p_iva" pattern="^\d{11}$" maxlength="11"
+                    placeholder="es. 12345678901 -> 11 numeri" class="form-control @error('p_iva')
+is-invalid
+@enderror"
+                    id="p_iva" aria-describedby="p_iva" required>
             </div>
             {{-- P.Iva --}}
 
@@ -124,31 +128,39 @@
 
                 </label>
                 <span id="errorImage" class="text-danger"></span>
-                <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
-                    id="image" aria-describedby="image" required>
+
+                <!-- customize button -->
+                <button type="button" class="custom-file-upload btn btn-primary d-block">Scegli file</button>
+
+                <!--  hide Input file -->
+                <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
+                    id="image" style="display:none;">
             </div>
             {{-- /input file image --}}
 
 
             {{-- image --}}
-            <div class="container-preview m-auto mt-3 square-image-container">
+            <div class="container-preview m-auto mt-3 mb-3 square-image-container">
                 {{-- img preview --}}
                 <div class="mt-2 card-img">
                     <img id="imagePreview" class="hide square-image" src="" alt="new-image">
                 </div>
                 {{-- /img preview --}}
 
-                {{-- button add and remove --}}
-                <div class="container">
-                    <div class="row gap-2 mt-3 align-items-center justify-content-center">
-                        <button class="btn btn-success col" type="submit">Conferma</button>
-                        <a id="btnDelete" class="btn btn-danger col hide">Rimuovi</a>
-                    </div>
-                </div>
-                {{-- /button add and remove --}}
-
             </div>
             {{-- /image --}}
+
+            {{-- button remove --}}
+            <div class="flex-center mb-2">
+                <a id="btnDelete" class="btn btn-danger hide">Rimuovi</a>
+            </div>
+            {{-- /button remove --}}
+
+            {{-- button submit --}}
+            <div class="flex-center">
+                <button class="btn btn-success m-0" type="submit">Conferma</button>
+            </div>
+            {{-- /button submit --}}
 
         </form>
         {{-- /form --}}
@@ -195,7 +207,7 @@
                 const {
                     valid,
                     error
-                //wait return of the function
+                    //wait return of the function
                 } = await validateImage(file);
                 const imgElem = document.getElementById("imagePreview");
                 const errImg = document.getElementById("errorImage");
@@ -220,5 +232,19 @@
                 }
             }
         });
+
+        // {{-- input file --}}
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mostra l'input file quando l'utente clicca sul pulsante personalizzato
+            document.querySelector('.custom-file-upload').addEventListener('click', function() {
+                document.getElementById('image').click();
+            });
+
+            // Nasconde l'input file dopo che un file è stato selezionato
+            document.getElementById('image').addEventListener('change', function() {
+                this.style.display = 'none'; // Nasconde l'input file
+            });
+        });
+        // {{-- input file --}}
     </script>
 @endsection
