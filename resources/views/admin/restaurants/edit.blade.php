@@ -135,7 +135,7 @@
 
 
             {{-- image --}}
-            <div class="container-preview m-auto mt-3 mb-3 square-image-container">
+            <div class="container-preview m-auto mt-3 square-image-container">
                 <div class="mt-2 card-img">
                     {{-- old image --}}
                     @if ($restaurant->image)
@@ -145,19 +145,19 @@
                     {{-- /old image --}}
 
                     {{-- new image --}}
-                    <img id="imagePreview" class="hide square-image edit-restaurant" src="" alt="new-image">
-
-                    {{-- /button remove --}}
+                    <img id="imagePreview" class="hide square-image" src="" alt="new-image">
                     {{-- /new image --}}
 
                 </div>
+                {{-- /image --}}
             </div>
-            {{-- /image --}}
 
-            {{-- button remove --}}
+            {{-- btn-remove --}}
             <div class="flex-center mb-2">
-                <a id="btnDelete" class="btn btn-danger hide">Rimuovi</a>
+                <button id="btnDelete" class="btn btn-danger hide mt-3"
+                    onclick="removeImage(event)">Rimuovi</button>
             </div>
+            {{-- /btn-remove --}}
 
             {{-- button submit --}}
             <div class="flex-center">

@@ -150,12 +150,6 @@ is-invalid
             </div>
             {{-- /image --}}
 
-            {{-- button remove --}}
-            <div class="flex-center mb-2">
-                <a id="btnDelete" class="btn btn-danger hide">Rimuovi</a>
-            </div>
-            {{-- /button remove --}}
-
             {{-- button submit --}}
             <div class="flex-center">
                 <button class="btn btn-success m-0" type="submit">Conferma</button>

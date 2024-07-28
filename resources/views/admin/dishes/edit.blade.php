@@ -136,22 +136,24 @@
                 <div class="mt-2 card-img">
                     @if (!empty($dish->image))
                         <img id="oldImg" src="{{ asset('storage/' . $dish->image) }}" alt="Old Image"
-                            class="img-fluid mb-2 square-image">
+                            class="img-fluid mb-2 square-image edit-restaurant">
                     @endif
-                    <img id="imagePreview" class="hide mb-3 square-image" src="" alt="New Image Preview">
-                    <a id="btnDelete" class="btn btn-danger col-5 hide w-100 mt-3" href="#"
-                        onclick="removeImage(event)">Rimuovi</a>
+                    <img id="imagePreview" class="hide mb-3 square-image edit-restaurant" src="" alt="New Image Preview">
                 </div>
             </div>
             {{-- old and new preview image --}}
 
+            {{-- btn-remove --}}
+            <div class="flex-center mb-2">
+                <button id="btnDelete" class="btn btn-danger hide mt-3"
+                    onclick="removeImage(event)">Rimuovi</button>
+            </div>
+            {{-- /btn-remove --}}
 
             {{-- button add --}}
-            {{-- button add and remove --}}
             <div class="flex-center">
                 <button class="btn btn-success m-0" type="submit">Aggiorna</button>
             </div>
-            {{-- /button add and remove --}}
             {{-- /button add --}}
 
 
