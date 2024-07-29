@@ -9,7 +9,7 @@
         @csrf
         <input type="text" class="hide" name="restaurant_id" value="{{ $orders['restaurant_id'] }}">
         <button type="submit" class="btn btn-primary">
-            <i class="fa-solid fa-list-ul"></i> Torna agli ordini
+            <i class="fa-solid fa-circle-arrow-left"></i> Indietro
         </button>
     </form>
     {{-- /Btn orders --}}

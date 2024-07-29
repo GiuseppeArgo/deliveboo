@@ -59,8 +59,8 @@
                 <p class="text-left">Totale guadagnato nel mese selezionato: {{ number_format($totalEarnings, 2) }} €</p>
                 <div class="select-container">
                     <select id="chartTypeSelector">
-                        <option value="line">Linee</option>
                         <option value="bar">Barre</option>
+                        <option value="line">Linee</option>
                     </select>
                     <i class="fas fa-chevron-down select-icon"></i>
                 </div>
@@ -165,7 +165,7 @@
 
             const data = {
                 labels: @json(array_keys($totalPrices)),
-                datasets: [lineDataset] // Start with line dataset
+                datasets: [barDataset] // Start with bar dataset
             };
 
             const options = {

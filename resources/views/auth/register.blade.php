@@ -84,7 +84,7 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" minlength="3" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" required>
+                                <input id="password" type="password" minlength="8" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" required>
 
                                 {{-- error --}}
                                 @error('password')
@@ -106,7 +106,7 @@
                             </label>
 
                             <div class="col-md-6">
-                                <input id="password_confirmation" minlength="3" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password_confirmation" minlength="8" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
                         {{-- /password-confirm --}}

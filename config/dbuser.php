@@ -10,7 +10,7 @@ return [
         'name' => 'Jane',
         'lastname' => 'Doe',
         'email' => 'jane.doe@example.com',
-        'password' => 'password456'
+        'password' => '11111111'
     ],
     [
         'name' => 'Alice',

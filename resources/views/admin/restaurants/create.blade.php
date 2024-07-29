@@ -240,5 +240,29 @@ is-invalid
             });
         });
         // {{-- input file --}}
+
+
+        // control typologies for create and edit restaurants. max 2 not 0
+const checkboxes = document.querySelectorAll('input[type=checkbox][name="tipologies[]"]');
+const errorMessage = document.getElementById('error-message');
+
+checkboxes.forEach(function(checkbox) {
+    checkbox.addEventListener('click', function(e) {
+        var selectedCount = Array.from(document.querySelectorAll('input[name="tipologies[]"]:checked')).length;
+        if (selectedCount > 2) {
+            e.preventDefault();
+            errorMessage.style.display = 'inline-block';
+            errorMessage.innerHTML = "puoi selezionare al massimo 2 tipologie";
+            Array.from(checkboxes).slice(-1)[0].click();
+        }else if(selectedCount === 0) {
+            errorMessage.style.display = 'inline-block';
+            errorMessage.innerHTML = "devi selezionare almeno una tipologia";
+        } else{
+            errorMessage.style.display = 'none';
+        }
+
+    });
+});
+// control typologies for create and edit restaurants. max 2 not 0
     </script>
 @endsection
