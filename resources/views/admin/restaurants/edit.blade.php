@@ -177,7 +177,7 @@
     {{-- /container  --}}
 
     <script>
-        // javascript validation image
+        // VALIDATION IMAGE
         function validateImage(file) {
             return new Promise((resolve) => {
                 // control extension image
@@ -260,9 +260,11 @@
             }
 
         });
-        //  /javascript validation image
+        // /VALIDATION IMAGE
 
-        // {{-- input file --}}
+
+
+        // INPUT FILE
         document.addEventListener("DOMContentLoaded", function() {
             // Mostra l'input file quando l'utente clicca sul pulsante personalizzato
             document.querySelector('.custom-file-upload').addEventListener('click', function() {
@@ -274,6 +276,8 @@
                 this.style.display = 'none'; // Nasconde l'input file
             });
         });
-        // {{-- input file --}}
+        // /INPUT FILE
+
+
     </script>
 @endsection

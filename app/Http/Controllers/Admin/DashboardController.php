@@ -9,6 +9,6 @@ class DashboardController extends Controller
 {
     public function index() {
         $user = Auth::user();
-        return view('admin.dashboard',compact('user'))->with('message', 'benvenuto');
+        return view('admin.dashboard',compact('user'))->with('message', 'benvenuto/a ciao');
     }
 }
